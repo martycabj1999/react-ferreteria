@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React /*, { useState }*/ from 'react';
 
-const NavbarInferior = () => {
+const NavbarInferior = (props) => {
 
-    const [categoria, setCategoria] = useState({
+    /*const [categoria, setCategoria] = useState({
         name : '',
         url : ''
-    });
+    });*/
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mt-n4">
                 <li className="nav-item">
-                    <a href="" className="nav-link">Categorias</a>
+                    <div className="dropdown show">
+                        <button className="btn dropdown-toggle" id="categories" data-toggle="dropdown">
+                            Categorias
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="categories">
+                            <a href="" className="dropdown-item">Action</a>
+                            <a href="" className="dropdown-item">Another action</a>
+                            <a href="" className="dropdown-item">Something else here</a>
+                        </div>
+                    </div>
                 </li>
                 <li className="nav-item">
                     <a href="" className="nav-link">Contactanos</a>
