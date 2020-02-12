@@ -2,9 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import NavbarSuperior from './components/NavbarSuperior';
+import NavbarInferior from './components/NavbarInferior';
+
 function App() {
   return (
     <div className="App">
+      <NavbarSuperior />
+      <NavbarInferior />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
