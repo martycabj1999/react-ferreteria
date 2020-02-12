@@ -2,11 +2,12 @@ import React /*, { useState }*/ from 'react';
 
 const NavbarInferior = (props) => {
 
-    /*const [categoria, setCategoria] = useState({
-        name : '',
-        url : ''
-    });*/
-
+    const { categories } = props;
+    
+    const listCategories = categories.map((category) =>
+        <a href={category.url} className="dropdown-item">{category.name}</a>
+    );
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mt-n4">
@@ -16,9 +17,7 @@ const NavbarInferior = (props) => {
                             Categorias
                         </button>
                         <div className="dropdown-menu" aria-labelledby="categories">
-                            <a href="" className="dropdown-item">Action</a>
-                            <a href="" className="dropdown-item">Another action</a>
-                            <a href="" className="dropdown-item">Something else here</a>
+                            {listCategories}
                         </div>
                     </div>
                 </li>
