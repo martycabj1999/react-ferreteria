@@ -1,7 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
 import NavbarSuperior from "./components/NavbarSuperior";
 import NavbarInferior from "./components/NavbarInferior";
 
