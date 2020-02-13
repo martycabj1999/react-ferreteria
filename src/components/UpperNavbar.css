@@ -4,14 +4,14 @@
     color: black;
 }
 #logo:hover {
-    text-shadow: 0.03rem 0.03rem #000;;
+    text-shadow: 0.03rem 0.05rem 0.05rem #000;;
 }
 .main-search {
     margin-top: 8px;
     padding-right: 40%;
 }
 #search {
-    width: 400px;
+    width: 410px;
 }
 .upper-navbar {
     background-color: #ddd;
