@@ -3,7 +3,7 @@ import './NavbarSuperior.css';
 
 const NavbarSuperior = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-superior">
             <div className="container">
                 <a 
                     href="/" 
@@ -11,10 +11,11 @@ const NavbarSuperior = () => {
                     id="logo">
                     Ferreteria
                 </a>
-                <form className="form-inline mt-4">
-                    <div className="input-group">
+                <form className="form-inline">
+                    <div className="input-group main-search">
                         <input 
-                            className="form-control" 
+                            className="form-control"
+                            id="search"
                             type="search" 
                             placeholder="Que estas buscando?" 
                         />

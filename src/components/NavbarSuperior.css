@@ -1,7 +1,17 @@
 #logo {
+    margin:  10px 30px 15px 0px;
     text-decoration: none;
     color: black;
 }
-#logo:hover{
+#logo:hover {
     text-shadow: 0.03rem 0.03rem #000;;
+}
+.main-search {
+    padding-right: 40%;
+}
+#search {
+    width: 400px;
+}
+.navbar-superior {
+    background-color: #ddd;
 }

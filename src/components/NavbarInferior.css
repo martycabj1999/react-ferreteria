@@ -1,0 +1,6 @@
+.navbar-inferior  {
+    background-color: #bbb;
+}
+.navbar-inferior ul li * {
+    color: #333;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import './NavbarInferior.css';
 
 const NavbarInferior = (props) => {
     // Categorias, marcas y rubros
@@ -16,8 +17,8 @@ const NavbarInferior = (props) => {
     const listSections = obtainLinks(sections);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <ul className="navbar-nav mt-n4">
+        <nav className="navbar navbar-expand-md navbar-inferior">
+            <ul className="navbar-nav">
                 <li className="nav-item">
                     <Dropdown name="Categorias" list={listCategories} />
                 </li>
