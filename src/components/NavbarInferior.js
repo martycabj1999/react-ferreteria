@@ -5,29 +5,27 @@ const NavbarInferior = (props) => {
     // Categorias, marcas y rubros
     const { categories, brands, sections } = props;
 
-    const listCategories = categories.map((category) =>
-        <a href={category.url} className="dropdown-item">{category.name}</a>
+    const obtainLinks = array => (
+        array.map((element) =>
+            <a href={element.url} className="dropdown-item">{element.name}</a>
+        )
     );
 
-    const listBrands = brands.map((brand) =>
-        <a href={brand.url} className="dropdown-item">{brand.name}</a>
-    );
-    
-    const listSections = sections.map((section) =>
-        <a href={section.url} className="dropdown-item">{section.name}</a>
-    );
+    const listCategories = obtainLinks(categories);
+    const listBrands = obtainLinks(brands);
+    const listSections = obtainLinks(sections);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mt-n4">
                 <li className="nav-item">
-                    <Dropdown show="Categorias" list={listCategories} />
+                    <Dropdown name="Categorias" list={listCategories} />
                 </li>
                 <li className="nav-item">
-                    <Dropdown show="Marcas" list={listBrands} />
+                    <Dropdown name="Marcas" list={listBrands} />
                 </li>
                 <li className="nav-item">
-                    <Dropdown show="Rubros" list={listSections} />
+                    <Dropdown name="Rubros" list={listSections} />
                 </li>
                 <li className="nav-item">
                     <a href="" className="nav-link">Contactanos</a>
