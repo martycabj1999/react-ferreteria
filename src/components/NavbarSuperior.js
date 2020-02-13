@@ -1,16 +1,17 @@
 import React from 'react';
+import './NavbarSuperior.css';
 
 const NavbarSuperior = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container mt-4">
+            <div className="container">
                 <a 
                     href="/" 
-                    className="navbar-brand h1" 
+                    className="display-4" 
                     id="logo">
                     Ferreteria
                 </a>
-                <form className="form-inline">
+                <form className="form-inline mt-4">
                     <div className="input-group">
                         <input 
                             className="form-control" 
