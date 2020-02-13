@@ -1,9 +1,9 @@
 import React from 'react';
-import './NavbarSuperior.css';
+import './UpperNavbar.css';
 
-const NavbarSuperior = () => {
+const UpperNavbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-superior">
+        <nav className="navbar navbar-expand-lg upper-navbar">
             <div className="container">
                 <a 
                     href="/" 
@@ -17,7 +17,7 @@ const NavbarSuperior = () => {
                             className="form-control"
                             id="search"
                             type="search" 
-                            placeholder="Que estas buscando?" 
+                            placeholder="Que estas buscando? Ejemplo: Tornillos" 
                         />
                         <div className="input-group-append">
                             <button 
@@ -33,4 +33,4 @@ const NavbarSuperior = () => {
     );
 }
 
-export default NavbarSuperior;
+export default UpperNavbar;

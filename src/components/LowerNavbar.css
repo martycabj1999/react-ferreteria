@@ -1,6 +1,6 @@
-.navbar-inferior  {
+.lower-navbar  {
     background-color: #bbb;
 }
-.navbar-inferior ul li * {
+.lower-navbar ul li * {
     color: #333;
 }

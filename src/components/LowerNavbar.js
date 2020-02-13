@@ -1,8 +1,8 @@
 import React from 'react';
 import Dropdown from './Dropdown';
-import './NavbarInferior.css';
+import './LowerNavbar.css';
 
-const NavbarInferior = (props) => {
+const LowerNavbar = (props) => {
     // Categorias, marcas y rubros
     const { categories, brands, sections } = props;
 
@@ -17,7 +17,7 @@ const NavbarInferior = (props) => {
     const listSections = obtainLinks(sections);
 
     return (
-        <nav className="navbar navbar-expand-md navbar-inferior">
+        <nav className="navbar navbar-expand-md lower-navbar">
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Dropdown name="Categorias" list={listCategories} />
@@ -29,17 +29,17 @@ const NavbarInferior = (props) => {
                     <Dropdown name="Rubros" list={listSections} />
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link">Contactanos</a>
+                    <a href="/" className="nav-link">Contactanos</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link">Registrate</a>
+                    <a href="/" className="nav-link">Registrate</a>
                 </li>
                 <li className="nav-item">
-                    <a href="" className="nav-link">Iniciar Sesion</a>
+                    <a href="/" className="nav-link">Iniciar Sesion</a>
                 </li>
             </ul>
         </nav>
     );
 }
 
-export default NavbarInferior;
+export default LowerNavbar;
