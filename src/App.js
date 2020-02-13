@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 
-import NavbarSuperior from "./components/NavbarSuperior";
-import NavbarInferior from "./components/NavbarInferior";
+import UpperNavbar from "./components/UpperNavbar";
+import LowerNavbar from "./components/LowerNavbar";
 
 function App() {
 
@@ -56,8 +56,8 @@ function App() {
   return (
     <div>
       <header>
-        <NavbarSuperior />
-        <NavbarInferior categories={categories} brands={brands} sections={sections} />
+        <UpperNavbar />
+        <LowerNavbar categories={categories} brands={brands} sections={sections} />
       </header>
     </div>
   );
