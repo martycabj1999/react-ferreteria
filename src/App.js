@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+
 import NavbarSuperior from "./components/NavbarSuperior";
 import NavbarInferior from "./components/NavbarInferior";
 
 function App() {
-  /* Listas de ejemplo */
 
+  /* Listas de ejemplo */
   // Categorias
   const categories = [
     {
@@ -55,10 +56,8 @@ function App() {
   return (
     <div>
       <header>
-
         <NavbarSuperior />
         <NavbarInferior categories={categories} brands={brands} sections={sections} />
-
       </header>
     </div>
   );

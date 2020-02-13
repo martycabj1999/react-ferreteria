@@ -2,12 +2,12 @@ import React from 'react'
 
 const Dropdown = (props) => {
 
-    const { name, list } = props;
+    const { show, list } = props;
 
     return (
         <div className="dropdown show">
             <button className="btn dropdown-toggle" id="item" data-toggle="dropdown">
-                {name}
+                {show}
             </button>
             <div className="dropdown-menu" aria-labelledby="item">
                 {list}

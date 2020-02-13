@@ -5,32 +5,29 @@ const NavbarInferior = (props) => {
     // Categorias, marcas y rubros
     const { categories, brands, sections } = props;
 
-    // Por cada elemento del array genera un link con su url y su nombre
-    const obtainLinks = array => {
-        return (
-            array.map((element) => 
-                <a href={element.url} className="dropdown-item">{element.name}</a>
-            )
-        );
-    };
+    const listCategories = categories.map((category) =>
+        <a href={category.url} className="dropdown-item">{category.name}</a>
+    );
 
-    const listCategories = obtainLinks(categories);
-
-    const listBrands = obtainLinks(brands);
-
-    const listSections = obtainLinks(sections);
+    const listBrands = brands.map((brand) =>
+        <a href={brand.url} className="dropdown-item">{brand.name}</a>
+    );
+    
+    const listSections = sections.map((section) =>
+        <a href={section.url} className="dropdown-item">{section.name}</a>
+    );
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav mt-n4">
                 <li className="nav-item">
-                    <Dropdown name="Categorias" list={listCategories} />
+                    <Dropdown show="Categorias" list={listCategories} />
                 </li>
                 <li className="nav-item">
-                    <Dropdown name="Marcas" list={listBrands} />
+                    <Dropdown show="Marcas" list={listBrands} />
                 </li>
                 <li className="nav-item">
-                    <Dropdown name="Rubros" list={listSections} />
+                    <Dropdown show="Rubros" list={listSections} />
                 </li>
                 <li className="nav-item">
                     <a href="" className="nav-link">Contactanos</a>
