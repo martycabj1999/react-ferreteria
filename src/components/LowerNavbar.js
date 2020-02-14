@@ -1,45 +1,48 @@
 import React from 'react';
-import Dropdown from './Dropdown';
-//import './LowerNavbar.css';
+import { Nav, Container, Row, Col, Dropdown } from 'react-bootstrap';
+import CustomDropdown from './CustomDropdown';
+import './LowerNavbar.css';
 
 const LowerNavbar = ({ categories, brands, sections, isLogued }) => {
     // Categorias, marcas y rubros
-    const obtainLinks = array => (
+    const obtainItems = (array) => (
         array.map((element) =>
-            <a href={element.url} className="dropdown-item">{element.name}</a>
+            <Dropdown.Item as="a" href={element.url}>{element.title}</Dropdown.Item>
         )
     );
 
-    const listCategories = obtainLinks(categories);
-    const listBrands = obtainLinks(brands);
-    const listSections = obtainLinks(sections);
+    const listCategories = obtainItems(categories);
+    const listBrands = obtainItems(brands);
+    const listSections = obtainItems(sections);
 
     return (
-        <nav className="navbar navbar-expand-md lower-navbar">
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Dropdown name="Categorias" list={listCategories} />
-                </li>
-                <li className="nav-item">
-                    <Dropdown name="Marcas" list={listBrands} />
-                </li>
-                <li className="nav-item">
-                    <Dropdown name="Rubros" list={listSections} />
-                </li>
-                <li className="nav-item">
-                    <a href="/" className="nav-link">Contactanos</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/" hidden={isLogued} className="nav-link">Registrate</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/" hidden={isLogued} className="nav-link">Iniciar Sesion</a>
-                </li>
-                <li className="nav-item">
-                    <a href="/" hidden={!isLogued} className="nav-link">Cerrar Sesion</a>
-                </li>
-            </ul>
-        </nav>
+        <Container fluid expand="md" className="container-navbar">
+            <Row>
+                <Col>
+                    <Nav className="justify-content-start">
+                        <CustomDropdown title="Categorias" list={listCategories} />
+                        <CustomDropdown title="Marcas" list={listBrands} />
+                        <CustomDropdown title="Rubros" list={listSections} />
+                    </Nav>
+                </Col>
+                <Col>
+                    <Nav className="justify-content-end">
+                        <Nav.Item>
+                            <Nav.Link href="/" className="nav-link">Contactanos</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="/" hidden={isLogued}>Iniciar Sesion</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="/" hidden={!isLogued}>Cerrar Sesion</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

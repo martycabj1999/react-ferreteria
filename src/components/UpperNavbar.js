@@ -1,10 +1,10 @@
 import React from 'react';
-import './UpperNavbar.css';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
+import './UpperNavbar.css';
 
 const UpperNavbar = () => {
     return (
-        <Navbar expand="lg" bg="light">
+        <Navbar expand="lg">
             <Container>
                 <Row>
                     <Col sm={12} md={4} lg={6}>

@@ -1,7 +1,14 @@
-
-.lower-navbar {
-    background-color: #bbb;
+.container-navbar *{
+    background: rgb(66.3%, 66.3%, 66.3%);
+    color: black !important;
 }
-.lower-navbar ul li * {
-    color: #333;
+.container-navbar ul{
+    margin: auto;
+    margin-top: 7px;
+}
+.container-navbar ul:hover{
+    font-weight: bold;
+}
+.container-navbar a:hover{
+    font-weight: bold;
 }
