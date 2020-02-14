@@ -1,18 +1,9 @@
 #logo {
-    margin:  10px 100px 15px 0px;
-    text-decoration: none;
-    color: black;
+    font-size: 45px;
 }
 #logo:hover {
     text-shadow: 0.03rem 0.05rem 0.05rem #000;;
 }
-.main-search {
-    margin-top: 8px;
-    padding-right: 40%;
-}
 #search {
     width: 410px;
-}
-.upper-navbar {
-    background-color: #ddd;
 }

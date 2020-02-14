@@ -1,35 +1,41 @@
 import React from 'react';
 import './UpperNavbar.css';
+import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 
 const UpperNavbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg upper-navbar">
-            <div className="container">
-                <a 
-                    href="/" 
-                    className="display-4" 
-                    id="logo">
-                    Ferreteria
-                </a>
-                <form className="form-inline">
-                    <div className="input-group main-search">
-                        <input 
-                            className="form-control"
-                            id="search"
-                            type="search" 
-                            placeholder="Que estas buscando? Ejemplo: Tornillos" 
-                        />
-                        <div className="input-group-append">
-                            <button 
-                                className="input-group-text btn btn-outline-primary" 
-                                type="sumbit">
-                                Buscar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </nav>
+        <Navbar expand="lg" bg="light">
+            <Container>
+                <Row>
+                    <Col sm={12} md={4} lg={6}>
+                        <Navbar.Brand
+                            href="/"
+                            className="h1"
+                            id="logo">
+                            Ferreteria
+                        </Navbar.Brand>
+                    </Col>
+                    <Col md={8} lg={6}>
+                        <Form inline>
+                            <InputGroup className="mt-4">
+                                <FormControl
+                                    id="search"
+                                    type="search"
+                                    placeholder="Que estas buscando? Ejemplo: Tornillos"
+                                />
+                                <InputGroup.Append>
+                                    <Button
+                                        className="input-group-text btn btn-outline-primary"
+                                        type="sumbit">
+                                        Buscar
+                                    </Button>
+                                </InputGroup.Append>
+                            </InputGroup>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
+        </Navbar>
     );
 }
 

@@ -1,9 +1,6 @@
 import React from 'react'
 
-const Dropdown = (props) => {
-
-    const { name, list } = props;
-
+const Dropdown = ({ name, list }) => {
     return (
         <div className="dropdown show">
             <button className="btn dropdown-toggle" id="item" data-toggle="dropdown">

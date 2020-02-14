@@ -1,11 +1,9 @@
 import React from 'react';
 import Dropdown from './Dropdown';
-import './LowerNavbar.css';
+//import './LowerNavbar.css';
 
-const LowerNavbar = (props) => {
+const LowerNavbar = ({ categories, brands, sections, isLogued }) => {
     // Categorias, marcas y rubros
-    const { categories, brands, sections } = props;
-
     const obtainLinks = array => (
         array.map((element) =>
             <a href={element.url} className="dropdown-item">{element.name}</a>
@@ -32,10 +30,13 @@ const LowerNavbar = (props) => {
                     <a href="/" className="nav-link">Contactanos</a>
                 </li>
                 <li className="nav-item">
-                    <a href="/" className="nav-link">Registrate</a>
+                    <a href="/" hidden={isLogued} className="nav-link">Registrate</a>
                 </li>
                 <li className="nav-item">
-                    <a href="/" className="nav-link">Iniciar Sesion</a>
+                    <a href="/" hidden={isLogued} className="nav-link">Iniciar Sesion</a>
+                </li>
+                <li className="nav-item">
+                    <a href="/" hidden={!isLogued} className="nav-link">Cerrar Sesion</a>
                 </li>
             </ul>
         </nav>

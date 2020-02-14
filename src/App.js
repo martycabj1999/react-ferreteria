@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import UpperNavbar from "./components/UpperNavbar";
 import LowerNavbar from "./components/LowerNavbar";
@@ -53,11 +53,14 @@ function App() {
     }
   ];
 
+  /* Usuario esta logueado o no */
+  const isLogued = true;
+
   return (
     <div>
       <header>
         <UpperNavbar />
-        <LowerNavbar categories={categories} brands={brands} sections={sections} />
+        <LowerNavbar categories={categories} brands={brands} sections={sections} isLogued={isLogued} />
       </header>
     </div>
   );
