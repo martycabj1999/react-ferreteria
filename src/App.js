@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import UpperNavbar from "./components/UpperNavbar";
 import LowerNavbar from "./components/LowerNavbar";
+import Slider from "./components/Slider";
+import FeaturedCategories from "./components/FeaturedCategories";
 
 function App() {
 
@@ -54,7 +56,7 @@ function App() {
   ];
 
   /* Usuario esta logueado o no */
-  const isLogued = false;
+  const isLogued = true;
 
   return (
     <div>
@@ -62,6 +64,10 @@ function App() {
         <UpperNavbar />
         <LowerNavbar categories={categories} brands={brands} sections={sections} isLogued={isLogued} />
       </header>
+      <body>
+        <Slider />
+        <FeaturedCategories />
+      </body>
     </div>
   );
 }

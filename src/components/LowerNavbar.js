@@ -37,6 +37,9 @@ const LowerNavbar = ({ categories, brands, sections, isLogued }) => {
                             <Nav.Link href="/" hidden={isLogued}>Iniciar Sesion</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
+                            <Nav.Link href="/" hidden={!isLogued}>Carrito</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
                             <Nav.Link href="/" hidden={!isLogued}>Cerrar Sesion</Nav.Link>
                         </Nav.Item>
                     </Nav>
