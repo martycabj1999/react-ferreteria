@@ -1,8 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import UpperNavbar from "./components/UpperNavbar";
-import LowerNavbar from "./components/LowerNavbar";
+import UpperNavbar from "./components/navbar/UpperNavbar";
+import LowerNavbar from "./components/navbar/LowerNavbar";
 
 function App() {
 
