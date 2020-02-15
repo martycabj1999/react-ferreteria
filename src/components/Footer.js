@@ -1,45 +1,45 @@
-import React, {Component} from 'react';
-import {Modal, Button, Header} from 'react-bootstrap';
+import React, { useState } from 'react';
+import FooterPopup from './FooterPopup';
 
-const Footer = (props) => {
+const Footer = () => {
 
-    return(
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
+    const [modalShow, setModalShow] = useState(false);
+    const [modalName, setModalName] = useState('');
 
-            <Modal.Header closeButton>
+    const sets = (name) => {
+        setModalShow(true);
+        setModalName(name);
+    }
 
-                <Modal.Title id="contained-modal-title-vcenter">
-                    {props.name}
-                </Modal.Title>
+    return (
+        <footer className="footer">
+            <div className="footer-container">
 
-            </Modal.Header>
+                <div onClick={() => sets('Ferretería')}>
+                    &copy; Ferretería
+                  </div>
 
-            <Modal.Body>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                <div onClick={() => sets('Políticas de privacidad')}>
+                    Políticas de privacidad
+                  </div>
 
-            </Modal.Body>
+                <div onClick={() => sets('FAQ')}>
+                    FAQ
+                  </div>
 
-            <Modal.Footer>
-                <Button onClick={props.onHide} variant="outline-secondary">Close</Button>
-            </Modal.Footer>
-            
-        </Modal>
-    );
+                <div onClick={() => sets('Términos y condiciones')}>
+                    Términos y condiciones
+                  </div>
+
+                <FooterPopup
+                    name={modalName}
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
+
+            </div>
+        </footer>
+    )
 }
- 
+
 export default Footer;
