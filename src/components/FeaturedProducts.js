@@ -1,5 +1,6 @@
 import React from "react"
-import { Container, Row, Col, Carousel, Image } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import './FeaturedProducts.css';
 
 const FeaturedProducts = () => {
 
@@ -32,29 +33,21 @@ const FeaturedProducts = () => {
     ]
 
     const listFeaturedProducts = featuredProducts.map((product) =>
-        <>
-            <Image src={product.url_img} />
-            <h3>{product.price}</h3>
-            <p>{product.name}</p>
-        </>
+        <div className="card-content"></div>
     )
 
     return (
-        <Container fluid>
+        <Container id="container">
             <Row>
                 <Col xs={12} md={12}>
                     <h3>Productos Destacados</h3>
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                    <Carousel>
-                        <Carousel.Item>
-                            {listFeaturedProducts}        
-                        </Carousel.Item>
-                    </Carousel>
-                </Col>
-            </Row>
+            <div className="container-featured-products">
+                <section class="card">
+                    {listFeaturedProducts}
+                </section>
+            </div>
         </Container>
     )
 }
