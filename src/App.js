@@ -55,6 +55,21 @@ function App() {
     }
   ];
 
+  // Categorias destacadas
+  const featuredCategories = [
+    {
+      title: "Electronica",
+      url: "electronica"
+    },
+    {
+      title: "Plomeria",
+      url: "plomeria"
+    },
+    {
+      title: "Jardineria",
+      url: "jardineria"
+    }
+  ];
   /* Usuario esta logueado o no */
   const isLogued = true;
 
@@ -66,7 +81,7 @@ function App() {
       </header>
       <body>
         <Slider />
-        <FeaturedCategories />
+        <FeaturedCategories featuredCategories={featuredCategories} />
       </body>
     </div>
   );
