@@ -1,10 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import UpperNavbar from "./components/UpperNavbar";
-import LowerNavbar from "./components/LowerNavbar";
+import UpperNavbar from "./components/navbar/UpperNavbar";
+import LowerNavbar from "./components/navbar/LowerNavbar";
 import Slider from "./components/Slider";
-import FeaturedCategories from "./components/FeaturedCategories";
 
 function App() {
 
@@ -55,21 +54,6 @@ function App() {
     }
   ];
 
-  // Categorias destacadas
-  const featuredCategories = [
-    {
-      title: "Electronica",
-      url: "electronica"
-    },
-    {
-      title: "Plomeria",
-      url: "plomeria"
-    },
-    {
-      title: "Jardineria",
-      url: "jardineria"
-    }
-  ];
   /* Usuario esta logueado o no */
   const isLogued = true;
 
@@ -81,7 +65,6 @@ function App() {
       </header>
       <body>
         <Slider />
-        <FeaturedCategories featuredCategories={featuredCategories} />
       </body>
     </div>
   );
