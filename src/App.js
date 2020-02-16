@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './App.css';
+import Footer from './components/footer/Footer';
 import UpperNavbar from "./components/navbar/UpperNavbar";
 import LowerNavbar from "./components/navbar/LowerNavbar";
 
@@ -62,6 +63,7 @@ function App() {
         <UpperNavbar />
         <LowerNavbar categories={categories} brands={brands} sections={sections} isLogued={isLogued} />
       </header>
+      <Footer />
     </div>
   );
 }
