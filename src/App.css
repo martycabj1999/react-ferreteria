@@ -1,0 +1,49 @@
+.App {
+  min-height: 100%;
+  text-align: center;
+}
+
+/*.App-header {
+  background-color: #ccc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}*/
+
+body{
+  position: relative;
+}
+
+.footer{
+  margin: 0px auto;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+}
+
+.footer-container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  height: 30px;
+}
+
+.footer-container div{
+  display: block;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+
+}
+
+.footer-container div:hover{
+  background-color: #ccc;
+  border-radius: 5px;
+}
