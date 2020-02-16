@@ -6,41 +6,7 @@ import UpperNavbar from "./components/navbar/UpperNavbar";
 import LowerNavbar from "./components/navbar/LowerNavbar";
 import FeaturedProducts from './components/FeaturedProducts';
 
-import product1 from './components/img/producto1.jpg';
-import product2 from './components/img/producto2.jpg';
-import product3 from './components/img/producto3.jpg';
-import product4 from './components/img/producto4.jpg';
-import product5 from './components/img/producto5.jpg';
-
 function App() {
-
-  const featuredProducts = [
-    {
-      name: 'tornillos',
-      url_img: { product1 },
-      price: 100
-    },
-    {
-      name: 'tornillos',
-      url_img: { product2 },
-      price: 100
-    },
-    {
-      name: 'tornillos',
-      url_img: { product3 },
-      price: 100
-    },
-    {
-      name: 'tornillos',
-      url_img: { product4 },
-      price: 100
-    },
-    {
-      name: 'tornillos',
-      url_img: { product5 },
-      price: 100
-    }
-  ]
   /* Listas de ejemplo */
   // Categorias
   const categories = [
@@ -98,7 +64,7 @@ function App() {
         <UpperNavbar />
         <LowerNavbar categories={categories} brands={brands} sections={sections} isLogued={isLogued} />
       </header>
-      <FeaturedProducts featuredProducts={featuredProducts} />
+      <FeaturedProducts/>
       <Footer />
     </div>
   );
