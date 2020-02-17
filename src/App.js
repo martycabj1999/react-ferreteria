@@ -2,6 +2,8 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Layout from './components/layouts/Layout';
+import Home from './components/layouts/home/Home';
+import Register from './components/register/Register';
 import NotFound from "./components/NotFound";
 import {
   BrowserRouter as Router,
@@ -18,7 +20,9 @@ function App() {
       <Router>
         <Layout>
           <Switch>
-            {/*<Route component={NotFound} />     */}     
+            <Route exact path='/' component={Home} />       
+            <Route exact path='/register' component={Register} />       
+            <Route component={NotFound} />       
           </Switch>
         </Layout>
       </Router>
