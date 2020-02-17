@@ -1,0 +1,12 @@
+.carousel-item{
+}
+
+.featured-products-container{
+    position: relative;
+}
+
+.featured-products-carousel{
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+}

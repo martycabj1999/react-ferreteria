@@ -1,10 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 import UpperNavbar from "./components/navbar/UpperNavbar";
 import LowerNavbar from "./components/navbar/LowerNavbar";
-import FeaturedProducts from './components/FeaturedProducts';
+import FeaturedProducts from './components/featured_products/FeaturedProducts';
 
 function App() {
   /* Listas de ejemplo */
