@@ -1,20 +1,18 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Slider.css';
-import firstSliderImage from './img/slider1.jpg';
-import secondSliderImage from './img/slider2.jpg';
 
 const Slider = () => {
 
     const items = [
         {
-            src: firstSliderImage,
+            src: 'https://cdn.wallpapersafari.com/89/7/5eUABl.jpg',
             alt: 'Primer imagen',
             title: 'Primer imagen',
             caption: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
         },
         {
-            src: secondSliderImage,
+            src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
             alt: 'Segunda imagen',
             title: 'Segunda imagen',
             caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
@@ -24,10 +22,10 @@ const Slider = () => {
     const carouselItems = items.map((item) =>
         <Carousel.Item>
             <img
-                className="d-block w-100"
+                className='d-block w-100'
                 src={item.src}
                 alt={item.alt}
-                id="img"
+                id='img'
             />
             <Carousel.Caption>
                 <h3>{item.title}</h3>
