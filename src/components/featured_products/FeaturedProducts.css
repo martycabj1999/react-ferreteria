@@ -2,9 +2,8 @@
     background-color: grey;
 }
 
-.featured-products-container h3{
-    padding-top: 15px;
-    margin-top: 20px;
+.featured-products-container h4{
+    padding-top: 30px;
     margin-left: 30px;
 }
 
@@ -12,16 +11,15 @@
     margin-left: auto;
     margin-right: auto;
     background-color: #333;
-	overflow: auto;
-	white-space: nowrap;
-    margin-bottom: 100px;
-    margin-top: 20px;
+	  overflow: auto;
+	  white-space: nowrap;
+    margin-top: 30px;
   }
   
   .featured-products-container div.scroll div.product {
-	display: inline-block;
+	  display: inline-block;
     color: white;
-	padding: 14px;
+	  padding: 14px;
     text-decoration: none;
   }
 

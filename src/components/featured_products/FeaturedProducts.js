@@ -1,10 +1,9 @@
 import React from "react"
-import { Container, Row, Col, Image, Carousel, Button } from "react-bootstrap";
+import { Image, Button } from "react-bootstrap";
 import "./FeaturedProducts.css";
 
 const FeaturedProducts = () => {
 
-    const minimunSlides=4;
     const featuredProducts = [
         {
           name: "Hidrolavadora Profesional 135 Bar Motor ",
@@ -46,7 +45,7 @@ const FeaturedProducts = () => {
 
     return (
       <div className="featured-products-container">
-        <h3>Productos destacados</h3>
+        <h4>Productos destacados</h4>
         <div class='scroll'>
           {listFeaturedProducts}
         </div>

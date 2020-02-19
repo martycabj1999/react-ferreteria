@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer';
 import UpperNavbar from "./components/navbar/UpperNavbar";
 import LowerNavbar from "./components/navbar/LowerNavbar";
 import FeaturedProducts from './components/featured_products/FeaturedProducts';
+import Categories from './components/categorias/Categories';
 
 function App() {
   /* Listas de ejemplo */
@@ -64,6 +65,7 @@ function App() {
         <UpperNavbar />
         <LowerNavbar categories={categories} brands={brands} sections={sections} isLogued={isLogued} />
       </header>
+      <Categories/>
       <FeaturedProducts/>
       <Footer />
     </div>
