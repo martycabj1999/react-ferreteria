@@ -3,3 +3,37 @@ div#cart-title {
     background-color: #ffd700;
     padding: 10px;
 }
+
+.product-container {
+    margin-top: 40px;
+}
+
+.vertical-menu {
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.vertical-menu .product {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu .product #title {
+    padding-top: 10px;
+    font-size: 23px;
+}
+
+.vertical-menu .product #img{
+    margin-top: 5px;
+    margin-left: 25px;
+    max-width: 140px;
+    max-height: 140px;
+}
+.vertical-menu .product button {
+    margin-top: 5px;
+    margin-left: 28px;
+    width: 130px;
+}
