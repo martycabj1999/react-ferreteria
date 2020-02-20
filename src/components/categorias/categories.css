@@ -1,0 +1,49 @@
+.categories-container{
+    background-color: white;
+    text-align: center;
+}
+
+.categories-container h4{
+    padding-top: 15px;
+    margin-left: 30px;
+}
+
+.categories-container .tittle{
+    width: 25%;
+    float: left;
+    margin-top: 4%;
+    margin-right: 3%;
+}
+
+.categories-container div.scroll {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+	overflow: auto;
+	white-space: nowrap;
+    margin-top: 20px;
+  }
+  
+  .categories-container div.scroll div.product {
+	display: inline-block;
+    color: black;
+	padding: 14px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .categories-container div.scroll div.product:hover {
+    background-color: darkgrey;
+    color: white;
+  }
+
+  .categories-container div.scroll div.product Image{
+    text-align: center;
+  }
+
+  .categories-container div.scroll div.product h6{
+    margin-top: 8px;
+    word-wrap: break-word;
+    height: auto;
+  }
+

@@ -1,0 +1,42 @@
+.featured-products-container{
+    background-color: grey;
+}
+
+.featured-products-container h4{
+    padding-top: 30px;
+    margin-left: 30px;
+}
+
+.featured-products-container div.scroll {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
+	  overflow: auto;
+	  white-space: nowrap;
+    margin-top: 30px;
+  }
+  
+  .featured-products-container div.scroll div.product {
+	  display: inline-block;
+    color: white;
+	  padding: 14px;
+    text-decoration: none;
+  }
+
+  .featured-products-container div.scroll div.product:hover {
+    background-color: gray;
+  }
+
+  .featured-products-container div.scroll div.product Image{
+    text-align: center;
+  }
+
+  .featured-products-container div.scroll div.product h2, .featured-products-container div.scroll div.product h6{
+    margin-top: 8px;
+    word-wrap: break-word;
+    height: auto;
+  }
+
+  .featured-products-container div.scroll div.product h6{
+      margin-bottom: 15px;
+  }

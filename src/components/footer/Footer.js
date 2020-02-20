@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FooterPopup from './FooterPopup';
+import './Footer.css';
 
 const Footer = () => {
 
