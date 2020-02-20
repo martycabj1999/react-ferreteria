@@ -14,7 +14,7 @@ import {
 
 
 function App() {
-
+  const pathname = window.location.pathname
   return (
     <div>
       <Router>
