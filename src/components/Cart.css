@@ -1,4 +1,4 @@
-div#cart-title {
+#cart-title {
     width: 100%;
     background-color: #ffd700;
     padding: 10px;
@@ -6,33 +6,24 @@ div#cart-title {
 
 .product-container {
     margin-top: 40px;
+    max-width: 720px;
 }
-
-.vertical-menu {
-    height: 80vh;
-    overflow-y: auto;
+.product{
+    margin-top: 5px;
 }
-
-.vertical-menu .product {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
-
-.vertical-menu .product #title {
+.product #title {
     padding-top: 10px;
     font-size: 23px;
 }
 
-.vertical-menu .product #img{
+.product #img {
     margin-top: 5px;
     margin-left: 25px;
-    max-width: 140px;
-    max-height: 140px;
+    max-width: 140px !important;
+    max-height: 140px !important;
 }
-.vertical-menu .product button {
+
+.product button {
     margin-top: 5px;
     margin-left: 28px;
     width: 130px;

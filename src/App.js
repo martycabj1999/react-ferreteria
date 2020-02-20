@@ -6,7 +6,6 @@ import LowerNavbar from './components/navbar/LowerNavbar';
 import Slider from './components/Slider';
 
 function App() {
-
 	return (
 		<div>
 			<header>
@@ -18,7 +17,6 @@ function App() {
 			</body>
 			<Footer />
 		</div>
-	);
+	)
 }
-
 export default App;
