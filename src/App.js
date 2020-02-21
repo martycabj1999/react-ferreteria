@@ -1,12 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FeaturedProducts from './components/featured_products/FeaturedProducts';
-import Categories from './components/categorias/Categories';
 import Layout from './components/layouts/Layout';
 import Home from './components/layouts/home/Home';
-import Slider from './components/Slider'
 import Register from './components/register/Register';
-import Cart from './components/Cart';
+import Cart from './components/cart/Cart';
 import NotFound from "./components/NotFound";
 import {
   BrowserRouter as Router,

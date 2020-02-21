@@ -42,7 +42,7 @@ const LowerNavbar = () => {
     ];
 
     /* Usuario esta logueado o no */
-    const isLogued = true;
+    const isLogued = false;
 
     const obtainItems = (array) => (
         array.map((element) =>
