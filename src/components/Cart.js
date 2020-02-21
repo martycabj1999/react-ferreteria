@@ -1,7 +1,6 @@
-import React from 'react';
-import Footer from './footer/Footer';
-import UpperNavbar from './navbar/UpperNavbar';
-import LowerNavbar from './navbar/LowerNavbar';
+import React, { useState } from 'react';
+import EmptyCart from './EmptyCart';
+import ProductPopup from './ProductPopup';
 import { Container, Card, Button, Figure, Row, Col } from 'react-bootstrap';
 import './Cart.css';
 
@@ -67,10 +66,6 @@ const Cart = () => {
 
     return (
         <div>
-            <header>
-                <UpperNavbar />
-                <LowerNavbar />
-            </header>
             <body>
                 <div id='cart-title'>
                     <Container>
@@ -89,7 +84,6 @@ const Cart = () => {
                     />
                 </Container>
             </body>
-            <Footer />
         </div>
     )
 }

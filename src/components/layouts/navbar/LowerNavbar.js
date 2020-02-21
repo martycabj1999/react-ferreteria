@@ -1,7 +1,15 @@
-import React from 'react';
-import { Nav, Container, Row, Col, Dropdown } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Nav, Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
 import CustomDropdown from './CustomDropdown';
 import './LowerNavbar.css';
+import LoginModal from '../../login/LoginModal';
+import Register from '../../register/Register';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 const LowerNavbar = () => {
 
@@ -42,6 +50,14 @@ const LowerNavbar = () => {
         )
     );
 
+    //States
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+    const handleCloseRegister = () => setShowRegister(false);
+    const handleShowRegister = () => setShowRegister(true);
+
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);
 
@@ -60,14 +76,24 @@ const LowerNavbar = () => {
                             <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href='/' hidden={isLogued}>Registrate</Nav.Link>
+                            <Link to="/register" >
+                                <Button variant="primary">
+                                    Registrate
+                                </Button>
+                            </Link>
+                            {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
+                            <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href='/' hidden={isLogued}>Iniciar Sesion</Nav.Link>
+                            <Button variant="primary" hidden={isLogued} onClick={handleShowLogin}>
+                                Iniciar Sesion
+                            </Button>
+                            <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                            {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
                         </Nav.Item>
                         <Nav.Item>
                             {/* Este link deberia rediregirnos al carrito */}
-                            <Nav.Link href='/carrito' hidden={!isLogued}>Carrito</Nav.Link>
+                            <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link href='/' hidden={!isLogued}>Cerrar Sesion</Nav.Link>

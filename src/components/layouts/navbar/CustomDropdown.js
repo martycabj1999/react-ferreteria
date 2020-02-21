@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 
 const CustomDropdown = ({ title, list }) => {
