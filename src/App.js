@@ -5,6 +5,9 @@ import Home from './components/layouts/home/Home';
 import Register from './components/register/Register';
 import Cart from './components/cart/Cart';
 import NotFound from "./components/NotFound";
+//services
+import ProductService from './services/ProductService';s
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +16,14 @@ import {
 } from "react-router-dom";
 
 function App() {
+  
+  ProductService.getProducts().subscribe(({ status, data }) => {
+    if (status === 200) {
+      this.setState({
+        provinces: data,
+        spinnerCity: false
+      });
+    } else {
   const pathname = window.location.pathname
   return (
     <div>

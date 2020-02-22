@@ -3,7 +3,7 @@ import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
   withCredential: true,
-  baseURL: '/api',
+  baseURL: 'https://amber-survivals.000webhostapp.com/admin/products',
   timeout: 30 * 1000,
   headers: {
     "Content-Type": "application/json"
