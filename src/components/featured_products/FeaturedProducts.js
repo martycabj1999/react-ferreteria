@@ -1,44 +1,30 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
 import "./FeaturedProducts.css";
+//services
+import ProductService from '../../services/ProductService';
 
 const FeaturedProducts = () => {
 
-    const featuredProducts = [
-        {
-          name: "Hidrolavadora Profesional 135 Bar Motor ",
-          url_img: "https://images.pexels.com/photos/259988/pexels-photo-259988.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100&w=100",
-          price: 101
-        },
-        {
-          name: "Hidrolavadora Profesional 135 Bar Motor ",
-          url_img: "https://images.pexels.com/photos/259988/pexels-photo-259988.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100&w=100",
-          price: 102
-        },
-        {
-          name: "Hidrolavadora Profesional 135 Bar Motor",
-          url_img: "https://images.pexels.com/photos/259988/pexels-photo-259988.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100&w=100",
-          price: 103
-        },
-        {
-          name: "Hidrolavadora Profesional 135 Bar Motor ",
-          url_img: "https://images.pexels.com/photos/259988/pexels-photo-259988.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100&w=100",
-          price: 104
-        },
-        {
-          name: "Hidrolavadora Profesional 135 Bar Motor ",
-          url_img: "https://images.pexels.com/photos/259988/pexels-photo-259988.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100&w=100",
-          price: 105
-        }
-    ]
+    const [products, setProducts] = useState([]);
+    useEffect( () => {
+      async function fetchData() {
+        await ProductService.getProducts().subscribe(({ status, data }) => {
+          setProducts(data);
+        });
+      }
+      fetchData();
+    }, []);
+    
+    
 
-    const listFeaturedProducts = featuredProducts.map((product) =>      
+    const listFeaturedProducts = products.map((product) =>      
       <div className='product'>
         <Image thumbnail
-            src={product.url_img}
+            src={product.image}
         /> 
-        <h2>{product.price}</h2>
-        <h6>{product.name}</h6>
+        <h2>Producto: {product.name}</h2>
+        <h4>Precio: ${product.price}</h4>
         <Button variant="dark">Comprar</Button>
       </div>
     );

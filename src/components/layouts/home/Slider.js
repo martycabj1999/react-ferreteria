@@ -5,19 +5,9 @@ import ImageService from '../../../services/ImageService';
 
 const Slider = () => {
 
-    const [image, setImage] = useState('')
-
-    ImageService.getImages().subscribe(({ status, data }) => {
-        console.log('status');
-        console.log(status);
-        console.log('data');
-        console.log(data[0].image);
-        setImage(data[0].image);
-      });
-
     const items = [
         {
-            src: image,
+            src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
             alt: 'Primer imagen',
             title: 'Primer imagen',
             caption: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'

@@ -23,14 +23,7 @@ import {
 
 function App() {
   
-  console.log(ProductService.getProducts());
-  ProductService.getProducts().subscribe(({ status, data }) => {
-    console.log('status');
-    console.log(status);
-    console.log('data');
-    console.log(data[0].name);
-  });
-
+  
 
 
 /*
