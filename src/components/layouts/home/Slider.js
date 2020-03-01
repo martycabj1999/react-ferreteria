@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Slider.css';
+import ImageService from '../../../services/ImageService';
 
 const Slider = () => {
 
+    const [image, setImage] = useState('')
+
+    ImageService.getImages().subscribe(({ status, data }) => {
+        console.log('status');
+        console.log(status);
+        console.log('data');
+        console.log(data[0].image);
+        setImage(data[0].image);
+      });
+
     const items = [
         {
-            src: 'https://cdn.wallpapersafari.com/89/7/5eUABl.jpg',
+            src: image,
             alt: 'Primer imagen',
             title: 'Primer imagen',
             caption: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'

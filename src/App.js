@@ -24,9 +24,16 @@ import {
 function App() {
   
   console.log(ProductService.getProducts());
-  ProductService.getProducts().subscribe(({ data }) => {
-    console.log(data);
+  ProductService.getProducts().subscribe(({ status, data }) => {
+    console.log('status');
+    console.log(status);
+    console.log('data');
+    console.log(data[0].name);
   });
+
+
+
+/*
   StateService.getStates().subscribe(({ data }) => {
     console.log(data);
   });
@@ -36,13 +43,12 @@ function App() {
   ImageService.getImages().subscribe(({ data }) => {
     console.log(data);
   });
-
+*/
   return (
     <div>
       <Router>
         <Provider store={store} >
           <Layout>
-          <ColorPicker />
             <Switch>
               <Route exact path='/' component={Home} />       
               <Route exact path='/register' component={Register} />      
