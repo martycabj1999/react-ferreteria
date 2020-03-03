@@ -26,11 +26,8 @@ function App() {
   
 
 
-/*
-  StateService.getStates().subscribe(({ data }) => {
-    console.log(data);
-  });
-  CategoryService.getCategories().subscribe(({ data }) => {
+  console.log(ProductService.getProducts());
+  /*CategoryService.getCategories().subscribe(({ data }) => {
     console.log(data);
   });
   ImageService.getImages().subscribe(({ data }) => {

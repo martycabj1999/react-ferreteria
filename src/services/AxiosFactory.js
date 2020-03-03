@@ -3,13 +3,11 @@ import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
     withCredential: true,
-    baseURL: 'http://localhost:4001',
+    baseURL: 'https://amber-survivals.000webhostapp.com/api/',
     timeout: 30 * 1000,
     mode: 'no-cors',
     headers: {
-        'Access-Control-Allow-Origin': '*',
         Accept: 'application/json',
-        'Content-Type': 'application/json',
     },
     withCredentials: true,
     credentials: 'same-origin',
