@@ -1,7 +1,9 @@
 import React from 'react';
-import Categories from '../../categories/Categories';
-import FeaturedProducts from '../../featured_products/FeaturedProducts';
 import Slider from './Slider';
+import Categories from '../../categories/Categories';
+import FeaturedProducts from '../../products/FeaturedProducts';
+import ListProducts from '../../products/ListProducts';
+import ABMproducts from '../../products/ABMproducts/ABMproducts';
 
 const Home = () => {
     return ( 
@@ -9,6 +11,8 @@ const Home = () => {
         <Slider />
         <Categories />
         <FeaturedProducts />
+        <ListProducts />
+        <ABMproducts />
     </div>
     );
 }

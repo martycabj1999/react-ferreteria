@@ -3,7 +3,7 @@ import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
     withCredential: true,
-    baseURL: 'http://localhost:4001',
+    baseURL: 'http://localhost:4000',
     timeout: 30 * 1000,
     mode: 'no-cors',
     headers: {
