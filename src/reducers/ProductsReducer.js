@@ -16,6 +16,27 @@ export default function ( state = initialState, action ){
         case "SET_PRODUCT":
             return state;
             break;
+
+        case AGREGAR_PRODUCTO:
+            return{
+                ...state,
+                loading: action.payload
+            }
+        
+        case AGREGAR_PRODUCTO_EXITO:
+            return{
+                ...state,
+                loading: false,
+                products: [...state.products, action.payload]
+            }
+
+        case AGREGAR_PRODUCTO_ERROR:
+            return{
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+
         default:
             return state;
             break;

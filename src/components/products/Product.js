@@ -3,11 +3,11 @@ import { Image, Button } from "react-bootstrap";
 
 const Product = (props) => {
     return (
-        <div className="product">
-            <Image thumbnail
-                src={props.image}
+        <div style={{width: 'auto'}}>
+            <Image thumbnail style={{maxWidth:'200'}}
+                src={Product.image}
             />
-            <h4>Precio: ${props.price}</h4>
+            <h3>Precio: ${props.price}</h3>
             <Button variant="dark">Comprar</Button>
         </div>
     )

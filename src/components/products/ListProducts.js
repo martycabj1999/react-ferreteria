@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Container } from 'react-bootstrap';
 import Product from './Product';
 import './ListProducts.css';
 //services
@@ -21,7 +22,7 @@ const ListProducts = () => {
     const listProducts = products.map((product) =>
       <div className='product'>
         <Product 
-          src = {product.image}
+          src={product.image}
           price = {product.price}
         />
       </div>
@@ -30,11 +31,9 @@ const ListProducts = () => {
     return (
       <div className="list-products-container">
         <h4>Otros productos</h4>
-        <div className="table">
-          <div className="content">
+        <Container>
             {listProducts}
-          </div>
-        </div>
+        </Container>
       </div>
     );
 }
