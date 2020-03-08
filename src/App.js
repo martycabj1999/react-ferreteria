@@ -23,17 +23,6 @@ import {
 
 function App() {
   
-  
-
-
-  console.log(ProductService.getProducts());
-  /*CategoryService.getCategories().subscribe(({ data }) => {
-    console.log(data);
-  });
-  ImageService.getImages().subscribe(({ data }) => {
-    console.log(data);
-  });
-*/
   return (
     <div>
       <Router>
