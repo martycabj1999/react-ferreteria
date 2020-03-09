@@ -5,7 +5,7 @@ const ProductService = {
     //return http.get('products/' + productId );
   },
   getProducts: () => {
-    return http.get('products');
+    return http.get('admin/products');
   }
 }
 

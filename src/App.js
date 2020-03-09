@@ -25,20 +25,6 @@ import {
 
 function App() {
   
-  
-
-
-/*
-  StateService.getStates().subscribe(({ data }) => {
-    console.log(data);
-  });
-  CategoryService.getCategories().subscribe(({ data }) => {
-    console.log(data);
-  });
-  ImageService.getImages().subscribe(({ data }) => {
-    console.log(data);
-  });
-*/
   return (
     <div>
       <Router>

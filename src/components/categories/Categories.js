@@ -17,7 +17,7 @@ const Categories = () => {
     const listCategories = categories.map((category) =>
         <div className='product'>
             <Image roundedCircle
-                src={category.image}
+                src="https://www.elempleo.com/resources/Content/dist/images/areas/persons/Pda/ejemplo-01.svg"
             />
             <h6>{category.name}</h6>
         </div>
