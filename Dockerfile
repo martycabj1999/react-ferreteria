@@ -1,14 +1,19 @@
-FROM ubuntu
+# base image
+FROM node:13.8.0
 
-RUN apt-get -y update && sudo apt -y upgrade &&
-    apt-get install curl &&
-    curl -sL https://deb.nodesource.com/setup_13.x | bash - &&
-    apt-get install -y nodejs
+# set working directory
+WORKDIR /app
 
-WORKDIR . /home/react-ferreteria
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm install
+# install and cache app dependencies
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
 
-EXPOSE 3000
+RUN npm ci
 
-CMD [ "npm", "start" ]
+RUN apt install git -y
+
+# start app
+CMD ["npm", "start"]
