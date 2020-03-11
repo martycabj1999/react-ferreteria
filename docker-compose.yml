@@ -7,8 +7,13 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+<<<<<<< HEAD
       - '.:/front'
       - '/front/node_modules'
+=======
+      - '.:/app'
+      - '/app/node_modules'
+>>>>>>> 2819df3429362b555f69936ec2cfa28b21e1812d
     ports:
       - '3000:3000'
     environment:
