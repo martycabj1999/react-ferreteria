@@ -20,7 +20,7 @@ const ListProducts = () => {
   
   
     const listProducts = products.map((product) =>
-      <div className='product'>
+      <div key={product.id} className='product'>
         <Product 
           src={product.image}
           price = {product.price}

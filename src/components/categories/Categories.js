@@ -15,7 +15,7 @@ const Categories = () => {
     }, []);
 
     const listCategories = categories.map((category) =>
-        <div className='product'>
+        <div key={category.id} className='product'>
             <Image roundedCircle
                 src="https://www.elempleo.com/resources/Content/dist/images/areas/persons/Pda/ejemplo-01.svg"
             />
@@ -29,7 +29,7 @@ const Categories = () => {
                 <h4>Categorias destacadas</h4>
             </div>
 
-            <div class='scroll'>
+            <div className='scroll'>
                 {listCategories}
             </div>
         </div>

@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
     async function fetchData() {
       await ProductService.getProducts().subscribe(({ status, data }) => {
         setProducts(data);
-        console.log(status);
+        console.log(data[0].image);
         setStatus(status);
       });
     }
@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
 
 
   const listFeaturedProducts = products.map((product) =>
-    <div className='product'>
+    <div key={product.id} className='product'>
       <Image thumbnail
         src={product.image}
       />
@@ -36,7 +36,7 @@ const FeaturedProducts = () => {
   return(
     <div className="featured-products-container">
       <h4>Productos destacados</h4>
-      <div class='scroll'>
+      <div className='scroll'>
         {listFeaturedProducts}
       </div>
     </div>
