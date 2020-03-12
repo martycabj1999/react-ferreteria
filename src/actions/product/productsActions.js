@@ -1,3 +1,5 @@
+import ProductService from '../../services/ProductService';
+
 import {
     AGREGAR_PRODUCTO,
     AGREGAR_PRODUCTO_EXITO,
@@ -6,13 +8,23 @@ import {
 
 // Crear nuevos productos
 export function crearNuevoProductoAction(product){
-    return (dispatch) => {
-        dispatch( agregarProducto());
+    return async (dispatch) => {
+        dispatch( agregarProducto() );
 
         try{
+            // Inserto producto en la base de datos
+            //await ProductService.postProduct(product);
+
+            //Si todo sale bien actualizo el state
             dispatch( agregarProductoExito(product) );
+
         }catch (error){
+            
+            // Si hay un error cambiar el state
             dispatch( agregarProductoError(true) );
+
+            // Mostrar el error
+            //console.log(error);
         }
     }
 }

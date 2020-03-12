@@ -3,7 +3,7 @@ import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
     withCredential: true,
-    baseURL: 'https://amber-survivals.000webhostapp.com/api/',
+    baseURL: 'http://titoconstrucciones.com/api',
     timeout: 30 * 1000,
     mode: 'no-cors',
     headers: {
