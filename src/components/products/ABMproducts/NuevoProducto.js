@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // Actions de Redux
 import { crearNuevoProductoAction } from '../../../actions/product/productsActions';
 
+//Service
+import ProductService from '../../../services/ProductService';
+
 const NuevoProducto = () => {
 
     // State del componente
@@ -39,6 +42,8 @@ const NuevoProducto = () => {
 
         // Crear el nuevo producto
         agregarProducto(product);
+
+        ProductService.postProduct(product);
 
         //Limpiar inputs
         setProduct({
