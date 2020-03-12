@@ -6,6 +6,12 @@ const ProductService = {
   },
   getProducts: () => {
     return http.get('admin/products');
+  },
+  setProducts: (product) => {
+    return http.post('products/create', product);
+  },
+  editProducts: (product) => {
+    return http.put('products/create', product);
   }
 }
 

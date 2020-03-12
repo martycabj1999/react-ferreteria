@@ -1,12 +1,7 @@
 import React from 'react';
 import { Container, Figure } from 'react-bootstrap';
 import './EmptyCart.css';
-import {
-BrowserRouter as Router,
-Switch,
-Route,
-Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const EmptyCart = () => {

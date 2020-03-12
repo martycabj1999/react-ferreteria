@@ -3,13 +3,7 @@ import { Nav, Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
 import CustomDropdown from './CustomDropdown';
 import './LowerNavbar.css';
 import LoginModal from '../../login/LoginModal';
-import Register from '../../register/Register';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LowerNavbar = () => {
 
@@ -52,11 +46,9 @@ const LowerNavbar = () => {
 
     //States
     const [showLogin, setShowLogin] = useState(false);
-    const [showRegister, setShowRegister] = useState(false);
+
     const handleCloseLogin = () => setShowLogin(false);
     const handleShowLogin = () => setShowLogin(true);
-    const handleCloseRegister = () => setShowRegister(false);
-    const handleShowRegister = () => setShowRegister(true);
 
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);

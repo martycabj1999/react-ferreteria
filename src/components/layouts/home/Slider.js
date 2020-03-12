@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Slider.css';
-import ImageService from '../../../services/ImageService';
 
 const Slider = () => {
+
+    const [item, setItem] = useState({})
 
     const items = [
         {

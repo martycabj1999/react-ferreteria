@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Image, Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import "./categories.css";
 //services
 import CategoryService from '../../services/CategoryService';

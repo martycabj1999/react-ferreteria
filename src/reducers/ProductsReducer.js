@@ -9,9 +9,7 @@ export default function ( state = initialState, action ){
     switch (action.type) {
         case "SET_PRODUCT":
             return state;
-            break;
         default:
             return state;
-            break;
     }
 }
