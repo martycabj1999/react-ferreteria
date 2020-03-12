@@ -30,7 +30,7 @@ function App() {
               <Route exact path='/register' component={Register} />      
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/nuevo' component={NuevoProducto} />
-              <Route exact path='/editar/:id' component={EditarProducto} />
+              <Route exact path='/edit/:id' component={EditarProducto} />
 
               <Route component={NotFound} />       
             </Switch>
