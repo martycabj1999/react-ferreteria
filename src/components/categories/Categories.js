@@ -9,9 +9,9 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(async () => {
-      await CategoryService.getCategories().subscribe(({ status, data }) => {
-        setCategories(data);
-      });
+        await CategoryService.getCategories().subscribe(({ status, data }) => {
+            setCategories(data);
+        });
     }, []);
 
     const listCategories = categories.map((category) =>

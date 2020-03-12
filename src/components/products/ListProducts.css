@@ -1,0 +1,32 @@
+.list-products-container{
+    background-color: grey;
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 100%;
+    padding: 10px;
+}
+
+.list-products-container h4{
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.list-products-container .product{
+    display: inline-block;
+    color: white;
+    background-color: brown;
+    width: 250px;
+    height: auto;
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    margin: 4px;
+    padding: 8px;
+    
+}
+ 
+.list-products-container .product:hover {
+    background-color: white;
+    color: black;
+}
+

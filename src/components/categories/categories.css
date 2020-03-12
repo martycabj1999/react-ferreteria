@@ -19,15 +19,15 @@
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-	overflow: auto;
-	white-space: nowrap;
+	  overflow: auto;
+	  white-space: nowrap;
     margin-top: 20px;
   }
   
   .categories-container div.scroll div.product {
-	display: inline-block;
+	  display: inline-block;
     color: black;
-	padding: 14px;
+	  padding: 14px;
     text-decoration: none;
     text-align: center;
   }
