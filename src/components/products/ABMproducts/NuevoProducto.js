@@ -3,9 +3,9 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Actions de Redux
-import { crearNuevoProductoAction } from '../../../actions/product/productsActions';
+import { newProductAction } from '../../../actions/product/productsActions';
 
-const NuevoProducto = () => {
+const NewProducto = () => {
 
     // State del componente
     const [product, setProduct] = useState({
@@ -20,14 +20,14 @@ const NuevoProducto = () => {
     const dispatch = useDispatch();
 
     // Acceder al state del store
-    const cargando = useSelector( state => state.products.loading);
+    const loading = useSelector( state => state.products.loading);
     const error = useSelector( state => state.products.error);
 
     // Mandar a llamar el action de productoAction
-    const agregarProducto = producto => dispatch( crearNuevoProductoAction(product) );
+    const addProduct = product => dispatch( newProductAction(product) );
 
     // Cuando el usuario haga submit
-    const submitNuevoProducto = e => {
+    const submitNewProduct = e => {
         e.preventDefault();
 
         // Validar formulario
@@ -38,7 +38,7 @@ const NuevoProducto = () => {
         // Si no hay errores
 
         // Crear el nuevo producto
-        agregarProducto(product);
+        addProduct(product);
 
         //Limpiar inputs
         setProduct({
@@ -58,9 +58,9 @@ const NuevoProducto = () => {
     }
 
     return (
-        <div className="nuevo-producto-container">
+        <div>
             <Form 
-                onSubmit={submitNuevoProducto}
+                onSubmit={submitNewProduct}
             >
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Nombre del producto</Form.Label>
@@ -92,11 +92,11 @@ const NuevoProducto = () => {
                 </Button>
             </Form>
 
-            { cargando ? <p>Cargando...</p> : null }
+            { loading ? <p>Cargando...</p> : null }
             { error ? (<p className=" alert alert-danger p2 mt-4 text-center">Hubo un error, el producto no fue agregado</p>) : null }
 
         </div>
     )
 }
 
-export default NuevoProducto;
+export default NewProducto;

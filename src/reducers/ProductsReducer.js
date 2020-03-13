@@ -1,16 +1,20 @@
 import {
-    AGREGAR_PRODUCTO,
-    AGREGAR_PRODUCTO_EXITO,
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA_PRODUCTOS,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    ADD_PRODUCT,
+    ADD_PRODUCT_SUCCESS,
+    ADD_PRODUCT_ERROR,
+    START_DOWNLOAD_PRODUCTS,
+    DOWNLOAD_PRODUCTS_SUCCESS,
+    DOWNLOAD_PRODUCTS_ERROR
 
 } from '../types/types';
 
 //cada reducer tiene su propio state
+
+const products = JSON.parse(localStorage.getItem('products'));
+
 const initialState = {
-    products: [],
+
+    products: products ? products : [],
     error: null,
     loading: false
 }
@@ -21,29 +25,29 @@ export default function ( state = initialState, action ){
             return state;
             break;
 
-        case COMENZAR_DESCARGA_PRODUCTOS:
-        case AGREGAR_PRODUCTO:
+        case START_DOWNLOAD_PRODUCTS:
+        case ADD_PRODUCT:
             return{
                 ...state,
                 loading: action.payload
             }
         
-        case AGREGAR_PRODUCTO_EXITO:
+        case ADD_PRODUCT_SUCCESS:
             return{
                 ...state,
                 loading: false,
-                products: [...state.products, action.payload]
+                products: action.payload
             }
 
-        case DESCARGA_PRODUCTOS_ERROR:
-        case AGREGAR_PRODUCTO_ERROR:
+        case DOWNLOAD_PRODUCTS_ERROR:
+        case ADD_PRODUCT_ERROR:
             return{
                 ...state,
                 loading: false,
                 error: action.payload
             }        
 
-        case DESCARGA_PRODUCTOS_EXITO:
+        case DOWNLOAD_PRODUCTS_SUCCESS:
             return{
                 ...state,
                 loading: false,

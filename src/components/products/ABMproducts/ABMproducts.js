@@ -6,7 +6,7 @@ import Product from './Product';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { obtenerProductosAction } from '../../../actions/product/productsActions';
+import { getProductsAction } from '../../../actions/product/productsActions';
 
 const ABMproducts = () => {
 
@@ -15,17 +15,19 @@ const ABMproducts = () => {
     useEffect( () => {
 
         //Consultar la api
-        const cargarProductos = () => dispatch( obtenerProductosAction() );
-        cargarProductos();
+        const loadProductos = () => dispatch( getProductsAction() );
+        loadProductos();
     }, []);
 
     // Obtener el state
     const products = useSelector( state => state.products.products);
+    localStorage.setItem('products', JSON.stringify(products));
+
 
     return (
         <div className="abm-container">
             <div className="button">
-                <Link to="/nuevo">
+                <Link to="/new">
                     <Button>Agregar productos</Button>
                 </Link>
             </div>
