@@ -1,19 +1,18 @@
 import React, { Fragment, useEffect } from 'react'
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
-import './ABMproducts.css';
+import './Products.css';
 import Product from './Product';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsAction } from '../../../actions/product/productsActions';
 
-const ABMproducts = () => {
+const Products = () => {
 
     const dispatch = useDispatch();
 
     useEffect( () => {
-
         //Consultar la api
         const loadProductos = () => dispatch( getProductsAction() );
         loadProductos();
@@ -21,8 +20,10 @@ const ABMproducts = () => {
 
     // Obtener el state
     const products = useSelector( state => state.products.products);
+    //const [products, setProducts] = ('')
     localStorage.setItem('products', JSON.stringify(products));
 
+    const error = useSelector(state => state.products.error);
 
     return (
         <div className="abm-container">
@@ -36,6 +37,8 @@ const ABMproducts = () => {
                 <Fragment>
                     <h2>Listado de Productos</h2>
 
+                    { error ? <p className="font-weight-bold alert alert-danger text-center mt-4"> Hubo un error</p> : null}
+
                     <table className="table">
                         <thead className="thead">
                             <tr>
@@ -46,7 +49,7 @@ const ABMproducts = () => {
                         </thead>
 
                         <tbody>
-                            { products.lenght === 0 ? 'No hay productos' : (
+                            { products.length === 0 ? 'No hay productos' : (
                                     products.map(product => (
                                         <Product 
                                         product={product}
@@ -61,4 +64,4 @@ const ABMproducts = () => {
     )
 }
 
-export default ABMproducts;
+export default Products;

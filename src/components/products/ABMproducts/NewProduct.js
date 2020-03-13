@@ -21,7 +21,6 @@ const NewProducto = () => {
 
     // Acceder al state del store
     const loading = useSelector( state => state.products.loading);
-    const error = useSelector( state => state.products.error);
 
     // Mandar a llamar el action de productoAction
     const addProduct = product => dispatch( newProductAction(product) );
@@ -93,8 +92,6 @@ const NewProducto = () => {
             </Form>
 
             { loading ? <p>Cargando...</p> : null }
-            { error ? (<p className=" alert alert-danger p2 mt-4 text-center">Hubo un error, el producto no fue agregado</p>) : null }
-
         </div>
     )
 }

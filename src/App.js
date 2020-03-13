@@ -5,8 +5,8 @@ import Home from './components/layouts/home/Home';
 import Register from './components/register/Register';
 import Cart from './components/cart/Cart';
 import NotFound from "./components/NotFound";
-import NuevoProducto from './components/products/ABMproducts/NuevoProducto';
-import EditarProducto from './components/products/ABMproducts/EditarProducto';
+import NewProduct from './components/products/ABMproducts/NewProduct';
+import EditProduct from './components/products/ABMproducts/EditProduct';
 import ColorPicker from "./components/color_picker/ColorPicker";
 //services
 import ProductService from './services/ProductService';
@@ -34,8 +34,8 @@ function App() {
               <Route exact path='/' component={Home} />       
               <Route exact path='/register' component={Register} />      
               <Route exact path='/cart' component={Cart} />
-              <Route exact path='/nuevo' component={NuevoProducto} />
-              <Route exact path='/edit/:id' component={EditarProducto} />
+              <Route exact path='/new' component={NewProduct} />
+              <Route exact path='/edit/:id' component={EditProduct} />
 
               <Route component={NotFound} />       
             </Switch>

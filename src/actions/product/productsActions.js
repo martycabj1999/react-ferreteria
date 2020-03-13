@@ -1,4 +1,5 @@
 import ProductService from '../../services/ProductService';
+import Swal from 'sweetalert2';
 
 import {
     ADD_PRODUCT,
@@ -22,13 +23,28 @@ export function newProductAction(product){
             //Si todo sale bien actualizo el state
             dispatch( addProductSuccess(product) );
 
+            // Alerta de exito
+            Swal.fire(
+                'Correcto',
+                'El producto se agregó correctamente',
+                'success'
+            )
+
         }catch (error){
-            
+                        
             // Si hay un error cambiar el state
             dispatch( addProductError(true) );
 
             // Mostrar el error
             //console.log(error);
+
+            // Alerta de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Hubo un error, intenta de nuevo'
+            })
+
         }
     }
 }
@@ -56,9 +72,11 @@ export function getProductsAction(){
         dispatch( downloadProducts() );
     
         try{
-            const respuesta = await ProductService.getProducts().subscribe(({data}) => {
+            /*const respuesta = await ProductService.getProducts().subscribe(({data}) => {
                 dispatch(downloadProductsSuccess(data));
-            });
+            });*/
+            dispatch(downloadProductsError());
+
         }catch (error){
             dispatch(downloadProductsError());
         }
