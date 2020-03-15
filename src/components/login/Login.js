@@ -30,11 +30,7 @@ const Login = (props) => {
         setError(false);
 
         // Loguearse
-        const formData = new FormData();
-        formData.append('email', form.email);
-        formData.append('password', form.password);
-        console.log(formData);
-        AuthService.login(formData).subscribe(({ status, data }) => {
+        AuthService.login(form).subscribe(({ status, data }) => {
             if(status === 200){
                 console.log('exito');
             } else {
