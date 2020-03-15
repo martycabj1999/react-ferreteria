@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newProductAction } from '../../../actions/product/productsActions';
 
 //Service
-//import ProductService from '../../../services/ProductService';
+import ProductService from '../../../services/ProductService';
 
 const NewProduct = () => {
 
@@ -41,6 +41,9 @@ const NewProduct = () => {
 
         // Crear el nuevo producto
         addProduct(product);
+
+        // Mandar el producto a la base de datos
+        ProductService.postProduct(product);
 
         //Limpiar inputs
         setProduct({

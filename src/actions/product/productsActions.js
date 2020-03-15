@@ -7,7 +7,10 @@ import {
     ADD_PRODUCT_ERROR,
     START_DOWNLOAD_PRODUCTS,
     DOWNLOAD_PRODUCTS_SUCCESS,
-    DOWNLOAD_PRODUCTS_ERROR
+    DOWNLOAD_PRODUCTS_ERROR,
+    GET_PRODUCT_REMOVE,
+    REMOVE_PRODUCT_SUCCESS,
+    REMOVE_PRODUCT_ERROR
 
 } from '../../types/types';
 
@@ -95,4 +98,16 @@ const downloadProductsSuccess = products => ({
 const downloadProductsError = () => ({
     type: DOWNLOAD_PRODUCTS_ERROR,
     payload: true
-})
+});
+
+// Selecciona y elimina el producto
+export function removeProductAction(id){
+    return async (dispatch) => {
+        dispatch(getProductRemove(id))
+    }
+}
+
+const getProductRemove = id =>({
+    type: GET_PRODUCT_REMOVE,
+    payload: id
+});

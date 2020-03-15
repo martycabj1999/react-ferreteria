@@ -4,19 +4,23 @@ import {
     ADD_PRODUCT_ERROR,
     START_DOWNLOAD_PRODUCTS,
     DOWNLOAD_PRODUCTS_SUCCESS,
-    DOWNLOAD_PRODUCTS_ERROR
+    DOWNLOAD_PRODUCTS_ERROR,
+    GET_PRODUCT_REMOVE,
+    REMOVE_PRODUCT_SUCCESS,
+    REMOVE_PRODUCT_ERROR
 
 } from '../types/types';
 
 //cada reducer tiene su propio state
 
-const products = JSON.parse(localStorage.getItem('products'));
+const allProducts = JSON.parse(localStorage.getItem('products'));
 
 const initialState = {
 
-    products: products ? products : [],
+    products: allProducts ? allProducts : [],
     error: null,
-    loading: false
+    loading: false,
+    deleteproduct: null
 }
 
 export default function ( state = initialState, action ){
