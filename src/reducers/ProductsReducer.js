@@ -20,7 +20,7 @@ const initialState = {
     products: allProducts ? allProducts : [],
     error: null,
     loading: false,
-    deleteproduct: null
+    productdelete: null
 }
 
 export default function ( state = initialState, action ){
@@ -56,6 +56,12 @@ export default function ( state = initialState, action ){
                 loading: false,
                 error: null,
                 products: action.payload
+            }
+
+        case GET_PRODUCT_REMOVE:
+            return{
+                ...state,
+                productdelete: action.payload 
             }
 
         default:

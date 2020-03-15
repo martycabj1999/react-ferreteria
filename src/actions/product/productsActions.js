@@ -21,7 +21,7 @@ export function newProductAction(product){
 
         try{
             // Inserto producto en la base de datos
-            //await ProductService.postProduct(product);
+            await ProductService.postProduct(product);
 
             //Si todo sale bien actualizo el state
             dispatch( addProductSuccess(product) );
@@ -69,6 +69,7 @@ const addProductError = state => ({
     payload: state
 })
 
+
 //Funcion que descarga los productos de la base de datos
 export function getProductsAction(){
     return async (dispatch) => {
@@ -100,10 +101,17 @@ const downloadProductsError = () => ({
     payload: true
 });
 
+
 // Selecciona y elimina el producto
 export function removeProductAction(id){
     return async (dispatch) => {
-        dispatch(getProductRemove(id))
+        dispatch(getProductRemove(id));
+
+        try{
+            await ProductService.deleteProduct(id);
+        }catch{
+
+        }
     }
 }
 

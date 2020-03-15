@@ -19,12 +19,12 @@ const Products = () => {
     }, []);
 
     // Obtener el state
-    const products = useSelector( state => state.products.products);
-    //const [products, setProducts] = useState('');
-    localStorage.setItem('products', JSON.stringify(products));
-
+    
     const error = useSelector(state => state.products.error);
     const loading = useSelector(state => state.products.loading);
+    //const [products, setProducts] = useState('');
+    const products = useSelector( state => state.products.products);
+    localStorage.setItem('products', JSON.stringify(products));
 
     return (
         <div className="abm-container">
@@ -53,11 +53,11 @@ const Products = () => {
 
                         <tbody>
                             { products.length === 0 ? (
-                                <p className="font-weight-bold alert alert-primary text-center mt-4"> No hay productos</p>
-                            ) : (
+                                <p className="font-weigth-bold alert alert-primary text-center mt-4"> No hay productos </p>
+                            ):(
                                 products.map((product) => (
                                     <Product 
-                                    product={product}
+                                        product={product}
                                     />
                                 ))
                             )}
