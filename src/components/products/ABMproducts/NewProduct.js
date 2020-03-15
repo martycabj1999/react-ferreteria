@@ -43,7 +43,7 @@ const NewProduct = () => {
         // Crear el nuevo producto
         addProduct(product);
 
-        ProductService.postProduct(product);
+        ProductService.postProduct(productData);
 
         //Limpiar inputs
         setProduct({
