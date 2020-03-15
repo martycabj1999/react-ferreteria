@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
 import "./FeaturedProducts.css";
 //services
-import ProductService from '../../services/ProductService';
+import ProductService from '../../../services/ProductService';
 
 const FeaturedProducts = () => {
 

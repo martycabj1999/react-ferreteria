@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const EditarProducto = () => {
+const EditProduct = () => {
     return (
-        <div className="editar-producto-container">
+        <div className="edit-product-container">
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Nombre del producto</Form.Label>
@@ -22,4 +22,4 @@ const EditarProducto = () => {
     )
 }
 
-export default EditarProducto;
+export default EditProduct;

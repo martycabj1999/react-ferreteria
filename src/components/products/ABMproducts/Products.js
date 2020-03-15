@@ -1,31 +1,32 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
-import './ABMproducts.css';
+import './Products.css';
 import Product from './Product';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { obtenerProductosAction } from '../../../actions/product/productsActions';
+import { getProductsAction } from '../../../actions/product/productsActions';
 
-const ABMproducts = () => {
+const Products = () => {
 
     const dispatch = useDispatch();
 
     useEffect( () => {
 
         //Consultar la api
-        const cargarProductos = () => dispatch( obtenerProductosAction() );
-        cargarProductos();
+        const loadProducts = () => dispatch( getProductsAction() );
+        loadProducts();
     }, []);
 
     // Obtener el state
-    const products = useSelector( state => state.products.products);
+    //const products = useSelector( state => state.products.products);
+    const [products, setProducts] = useState('');
 
     return (
         <div className="abm-container">
             <div className="button">
-                <Link to="/nuevo">
+                <Link to="/new">
                     <Button>Agregar productos</Button>
                 </Link>
             </div>
@@ -44,7 +45,7 @@ const ABMproducts = () => {
                         </thead>
 
                         <tbody>
-                            { products.lenght === 0 ? 'No hay productos' : (
+                            { products.length === 0 ? <p className="alert alert-danger mt-4 text-center"> No hay productos </p> : (
                                     products.map(product => (
                                         <Product 
                                         product={product}
@@ -59,4 +60,4 @@ const ABMproducts = () => {
     )
 }
 
-export default ABMproducts;
+export default Products;

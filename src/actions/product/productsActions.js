@@ -1,31 +1,31 @@
 import ProductService from '../../services/ProductService';
 
 import {
-    AGREGAR_PRODUCTO,
-    AGREGAR_PRODUCTO_EXITO,
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA_PRODUCTOS,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    ADD_PRODUCT,
+    ADD_PRODUCT_SUCCESS,
+    ADD_PRODUCT_ERROR,
+    START_DOWNLOAD_PRODUCTS,
+    DOWNLOAD_PRODUCTS_SUCCESS,
+    DOWNLOAD_PRODUCTS_ERROR
 
 } from '../../types/types';
 
 // Crear nuevos productos
-export function crearNuevoProductoAction(product){
+export function newProductAction(product){
     return async (dispatch) => {
-        dispatch( agregarProducto() );
+        dispatch( addProduct() );
 
         try{
             // Inserto producto en la base de datos
             //await ProductService.postProduct(product);
 
             //Si todo sale bien actualizo el state
-            dispatch( agregarProductoExito(product) );
+            dispatch( addProductSuccess(product) );
 
         }catch (error){
             
             // Si hay un error cambiar el state
-            dispatch( agregarProductoError(true) );
+            dispatch( addProductError(true) );
 
             // Mostrar el error
             //console.log(error);
@@ -33,49 +33,49 @@ export function crearNuevoProductoAction(product){
     }
 }
 
-const agregarProducto = () => ({
-    type: AGREGAR_PRODUCTO,
+const addProduct = () => ({
+    type: ADD_PRODUCT,
     payload: true
 })
 
 // Si el producto se guarda en la base de datos
-const agregarProductoExito = product => ({
-    type: AGREGAR_PRODUCTO_EXITO,
+const addProductSuccess = product => ({
+    type: ADD_PRODUCT_SUCCESS,
     payload: product
 })
 
 // Si hubo un error
-const agregarProductoError = state => ({
-    type: AGREGAR_PRODUCTO_ERROR,
+const addProductError = state => ({
+    type: ADD_PRODUCT_ERROR,
     payload: state
 })
 
 //Funcion que descarga los productos de la base de datos
-export function obtenerProductosAction(){
+export function getProductsAction(){
     return async (dispatch) => {
-        dispatch( descargarProductos() );
+        dispatch( downloadProducts() );
     
         try{
             const respuesta = await ProductService.getProducts().subscribe(({data}) => {
-                dispatch(descargarProductosExitosa(data));
+                dispatch(downloadProductsSuccess(data));
             });
         }catch (error){
-            dispatch(descargarProductosError());
+            dispatch(downloadProductsError());
         }
     }
 }
 
-const descargarProductos = () => ({
-    type: COMENZAR_DESCARGA_PRODUCTOS,
+const downloadProducts = () => ({
+    type: START_DOWNLOAD_PRODUCTS,
     payload: true
 });
 
-const descargarProductosExitosa = products => ({
-    type: DESCARGA_PRODUCTOS_EXITO,
+const downloadProductsSuccess = products => ({
+    type: DOWNLOAD_PRODUCTS_SUCCESS,
     payload: products
 });
 
-const descargarProductosError = () => ({
-    type: DESCARGA_PRODUCTOS_ERROR,
+const downloadProductsError = () => ({
+    type: DOWNLOAD_PRODUCTS_ERROR,
     payload: true
 })

@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import Product from './Product';
 import './ListProducts.css';
 //services
-import ProductService from '../../services/ProductService';
+import ProductService from '../../../services/ProductService';
 
 const ListProducts = () => {
 
