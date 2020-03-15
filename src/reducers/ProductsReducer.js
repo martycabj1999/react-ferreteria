@@ -23,7 +23,6 @@ export default function ( state = initialState, action ){
     switch (action.type) {
         case "SET_PRODUCT":
             return state;
-            break;
 
         case START_DOWNLOAD_PRODUCTS:
         case ADD_PRODUCT:

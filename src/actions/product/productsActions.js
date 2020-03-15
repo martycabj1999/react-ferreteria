@@ -72,10 +72,9 @@ export function getProductsAction(){
         dispatch( downloadProducts() );
     
         try{
-            /*const respuesta = await ProductService.getProducts().subscribe(({data}) => {
+            await ProductService.getProducts().subscribe(({data}) => {
                 dispatch(downloadProductsSuccess(data));
-            });*/
-            dispatch(downloadProductsError());
+            });
 
         }catch (error){
             dispatch(downloadProductsError());

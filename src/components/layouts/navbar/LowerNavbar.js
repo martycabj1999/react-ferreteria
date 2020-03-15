@@ -12,10 +12,15 @@ const LowerNavbar = () => {
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(async () => {
-        await CategoryService.getCategories().subscribe(({ status, data }) => {
-            setCategories(data);
-        });
+    useEffect(() => {
+        async function fetchData(){
+            await CategoryService.getCategories().subscribe(({ status, data }) => {
+                setCategories(data);
+            });
+        }
+
+        fetchData();
+
     }, []);
     /* Listas de ejemplo */
     // Marcas

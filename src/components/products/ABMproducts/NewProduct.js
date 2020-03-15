@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newProductAction } from '../../../actions/product/productsActions';
 
 //Service
-import ProductService from '../../../services/ProductService';
+//import ProductService from '../../../services/ProductService';
 
 const NewProduct = () => {
 
