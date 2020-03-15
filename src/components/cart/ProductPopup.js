@@ -2,7 +2,8 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 const ProductPopup = (props) => {
-    const { name, src, description, price, show, hide } = props;
+    //const { name, src, description, price, show, hide } = props;
+    const { name, hide } = props;
     return (
         <Modal scrollable
             {...props}

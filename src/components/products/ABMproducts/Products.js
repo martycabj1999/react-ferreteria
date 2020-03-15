@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import './Products.css';
@@ -19,8 +19,8 @@ const Products = () => {
     }, []);
 
     // Obtener el state
-    const products = useSelector( state => state.products.products);
-    //const [products, setProducts] = ('')
+    //const products = useSelector( state => state.products.products);
+    const [products, setProducts] = ('')
     localStorage.setItem('products', JSON.stringify(products));
 
     const error = useSelector(state => state.products.error);
@@ -49,7 +49,7 @@ const Products = () => {
                         </thead>
 
                         <tbody>
-                            { products.length === 0 ? 'No hay productos' : (
+                            { products.length === 0 ? <p className="alert alert-danger mt-4 text-center"> No hay productos </p> : (
                                     products.map(product => (
                                         <Product 
                                         product={product}

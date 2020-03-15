@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Slider.css';
-import ImageService from '../../../services/ImageService';
 
 const Slider = () => {
 
+    const [item, setItem] = useState({})
+
     const items = [
         {
+            id: 1,
             src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
             alt: 'Primer imagen',
             title: 'Primer imagen',
             caption: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
         },
         {
+            id: 2,
             src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
             alt: 'Segunda imagen',
             title: 'Segunda imagen',
@@ -21,7 +24,7 @@ const Slider = () => {
     ];
 
     const carouselItems = items.map((item) =>
-        <Carousel.Item>
+        <Carousel.Item key={item.id}>
             <img
                 className='d-block w-100'
                 src={item.src}

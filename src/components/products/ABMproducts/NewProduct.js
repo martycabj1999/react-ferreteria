@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 // Actions de Redux
 import { newProductAction } from '../../../actions/product/productsActions';
 
-const NewProducto = () => {
+//Service
+import ProductService from '../../../services/ProductService';
+
+const NewProduct = () => {
 
     // State del componente
     const [product, setProduct] = useState({
@@ -96,4 +99,4 @@ const NewProducto = () => {
     )
 }
 
-export default NewProducto;
+export default NewProduct;

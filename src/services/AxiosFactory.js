@@ -2,16 +2,16 @@ import Axios from 'axios';
 import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
-    withCredential: true,
-    baseURL: 'http://titoconstrucciones.com/api',
-    timeout: 30 * 1000,
-    mode: 'no-cors',
-    headers: {
-        Accept: 'application/json',
-    },
-    withCredentials: true,
-    credentials: 'same-origin',
-    crossdomain: true,
+  withCredential: true,
+  baseURL: 'https://titoconstrucciones.com/api/',
+  timeout: 30 * 1000,
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  credentials: 'same-origin',
+  mode: 'no-cors',
+  crossdomain: true,
   validateStatus: function (status) {
     return (status >= 200 && status < 309)
       || status === 401

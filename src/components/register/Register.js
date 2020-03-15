@@ -2,6 +2,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 
 const Register = (props) => {
+    
     return ( 
         <Form>
             <Form.Group controlId="formGroupEmail">

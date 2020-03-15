@@ -1,41 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Nav, Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
 import CustomDropdown from './CustomDropdown';
 import './LowerNavbar.css';
 import LoginModal from '../../login/LoginModal';
-import Register from '../../register/Register';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
+//services
+import CategoryService from '../../../services/CategoryService';
 
 const LowerNavbar = () => {
 
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(async () => {
+        await CategoryService.getCategories().subscribe(({ status, data }) => {
+            setCategories(data);
+        });
+    }, []);
     /* Listas de ejemplo */
-    // Categorias
-    const categories = [
-        {
-            title: 'categoria 1',
-            url: 'categoria_1'
-        },
-        {
-            title: 'categoria 2',
-            url: 'categoria_2'
-        },
-        {
-            title: 'categoria 3',
-            url: 'categoria_3'
-        }
-    ];
     // Marcas
     const brands = [
         {
+            id: 1,
             title: 'marca 1',
             url: 'marca_1'
         },
         {
+            id: 2,
             title: 'marca 2',
             url: 'marca_2'
         }
@@ -46,17 +37,15 @@ const LowerNavbar = () => {
 
     const obtainItems = (array) => (
         array.map((element) =>
-            <Dropdown.Item as='a' href={element.url}>{element.title}</Dropdown.Item>
+            <Dropdown.Item key={element.id} as='a' >{element.name}</Dropdown.Item>
         )
     );
 
     //States
     const [showLogin, setShowLogin] = useState(false);
-    const [showRegister, setShowRegister] = useState(false);
+
     const handleCloseLogin = () => setShowLogin(false);
     const handleShowLogin = () => setShowLogin(true);
-    const handleCloseRegister = () => setShowRegister(false);
-    const handleShowRegister = () => setShowRegister(true);
 
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);
