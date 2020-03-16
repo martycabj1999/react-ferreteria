@@ -10,7 +10,10 @@ import {
     DOWNLOAD_PRODUCTS_ERROR,
     GET_PRODUCT_REMOVE,
     REMOVE_PRODUCT_SUCCESS,
-    REMOVE_PRODUCT_ERROR
+    REMOVE_PRODUCT_ERROR,
+    GET_PRODUCT_EDIT,
+    EDIT_PRODUCT_SUCCESS,
+    EDIT_PRODUCT_ERROR,
 
 } from '../../types/types';
 
@@ -43,11 +46,10 @@ export function newProductAction(product){
 
             // Alerta de error
             Swal.fire({
-                icon: 'error',
+                icon: 'Error',
                 title: 'Hubo un error',
                 text: 'Hubo un error, intenta de nuevo'
             })
-
         }
     }
 }
@@ -109,8 +111,17 @@ export function removeProductAction(id){
 
         try{
             await ProductService.deleteProduct(id);
-        }catch{
+            dispatch(removeProductSuccess());
 
+            // Si se elimina, mostrar la alerta
+            Swal.fire(
+                'Eliminado',
+                'El producto se eliminó correctamente',
+                'succes'
+            )
+
+        }catch{
+            dispatch(removeProductError());
         }
     }
 }
@@ -119,3 +130,24 @@ const getProductRemove = id =>({
     type: GET_PRODUCT_REMOVE,
     payload: id
 });
+
+const removeProductSuccess = () => ({
+    type: REMOVE_PRODUCT_SUCCESS
+})
+
+const removeProductError = () => ({
+    type: REMOVE_PRODUCT_ERROR,
+    payload: true
+})
+
+// Colocar producto en edicion
+export function editProductAction(product){
+    return(dispatch) => {
+        dispatch(getProductEdit(product))
+    }
+}
+
+const getProductEdit = product => ({
+    type: GET_PRODUCT_EDIT,
+    payload: product
+})
