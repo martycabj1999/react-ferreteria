@@ -12,6 +12,7 @@ import {
     REMOVE_PRODUCT_SUCCESS,
     REMOVE_PRODUCT_ERROR,
     GET_PRODUCT_EDIT,
+    START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
 
@@ -107,7 +108,7 @@ const downloadProductsError = () => ({
 // Selecciona y elimina el producto
 export function removeProductAction(id){
     return async (dispatch) => {
-        dispatch(getProductRemove(id));
+        dispatch(getRemoveProduct(id));
 
         try{
             await ProductService.deleteProduct(id);
@@ -126,7 +127,7 @@ export function removeProductAction(id){
     }
 }
 
-const getProductRemove = id =>({
+const getRemoveProduct = id =>({
     type: GET_PRODUCT_REMOVE,
     payload: id
 });
@@ -140,14 +141,34 @@ const removeProductError = () => ({
     payload: true
 })
 
+
 // Colocar producto en edicion
-export function editProductAction(product){
+export function getEditProductAction(product){
     return(dispatch) => {
-        dispatch(getProductEdit(product))
+        dispatch(getEditProduct(product))
     }
 }
 
-const getProductEdit = product => ({
+const getEditProduct = product => ({
     type: GET_PRODUCT_EDIT,
+    payload: product
+})
+
+
+// Edita un registro en la api y en el state
+export function editProductAction(product){
+    return async (dispatch) => {
+        dispatch(editProduct(product));
+            ProductService.putProduct(product);
+        try{
+            
+        }catch{
+
+        }
+    }
+}
+
+const editProduct = product => ({
+    type: START_EDIT_PRODUCT,
     payload: product
 })
