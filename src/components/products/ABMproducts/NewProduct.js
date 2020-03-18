@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import CategoryService from '../../../services/CategoryService';
 
 // Actions de Redux
 import { newProductAction } from '../../../actions/product/productsActions';
 import { showAlertAction, hideAlertAction } from '../../../actions/product/alertActions';
+
 //Service
 import ProductService from '../../../services/ProductService';
+import CategoryService from '../../../services/CategoryService';
+
 
 const NewProduct = () => {
 
@@ -120,11 +122,15 @@ const NewProduct = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Número de la categoría </Form.Label>
+                    <Form.Label>Número de la categoría: </Form.Label>
                     <select name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}>
-                        categories.map((category) =>
-                            <option>{category.id}</option>  
-                        );             
+                        { categories !== 0 ? 
+                            (
+                                categories.map((category) =>
+                                    <option>{category.id}</option>  
+                                )
+                            ) : null
+                        }
                     </select>
                 </Form.Group>
 

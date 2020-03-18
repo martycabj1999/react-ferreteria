@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { editProductAction } from '../../../actions/product/productsActions';
 import { useHistory } from 'react-router-dom';
+
+// Redux
+import { editProductAction } from '../../../actions/product/productsActions';
+
+// Services
+import CategoryService from '../../../services/CategoryService';
+
 const EditProduct = () => {
 
     const history = useHistory();
@@ -41,6 +47,18 @@ const EditProduct = () => {
         })
     }
 
+    // Obtener categorias para el select
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        async function fetchData(){
+            await CategoryService.getCategories().subscribe(({ status, data }) => {
+                setCategories(data);
+            });
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className="edit-product-container">
             <Form
@@ -68,7 +86,15 @@ const EditProduct = () => {
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Número de la categoría</Form.Label>
-                    <Form.Control name="category_id" type="number" placeholder="Número de la categoría"  value={product.category_id} onChange={onChange}/>
+                    <select name="category_id" type="number" placeholder="Número de la categoría"  value={product.category_id} onChange={onChange}>
+                        { categories !== 0 ? 
+                            (
+                                categories.map((category) =>
+                                    <option>{category.id}</option>  
+                                )
+                            ) : null
+                        }
+                    </select>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
