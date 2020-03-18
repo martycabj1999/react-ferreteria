@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import CategoryService from '../../../services/CategoryService';
 
 // Actions de Redux
 import { newProductAction } from '../../../actions/product/productsActions';
-import { showAlert } from '../../../actions/product/alertActions';
+import { showAlertAction, hideAlertAction } from '../../../actions/product/alertActions';
 //Service
 import ProductService from '../../../services/ProductService';
 
@@ -24,6 +25,7 @@ const NewProduct = () => {
 
     // Acceder al state del store
     const loading = useSelector( state => state.products.loading);
+    const alert = useSelector( state => state.alert.alert);
 
     // Mandar a llamar el action de productoAction
     const addProduct = product => dispatch( newProductAction(product) );
@@ -45,12 +47,14 @@ const NewProduct = () => {
                 classes: 'alert alert-danger text-center text-uppercase p3'
             }
 
-            dispatch(showAlert(alert));
+            dispatch(showAlertAction(alert));
+            console.log(alert);
 
             return;
         }
 
         // Si no hay errores
+        dispatch(hideAlertAction());
 
         // Crear el nuevo producto
         addProduct(product);
@@ -75,8 +79,23 @@ const NewProduct = () => {
         })
     }
 
+    // Obtener categorias para el select
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        async function fetchData(){
+            await CategoryService.getCategories().subscribe(({ status, data }) => {
+                setCategories(data);
+            });
+        }
+        fetchData();
+    }, []);
+
     return (
         <div>
+
+            {alert ? <p className={alert.classes}>{alert.msg}</p> : null}
+
             <Form 
                 onSubmit={submitNewProduct}
             >
@@ -101,8 +120,12 @@ const NewProduct = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Número de la categoría</Form.Label>
-                    <Form.Control name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}/>
+                    <Form.Label>Número de la categoría </Form.Label>
+                    <select name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}>
+                        categories.map((category) =>
+                            <option>{category.id}</option>  
+                        );             
+                    </select>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">

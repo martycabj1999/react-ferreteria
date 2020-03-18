@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect} from 'react'
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import './Products.css';

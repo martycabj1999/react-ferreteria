@@ -1,16 +1,26 @@
 import{
     SHOW_ALERT,
     HIDE_ALERT
-} from '../types/types';
+} from '../../types/types';
 
 // Mostrar una alerta
-export function showAlert(alert){
+export function showAlertAction(alert){
     return(dispatch) => {
-        dispatch( makeAlert());
+        dispatch( showAlert(alert));
     }
 }
 
-const makeAlert = alert => ({
+const showAlert = alert => ({
     type: SHOW_ALERT,
     payload: alert
+})
+
+export function hideAlertAction() {
+    return(dispatch) => {
+        dispatch (hideAlert());
+    }
+}
+
+const hideAlert = () => ({
+    type: HIDE_ALERT
 })
