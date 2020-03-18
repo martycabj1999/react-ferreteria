@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Actions de Redux
 import { newProductAction } from '../../../actions/product/productsActions';
+import { showAlertAction, hideAlertAction } from '../../../actions/product/alertActions';
 
 //Service
 import ProductService from '../../../services/ProductService';
+import CategoryService from '../../../services/CategoryService';
+
 
 const NewProduct = () => {
 
@@ -24,25 +27,41 @@ const NewProduct = () => {
 
     // Acceder al state del store
     const loading = useSelector( state => state.products.loading);
-    const error = useSelector( state => state.products.error);
+    const alert = useSelector( state => state.alert.alert);
 
     // Mandar a llamar el action de productoAction
-    const addProduct = producto => dispatch( newProductAction(product) );
+    const addProduct = product => dispatch( newProductAction(product) );
 
     // Cuando el usuario haga submit
-    const submitnewProduct = e => {
+    const submitNewProduct = e => {
         e.preventDefault();
 
         // Validar formulario
-        if (product.name.trim() === '' || product.price <= 0 ){
+        if (product.name.trim() === '' || 
+            product.price <= 0 || 
+            product.description.trim() === '' || 
+            product.long_description.trim() === '' ||
+            product.category_id <= 0 )   
+        {
+            
+            const alert = {
+                msg: 'Todos los campos son obligatorios',
+                classes: 'alert alert-danger text-center text-uppercase p3'
+            }
+
+            dispatch(showAlertAction(alert));
+            console.log(alert);
+
             return;
         }
 
         // Si no hay errores
+        dispatch(hideAlertAction());
 
         // Crear el nuevo producto
         addProduct(product);
 
+        // Mandar el producto a la base de datos
         ProductService.postProduct(product);
 
         //Limpiar inputs
@@ -62,10 +81,25 @@ const NewProduct = () => {
         })
     }
 
+    // Obtener categorias para el select
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        async function fetchData(){
+            await CategoryService.getCategories().subscribe(({ status, data }) => {
+                setCategories(data);
+            });
+        }
+        fetchData();
+    }, []);
+
     return (
-        <div className="nuevo-producto-container">
+        <div>
+
+            {alert ? <p className={alert.classes}>{alert.msg}</p> : null}
+
             <Form 
-                onSubmit={submitnewProduct}
+                onSubmit={submitNewProduct}
             >
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Nombre del producto</Form.Label>
@@ -88,8 +122,16 @@ const NewProduct = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Número de la categoría</Form.Label>
-                    <Form.Control name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}/>
+                    <Form.Label>Número de la categoría: </Form.Label>
+                    <select name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}>
+                        { categories !== 0 ? 
+                            (
+                                categories.map((category) =>
+                                    <option>{category.id}</option>  
+                                )
+                            ) : null
+                        }
+                    </select>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
@@ -97,9 +139,7 @@ const NewProduct = () => {
                 </Button>
             </Form>
 
-            { loading ? <p>loading...</p> : null }
-            { error ? (<p className=" alert alert-danger p2 mt-4 text-center">Hubo un error, el producto no fue agregado</p>) : null }
-
+            { loading ? <p>Cargando...</p> : null }
         </div>
     )
 }
