@@ -159,16 +159,26 @@ const getEditProduct = product => ({
 export function editProductAction(product){
     return async (dispatch) => {
         dispatch(editProduct(product));
-            ProductService.putProduct(product);
-        try{
-            
-        }catch{
 
+        try{
+            ProductService.putProduct(product);
+            dispatch(editProductSuccess(product));
+        }catch{
+            dispatch(editProductError());
         }
     }
 }
 
 const editProduct = product => ({
-    type: START_EDIT_PRODUCT,
+    type: START_EDIT_PRODUCT
+})
+
+const editProductSuccess = product => ({
+    type: EDIT_PRODUCT_SUCCESS,
     payload: product
+})
+
+const editProductError = () => ({
+    type: EDIT_PRODUCT_ERROR,
+    payload: true
 })

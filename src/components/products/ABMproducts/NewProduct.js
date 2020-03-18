@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Actions de Redux
 import { newProductAction } from '../../../actions/product/productsActions';
-
+import { showAlert } from '../../../actions/product/alertActions';
 //Service
 import ProductService from '../../../services/ProductService';
 
@@ -33,7 +33,20 @@ const NewProduct = () => {
         e.preventDefault();
 
         // Validar formulario
-        if (product.name.trim() === '' || product.price <= 0 ){
+        if (product.name.trim() === '' || 
+            product.price <= 0 || 
+            product.description.trim() === '' || 
+            product.long_description.trim() === '' ||
+            product.category_id <= 0 )   
+        {
+            
+            const alert = {
+                msg: 'Todos los campos son obligatorios',
+                classes: 'alert alert-danger text-center text-uppercase p3'
+            }
+
+            dispatch(showAlert(alert));
+
             return;
         }
 

@@ -27,7 +27,7 @@ const ProductService = {
     productData.append('long_description', product.long_description);
     productData.append('category_id', product.category_id);
 
-    return http.put('admin/products', productData);
+    return http.post('admin/products/' + product.id + '/edit', productData);
   },
   deleteProduct: (id) => {
     return http.deletex('admin/products/', {id:id});

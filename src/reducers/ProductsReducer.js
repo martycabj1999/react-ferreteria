@@ -9,6 +9,7 @@ import {
     REMOVE_PRODUCT_SUCCESS,
     REMOVE_PRODUCT_ERROR,
     GET_PRODUCT_EDIT,
+    START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
 
@@ -24,7 +25,7 @@ const initialState = {
     error: null,
     loading: false,
     productremove: null,
-    productedit: null
+    productEdit: null
 }
 
 export default function ( state = initialState, action ){
@@ -49,6 +50,7 @@ export default function ( state = initialState, action ){
         case DOWNLOAD_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
         case REMOVE_PRODUCT_ERROR:
+        case EDIT_PRODUCT_ERROR:
             return{
                 ...state,
                 loading: false,
@@ -76,10 +78,21 @@ export default function ( state = initialState, action ){
                 productremove: null
             }
 
+        case START_EDIT_PRODUCT:
         case GET_PRODUCT_EDIT:
             return{
                 ...state,
-                productedit: action.payload
+                productEdit: action.payload
+            }
+        
+        case EDIT_PRODUCT_SUCCESS:
+            return{
+                ...state,
+                productEdit: null,
+                products: state.products.map( product =>
+                    product.id === action.payload.id ? product = action.payload : product
+                )
+
             }
 
         default:

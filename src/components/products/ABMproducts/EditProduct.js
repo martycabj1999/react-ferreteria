@@ -1,41 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { editProductAction } from '../../../actions/product/productsActions';
+import { useHistory } from 'react-router-dom';
 const EditProduct = () => {
 
-    // Producto a editar
-    const product = useSelector(state => state.products.productedit);
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-    // Retorna null si se pierde el state al reiniciar la pagina
-    if(!product) return null;
+    // Nuevo state de producto
+    const [product, setProduct] = useState({
+        name: '',
+        price: 0,
+        description: '',
+        long_description: '',
+        category_id: 0
+    });
+
+    // Producto a editar
+    const productEdit = useSelector(state => state.products.productEdit);
+
+    // Llenar el state automaticamente
+    useEffect(() => {
+       setProduct(productEdit);
+    }, [productEdit]);
+
+
+    // Cargar el producto en la base de datos
+    const submitEditProduct = e => {
+        e.preventDefault();
+        dispatch(editProductAction(product));
+        history.push('/');
+    }
+    
+    // Leer los datos del formulario
+    const onChange = e => {
+        setProduct({
+            ...product,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
         <div className="edit-product-container">
-            <Form>
+            <Form
+                onSubmit={submitEditProduct}
+            >
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Nombre del producto</Form.Label>
-                    <Form.Control name="name" type="string" placeholder="Nombre del producto" value={product["name"]} />
+                    <Form.Control name="name" type="string" placeholder="Nombre del producto" value={product.name} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Precio del producto</Form.Label>
-                    <Form.Control name="price" type="number" placeholder="Precio del producto"  value={product["price"]}/>
+                    <Form.Control name="price" type="number" placeholder="Precio del producto" value={product.price} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Descripción breve</Form.Label>
-                    <Form.Control name="description" type="text" placeholder="Descripcion breve" value={product["description"]}/>
+                    <Form.Control name="description" type="text" placeholder="Descripcion breve" value={product.description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Descripción larga</Form.Label>
-                    <Form.Control name="long_description" type="text" placeholder="Descripcion larga" value={product["long_description"]}/>
+                    <Form.Control name="long_description" type="text" placeholder="Descripcion larga" value={product.long_description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Número de la categoría</Form.Label>
-                    <Form.Control name="category_id" type="number" placeholder="Número de la categoría"  value={product["category_id"]}/>
+                    <Form.Control name="category_id" type="number" placeholder="Número de la categoría"  value={product.category_id} onChange={onChange}/>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
