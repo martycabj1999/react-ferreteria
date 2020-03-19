@@ -30,7 +30,7 @@ const ProductService = {
     return http.post('admin/products/' + product.id + '/edit', productData);
   },
   deleteProduct: (id) => {
-    return http.deletex('admin/products/', {id:id});
+    return http.deletex('admin/products/' + id);
   }
 }
 

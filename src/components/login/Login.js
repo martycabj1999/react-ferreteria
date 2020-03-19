@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Actions de Redux
+import { setAuthUserAction } from '../../actions/user/authActions';
 //services
 import AuthService from '../../services/AuthService';
 
@@ -9,6 +13,12 @@ const Login = (props) => {
         password: ''
     })
     const [ error, setError ] = useState(false)
+
+    // Utilizar use dispatch
+    const dispatch = useDispatch();
+
+    // Mandar a llamar el action de productoAction
+    const setAuthUser = user => dispatch( setAuthUserAction(user) );
 
     // Función que se ejecuta cada que el usuario escribe en un input
     const onChange = e => {
@@ -32,6 +42,10 @@ const Login = (props) => {
         // Loguearse
         AuthService.login(form).subscribe(({ status, data }) => {
             if(status === 200){
+                // Guardamos en el store al user
+                console.log(data);
+                setAuthUser( data );
+                localStorage.setItem('user', JSON.stringify(data))
                 console.log('exito');
             } else {
                 console.log('error en el logueo');
