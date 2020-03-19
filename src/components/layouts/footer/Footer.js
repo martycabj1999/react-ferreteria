@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import FooterPopup from './FooterPopup';
 import './Footer.css';
+import Typography from '@material-ui/core/Typography'
 
 const Footer = () => {
 
@@ -16,6 +17,9 @@ const Footer = () => {
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
+      <Typography style={{
+        color: currentColors.textPrimary
+      }}>
         <footer style={{
             backgroundColor: currentColors.colorPrimary
             }} className="footer">
@@ -45,6 +49,7 @@ const Footer = () => {
 
             </div>
         </footer>
+      </Typography>
     )
 }
 

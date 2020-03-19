@@ -4,7 +4,8 @@ import {Modal, Button} from 'react-bootstrap';
 const FooterPopup = (props) => {
 
     return(
-        <Modal scrollable
+        <Modal
+            scrollable
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
