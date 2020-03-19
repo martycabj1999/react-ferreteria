@@ -9,8 +9,9 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(async () => {
-        await CategoryService.getCategories().subscribe(({ status, data }) => {
-            setCategories(data);
+        CategoryService.getCategories().subscribe(({ status, data }) => {
+            if (status === 200)
+                setCategories(data);
         });
     }, []);
 
@@ -23,6 +24,8 @@ const Categories = () => {
         </div>
     );
 
+    const noCategories = <div className='alert alert-danger text-center mt-4'>No hay categorias por el momento</div>
+
     return (
         <div className="categories-container">
             <div className="tittle">
@@ -30,7 +33,7 @@ const Categories = () => {
             </div>
 
             <div className='scroll'>
-                {listCategories}
+                {status === 200 && categories.length > 0 ? listCategories : noCategories}
             </div>
         </div>
     )
