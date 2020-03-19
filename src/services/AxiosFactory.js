@@ -7,7 +7,7 @@ const axiosInstance = Axios.create({
   timeout: 30 * 1000,
   headers: {
     'Accept': 'application/json',
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'multipart/form-data'
   },
   credentials: 'same-origin',
   mode: 'no-cors',

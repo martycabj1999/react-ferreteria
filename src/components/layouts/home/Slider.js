@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Slider.css';
 
 const Slider = () => {
-
-    const [item, setItem] = useState({})
 
     const items = [
         {
