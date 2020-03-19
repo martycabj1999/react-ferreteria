@@ -31,6 +31,7 @@ function App() {
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
+              <Route exact path='/customization' component={ColorPicker} />
 
               <Route component={NotFound} />       
             </Switch>

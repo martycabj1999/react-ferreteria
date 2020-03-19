@@ -20,7 +20,7 @@ const Products = () => {
 
     // Obtener el state
     //const products = useSelector( state => state.products.products);
-    const [products, setProducts] = ('')
+    const [products, setProducts] = ([]);
     localStorage.setItem('products', JSON.stringify(products));
 
     const error = useSelector(state => state.products.error);
