@@ -55,11 +55,10 @@ const LowerNavbar = () => {
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
-        <Container fluid expand='md' className='container-navbar'>
-            <Row style={{
-                backgroundColor: currentColors.colorPrimary
-                }} 
-            >
+        <Container  style={{
+            backgroundColor: currentColors.colorPrimary
+            }} fluid expand='md' className='container-navbar'>
+            <Row>
                 <Col>
                     <Nav className='justify-content-start'>
                         <CustomDropdown title='Categorias' list={listCategories} />
