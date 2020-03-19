@@ -4,6 +4,8 @@ import CustomDropdown from './CustomDropdown';
 import './LowerNavbar.css';
 import LoginModal from '../../login/LoginModal';
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+
 //services
 import CategoryService from '../../../services/CategoryService';
 
@@ -50,8 +52,12 @@ const LowerNavbar = () => {
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);
 
+    const currentColors = useSelector(state => state.customization.colors);  
+
     return (
-        <Container fluid expand='md' className='container-navbar'>
+        <Container style={{
+            backgroundColor: currentColors.colorPrimary
+            }} fluid expand='md' className='container-navbar'>
             <Row>
                 <Col>
                     <Nav className='justify-content-start'>

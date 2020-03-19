@@ -1,11 +1,17 @@
 import React from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import './UpperNavbar.css';
+import { useSelector } from 'react-redux';
+
 
 const UpperNavbar = () => {
 
+    const currentColors = useSelector(state => state.customization.colors);  
+
     return (
-        <Navbar expand="lg">
+        <Navbar style={{
+            backgroundColor: currentColors.colorPrimary
+            }} expand="lg">
             <Container>
                 <Row>
                     <Col sm={12} md={4} lg={6}>

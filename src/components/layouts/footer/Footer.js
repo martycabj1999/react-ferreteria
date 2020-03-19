@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import FooterPopup from './FooterPopup';
 import './Footer.css';
 
@@ -12,8 +13,12 @@ const Footer = () => {
         setModalName(name);
     }
 
+    const currentColors = useSelector(state => state.customization.colors);  
+
     return (
-        <footer className="footer">
+        <footer style={{
+            backgroundColor: currentColors.colorPrimary
+            }} className="footer">
             <div className="footer-container">
 
                 <div onClick={() => sets('Ferretería')}>
