@@ -28,7 +28,6 @@ const Categories = () => {
             <div className="tittle">
                 <h4>Categorias destacadas</h4>
             </div>
-
             <div className='scroll'>
                 {listCategories}
             </div>

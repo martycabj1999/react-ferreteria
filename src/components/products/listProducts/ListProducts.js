@@ -7,35 +7,33 @@ import ProductService from '../../../services/ProductService';
 
 const ListProducts = () => {
 
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-      async function fetchData() {
-        await ProductService.getProducts().subscribe(({ status, data }) => {
-          setProducts(data);
-        });
-      }
-      fetchData();
-    }, []);
-  
-  
-  
-    const listProducts = products.map((product) =>
-      <div key={product.id} className='product'>
-        <Product 
-          src={product.image}
-          price = {product.price}
-        />
-      </div>
-    );
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      await ProductService.getProducts().subscribe(({ status, data }) => {
+        setProducts(data);
+      });
+    }
+    fetchData();
+  }, []);
 
-    return (
-      <div className="list-products-container">
-        <h4>Otros productos</h4>
-        <Container>
-            {listProducts}
-        </Container>
-      </div>
-    );
+  const listProducts = products.map((product) =>
+    <div key={product.id} className='product'>
+      <Product
+        src={product.image}
+        price={product.price}
+      />
+    </div>
+  );
+
+  return (
+    <div className="list-products-container">
+      <h4>Otros productos</h4>
+      <Container>
+        {listProducts}
+      </Container>
+    </div>
+  );
 }
 
 export default ListProducts;

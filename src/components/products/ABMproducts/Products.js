@@ -12,9 +12,9 @@ const Products = () => {
 
     const dispatch = useDispatch();
 
-    useEffect( () => {
+    useEffect(() => {
         //Consultar la api
-        const loadProductos = () => dispatch( getProductsAction() );
+        const loadProductos = () => dispatch(getProductsAction());
         loadProductos();
     }, []);
 
@@ -32,13 +32,10 @@ const Products = () => {
                     <Button>Agregar productos</Button>
                 </Link>
             </div>
-
             <div className="body">
                 <Fragment>
                     <h2>Listado de Productos</h2>
-
-                    { error ? <p className="font-weight-bold alert alert-danger text-center mt-4"> Hubo un error</p> : null}
-
+                    {error ? <p className="font-weight-bold alert alert-danger text-center mt-4"> Hubo un error</p> : null}
                     <table className="table">
                         <thead className="thead">
                             <tr>
@@ -47,11 +44,10 @@ const Products = () => {
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            { products.length === 0 ? <p className="alert alert-danger mt-4 text-center"> No hay productos </p> : (
-                                    products.map(product => (
-                                        <Product 
+                            {products.length === 0 ? <p className="alert alert-danger mt-4 text-center"> No hay productos </p> : (
+                                products.map(product => (
+                                    <Product
                                         product={product}
                                     />
                                 ))
