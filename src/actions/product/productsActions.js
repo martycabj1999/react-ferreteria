@@ -7,7 +7,14 @@ import {
     ADD_PRODUCT_ERROR,
     START_DOWNLOAD_PRODUCTS,
     DOWNLOAD_PRODUCTS_SUCCESS,
-    DOWNLOAD_PRODUCTS_ERROR
+    DOWNLOAD_PRODUCTS_ERROR,
+    GET_PRODUCT_REMOVE,
+    REMOVE_PRODUCT_SUCCESS,
+    REMOVE_PRODUCT_ERROR,
+    GET_PRODUCT_EDIT,
+    START_EDIT_PRODUCT,
+    EDIT_PRODUCT_SUCCESS,
+    EDIT_PRODUCT_ERROR,
 
 } from '../../types/types';
 
@@ -18,7 +25,7 @@ export function newProductAction(product){
 
         try{
             // Inserto producto en la base de datos
-            //await ProductService.postProduct(product);
+            await ProductService.postProduct(product);
 
             //Si todo sale bien actualizo el state
             dispatch( addProductSuccess(product) );
@@ -40,11 +47,10 @@ export function newProductAction(product){
 
             // Alerta de error
             Swal.fire({
-                icon: 'error',
+                icon: 'Error',
                 title: 'Hubo un error',
                 text: 'Hubo un error, intenta de nuevo'
             })
-
         }
     }
 }
@@ -66,18 +72,19 @@ const addProductError = state => ({
     payload: state
 })
 
+
 //Funcion que descarga los productos de la base de datos
 export function getProductsAction(){
     return async (dispatch) => {
         dispatch( downloadProducts() );
     
         try{
-            /*const respuesta = await ProductService.getProducts().subscribe(({data}) => {
+            await ProductService.getProducts().subscribe(({data}) => {
                 dispatch(downloadProductsSuccess(data));
-            });*/
-            dispatch(downloadProductsError());
+            });
 
         }catch (error){
+            console.log(error);
             dispatch(downloadProductsError());
         }
     }
@@ -95,5 +102,84 @@ const downloadProductsSuccess = products => ({
 
 const downloadProductsError = () => ({
     type: DOWNLOAD_PRODUCTS_ERROR,
+    payload: true
+});
+
+
+// Selecciona y elimina el producto
+export function removeProductAction(id){
+    return async (dispatch) => {
+        dispatch(getRemoveProduct(id));
+
+        try{
+            await ProductService.deleteProduct(id);
+            dispatch(removeProductSuccess());
+
+            // Si se elimina, mostrar la alerta
+            Swal.fire(
+                'Eliminado',
+                'El producto se eliminó correctamente',
+                'succes'
+            )
+
+        }catch{
+            dispatch(removeProductError());
+        }
+    }
+}
+
+const getRemoveProduct = id =>({
+    type: GET_PRODUCT_REMOVE,
+    payload: id
+});
+
+const removeProductSuccess = () => ({
+    type: REMOVE_PRODUCT_SUCCESS
+})
+
+const removeProductError = () => ({
+    type: REMOVE_PRODUCT_ERROR,
+    payload: true
+})
+
+
+// Colocar producto en edicion
+export function getEditProductAction(product){
+    return(dispatch) => {
+        dispatch(getEditProduct(product))
+    }
+}
+
+const getEditProduct = product => ({
+    type: GET_PRODUCT_EDIT,
+    payload: product
+})
+
+
+// Edita un registro en la api y en el state
+export function editProductAction(product){
+    return async (dispatch) => {
+        dispatch(editProduct(product));
+
+        try{
+            ProductService.putProduct(product);
+            dispatch(editProductSuccess(product));
+        }catch{
+            dispatch(editProductError());
+        }
+    }
+}
+
+const editProduct = product => ({
+    type: START_EDIT_PRODUCT
+})
+
+const editProductSuccess = product => ({
+    type: EDIT_PRODUCT_SUCCESS,
+    payload: product
+})
+
+const editProductError = () => ({
+    type: EDIT_PRODUCT_ERROR,
     payload: true
 })

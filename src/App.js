@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound";
 import NewProduct from './components/products/ABMproducts/NewProduct';
 import EditProduct from './components/products/ABMproducts/EditProduct';
 import ColorPicker from "./components/color_picker/ColorPicker";
+
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';

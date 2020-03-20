@@ -7,14 +7,12 @@ import ProductService from '../../../services/ProductService';
 const FeaturedProducts = () => {
 
   const [products, setProducts] = useState([]);
-  const [status, setStatus] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
       await ProductService.getProducts().subscribe(({ status, data }) => {
         setProducts(data);
         console.log(data[0].image);
-        setStatus(status);
       });
     }
     fetchData();

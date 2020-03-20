@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import FooterPopup from './FooterPopup';
 import './Footer.css';
+import Typography from '@material-ui/core/Typography'
 
 const Footer = () => {
 
@@ -12,8 +14,15 @@ const Footer = () => {
         setModalName(name);
     }
 
+    const currentColors = useSelector(state => state.customization.colors);  
+
     return (
-        <footer className="footer">
+      <Typography style={{
+        color: currentColors.textPrimary
+      }}>
+        <footer style={{
+            backgroundColor: currentColors.colorPrimary
+            }} className="footer">
             <div className="footer-container">
 
                 <div onClick={() => sets('Ferretería')}>
@@ -40,6 +49,7 @@ const Footer = () => {
 
             </div>
         </footer>
+      </Typography>
     )
 }
 
