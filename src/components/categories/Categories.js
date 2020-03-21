@@ -36,6 +36,14 @@ const Categories = () => {
     );
 
     return (
+<<<<<<< HEAD
+        <div className="categories-container">
+            <div className="tittle">
+                <h4>Categorias destacadas</h4>
+            </div>
+            <div className='scroll'>
+                {listCategories}
+=======
         <Typography style={{
             color: currentColors.textSecondary
         }}>
@@ -49,6 +57,7 @@ const Categories = () => {
                 <div className='scroll'>
                     {listCategories}
                 </div>
+>>>>>>> be228daf7d9ec6e5fd1991bc60b0b6fb45d34cee
             </div>
         </Typography>
 

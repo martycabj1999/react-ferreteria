@@ -18,8 +18,6 @@ const FeaturedProducts = () => {
     fetchData();
   }, []);
 
-
-
   const listFeaturedProducts = products.map((product) =>
     <div key={product.id} className='product'>
       <Image thumbnail
@@ -31,7 +29,7 @@ const FeaturedProducts = () => {
     </div>
   );
 
-  return(
+  return (
     <div className="featured-products-container">
       <h4>Productos destacados</h4>
       <div className='scroll'>
