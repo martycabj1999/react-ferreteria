@@ -37,7 +37,7 @@ const Slider = () => {
     );
 
     return (
-        <Carousel>
+        <Carousel className="slider-carousel">
             {carouselItems}
         </Carousel>
     )

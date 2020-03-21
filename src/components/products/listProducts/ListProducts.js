@@ -34,7 +34,7 @@ const ListProducts = () => {
     <div className="list-products-container">
       <h4>Otros productos</h4>
       <Container>
-        {status === 200 && products.length > 0 ? listProducts : noProducts}
+        {products.length > 0 ? listProducts : noProducts}
       </Container>
     </div>
   );

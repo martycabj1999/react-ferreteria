@@ -84,6 +84,7 @@ export function getProductsAction(){
             });
 
         }catch (error){
+            console.log(error);
             dispatch(downloadProductsError());
         }
     }

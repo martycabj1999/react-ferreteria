@@ -7,7 +7,8 @@ import Cart from './components/cart/Cart';
 import NotFound from "./components/NotFound";
 import NewProduct from './components/products/ABMproducts/NewProduct';
 import EditProduct from './components/products/ABMproducts/EditProduct';
-//import ColorPicker from "./components/color_picker/ColorPicker";
+import ColorPicker from "./components/color_picker/ColorPicker";
+
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -31,6 +32,7 @@ function App() {
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
+              <Route exact path='/customization' component={ColorPicker} />
 
               <Route component={NotFound} />       
             </Switch>

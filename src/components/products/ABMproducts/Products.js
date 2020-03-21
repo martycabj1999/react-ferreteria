@@ -19,12 +19,12 @@ const Products = () => {
     }, []);
 
     // Obtener el state
-    
+    const products = useSelector( state => state.products.products);
+    //const [products, setProducts] = ('');
+    localStorage.setItem('products', JSON.stringify(products));
+
     const error = useSelector(state => state.products.error);
     const loading = useSelector(state => state.products.loading);
-    //const [products, setProducts] = useState('');
-    const products = useSelector( state => state.products.products);
-    localStorage.setItem('products', JSON.stringify(products));
 
     return (
         <div className="abm-container">

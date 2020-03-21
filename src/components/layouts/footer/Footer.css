@@ -22,8 +22,3 @@
     cursor: pointer;
   
   }
-  
-  .footer-container div:hover{
-    background-color: #ccc;
-    border-radius: 5px;
-  }

@@ -4,11 +4,13 @@ import CustomDropdown from './CustomDropdown';
 import './LowerNavbar.css';
 import LoginModal from '../../login/LoginModal';
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import Typography from '@material-ui/core/Typography'
+
 //services
 import CategoryService from '../../../services/CategoryService';
 
 const LowerNavbar = () => {
-
 
     const [categories, setCategories] = useState([]);
 
@@ -55,47 +57,56 @@ const LowerNavbar = () => {
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);
 
+    const currentColors = useSelector(state => state.customization.colors);  
+
     return (
-        <Container fluid expand='md' className='container-navbar'>
-            <Row>
-                <Col>
-                    <Nav className='justify-content-start'>
-                        <CustomDropdown title='Categorias' list={listCategories} />
-                        <CustomDropdown title='Marcas' list={listBrands} />
-                    </Nav>
-                </Col>
-                <Col>
-                    <Nav className='justify-content-end'>
-                        <Nav.Item>
-                            <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Link to="/register" >
-                                <Button variant="primary">
-                                    Registrate
+        <Typography style={{
+            color: currentColors.textPrimary
+        }}>
+            <Container style={{
+                backgroundColor: currentColors.colorPrimary
+                }} fluid expand='md' className='container-navbar'>
+                <Row>
+                    <Col>
+                        <Nav className='justify-content-start'>
+                            <CustomDropdown title='Categorias' list={listCategories} />
+                            <CustomDropdown title='Marcas' list={listBrands} />
+                        </Nav>
+                    </Col>
+                    <Col>
+                        <Nav className='justify-content-end'>
+                            <Nav.Item>
+                                <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Link to="/register" >
+                                    <Button variant="primary">
+                                        Registrate
+                                    </Button>
+                                </Link>
+                                {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
+                                <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Button variant="primary" hidden={isLogued} onClick={handleShowLogin}>
+                                    Iniciar Sesion
                                 </Button>
-                            </Link>
-                            {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
-                            <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Button variant="primary" hidden={isLogued} onClick={handleShowLogin}>
-                                Iniciar Sesion
-                            </Button>
-                            <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin}/>
-                            {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
-                        </Nav.Item>
-                        <Nav.Item>
-                            {/* Este link deberia rediregirnos al carrito */}
-                            <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href='/' hidden={!isLogued}>Cerrar Sesion</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </Col>
-            </Row>
-        </Container>
+                                <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                                {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
+                            </Nav.Item>
+                            <Nav.Item>
+                                {/* Este link deberia rediregirnos al carrito */}
+                                <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href='/' hidden={!isLogued}>Cerrar Sesion</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </Col>
+                </Row>
+            </Container>
+        </Typography>
+
     );
 }
 
