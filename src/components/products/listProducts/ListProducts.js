@@ -10,15 +10,10 @@ const ListProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     async function fetchData() {
-<<<<<<< HEAD
       ProductService.getProducts().subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data)
         }
-=======
-      await ProductService.getProducts().subscribe(({ status, data }) => {
-        setProducts(data);
->>>>>>> color_picker
       });
     }
     fetchData();

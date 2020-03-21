@@ -6,13 +6,19 @@ import ProductService from '../../../services/ProductService';
 
 const FeaturedProducts = () => {
 
-  const [products, setProducts] = useState([]);
+  let products = [];
+  const [status, setStatus] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
-      await ProductService.getProducts().subscribe(({ status, data }) => {
-        setProducts(data);
-        console.log(data[0].image);
+      ProductService.getProducts().subscribe(({ status, data }) => {
+        if (status === 200) {
+          data.map((product) => {
+            if (product.images[0].featured === 1)
+              products.push(product)
+          });
+        }
+        setStatus(status);
       });
     }
     fetchData();
@@ -29,11 +35,13 @@ const FeaturedProducts = () => {
     </div>
   );
 
+  const noFeaturedProducts = <div className='alert alert-danger text-center mt-4'>No hay productos destacados por el momento</div>
+
   return (
     <div className="featured-products-container">
       <h4>Productos destacados</h4>
       <div className='scroll'>
-        {listFeaturedProducts}
+        {status === 200 && products.length > 0 ? listFeaturedProducts : noFeaturedProducts}
       </div>
     </div>
   );

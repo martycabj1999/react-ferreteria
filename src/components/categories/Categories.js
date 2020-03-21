@@ -14,14 +14,10 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        async function fetchData(){
-            await CategoryService.getCategories().subscribe(({ status, data }) => {
+        CategoryService.getCategories().subscribe(({ status, data }) => {
+            if (status === 200)
                 setCategories(data);
-            });
-        }
-
-        fetchData();
-
+        });
     }, []);
 
     const listCategories = categories.map((category) =>
@@ -35,18 +31,10 @@ const Categories = () => {
         </div>
     );
 
+    const noCategories = <div className='alert alert-danger text-center mt-4'>No hay categorias por el momento</div>
+
     return (
-<<<<<<< HEAD
-        <div className="categories-container">
-            <div className="tittle">
-                <h4>Categorias destacadas</h4>
-            </div>
-            <div className='scroll'>
-                {listCategories}
-=======
-        <Typography style={{
-            color: currentColors.textSecondary
-        }}>
+        <Typography style={{color: currentColors.textSecondary}}>
             <div style={{
                 backgroundColor: currentColors.colorSecondary
                 }} className="categories-container">
@@ -57,7 +45,7 @@ const Categories = () => {
                 <div className='scroll'>
                     {listCategories}
                 </div>
->>>>>>> be228daf7d9ec6e5fd1991bc60b0b6fb45d34cee
+                {status === 200 && categories.length > 0 ? listCategories : noCategories}
             </div>
         </Typography>
 
