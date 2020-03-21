@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import ProductsReducer from './ProductsReducer';
+import ProductsReducer from '../modules/market/products/ABMproducts/store/ProductsReducer';
 import AlertReducer from './AlertReducer';
-import AuthReducer from './AuthReducer';
-import ColorPickerReducer from '../reducers/ColorPickerReducer';
+import AuthReducer from '../modules/user/login/store/AuthReducer';
+import ColorPickerReducer from '../modules/customization/colorPicker/store/ColorPickerReducer';
 
 export default combineReducers({
   products: ProductsReducer,

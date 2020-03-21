@@ -1,13 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from './components/layouts/Layout';
-import Home from './components/layouts/home/Home';
-import Register from './components/register/Register';
-import Cart from './components/cart/Cart';
-import NotFound from "./components/NotFound";
-import NewProduct from './components/products/ABMproducts/NewProduct';
-import EditProduct from './components/products/ABMproducts/EditProduct';
-import ColorPicker from "./components/color_picker/ColorPicker";
+import Layout from './modules/layouts/Layout';
+import Home from './modules/layouts/home/Home';
+import Register from './modules/user/register/components/Register';
+import Cart from './modules/market/cart/components/Cart';
+import NotFound from "./modules/layouts/NotFound";
+import NewProduct from './modules/market/products/ABMproducts/components/NewProduct';
+import EditProduct from './modules/market/products/ABMproducts/components/EditProduct';
+import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
+
 
 //Redux
 import { Provider } from 'react-redux';
