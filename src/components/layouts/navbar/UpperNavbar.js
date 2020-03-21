@@ -3,6 +3,7 @@ import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } fr
 import './UpperNavbar.css';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
+import logo from '../../../assets/carrito.png';
 
 
 const UpperNavbar = () => {
@@ -22,7 +23,9 @@ const UpperNavbar = () => {
                             <Navbar.Brand
                                 href="/"
                                 className="h1"
-                                id="logo">
+                                id="logo"
+                            >
+                                <img src={logo} width="80" height="60"/>
                                 Ferreteria
                             </Navbar.Brand>
                         </Col>

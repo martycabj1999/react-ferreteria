@@ -45,7 +45,7 @@ const Categories = () => {
                 <div className='scroll'>
                     {listCategories}
                 </div>
-                {status === 200 && categories.length > 0 ? listCategories : noCategories}
+                {categories.length > 0 ? listCategories : noCategories}
             </div>
         </Typography>
 
