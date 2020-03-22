@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
-import '../style/Products.css';
-import Product from './Product';
+import '../styles/Products.css';
+import Product from '../components/Product';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,11 +12,8 @@ const Products = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        //Consultar la api
-        const loadProductos = () => dispatch(getProductsAction());
-        loadProductos();
-    }, []);
+    const loadProductos = () => dispatch(getProductsAction());
+    loadProductos();
 
     // Obtener el state
     const products = useSelector(state => state.products.products);

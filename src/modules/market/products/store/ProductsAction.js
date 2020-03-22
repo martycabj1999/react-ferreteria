@@ -1,4 +1,4 @@
-import ProductService from '../services/ProductService';
+import ProductService from '../providers/ProductProvider';
 import Swal from 'sweetalert2';
 
 import {

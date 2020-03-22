@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Actions de Redux
 import { setAuthUserAction } from '../store/AuthAction';
 //services
-import LoginService from '../services/LoginService';
+import LoginService from '../providers/LoginProvider';
 
 const Login = (props) => {
     const [form, setForm] = useState({

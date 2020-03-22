@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
-import "./FeaturedProducts.css";
+import "../styles/FeaturedProducts.css";
 //services
-import ProductService from '../services/ProductService';
+import ProductService from '../../providers/ProductProvider';
 
 const FeaturedProducts = () => {
 

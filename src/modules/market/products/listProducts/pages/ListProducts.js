@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Container } from 'react-bootstrap';
-import Product from './Product';
-import './ListProducts.css';
+import Product from '../components/Product';
+import '../styles/ListProducts.css';
 //services
-import ProductService from '../services/ProductService';
+import ProductService from '../../providers/ProductProvider';
 
 const ListProducts = () => {
 

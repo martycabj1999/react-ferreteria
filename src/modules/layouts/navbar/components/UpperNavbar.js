@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
-import './UpperNavbar.css';
+import '../styles/UpperNavbar.css';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
-import logo from '../../../assets/carrito.png';
+import logo from '../../../../assets/carrito.png';
 
 
 const UpperNavbar = () => {
@@ -25,7 +25,7 @@ const UpperNavbar = () => {
                                 className="h1"
                                 id="logo"
                             >
-                                <img src={logo} width="80" height="60"/>
+                                <img src={logo} width="80" height="60" alt="Logo de la pagina"/>
                                 Ferreteria
                             </Navbar.Brand>
                         </Col>

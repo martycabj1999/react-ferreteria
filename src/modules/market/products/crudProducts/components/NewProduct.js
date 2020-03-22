@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Actions de Redux
 import { newProductAction } from '../../store/ProductsAction';
-import { showAlertAction, hideAlertAction } from '../../../../../actions/product/alertActions';
+import { showAlertAction, hideAlertAction } from '../../store/AlertAction';
 
 //Service
-import ProductService from '../../services/ProductService';
-import CategoryService from '../../../categories/services/CategoryService';
+import ProductService from '../../providers/ProductProvider';
+import CategoryService from '../../../categories/providers/CategoryProvider';
 
 
 const NewProduct = () => {
@@ -127,7 +127,7 @@ const NewProduct = () => {
                         { categories !== 0 ? 
                             (
                                 categories.map((category) =>
-                                    <option>{category.id}</option>  
+                                    <option value={category.id}>{category.name}</option>  
                                 )
                             ) : null
                         }

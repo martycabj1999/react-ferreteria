@@ -1,7 +1,7 @@
 import{
     SHOW_ALERT,
     HIDE_ALERT
-} from '../types/types';
+} from '../../../../types/types';
 
 // Cada reducer tiene su state
 const initialState = {

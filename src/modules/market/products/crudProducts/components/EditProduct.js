@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { editProductAction } from '../../store/ProductsAction';
 
 // Services
-import CategoryService from '../../../categories/services/CategoryService';
+import CategoryService from '../../../categories/providers/CategoryProvider';
 
 const EditProduct = () => {
 
@@ -90,7 +90,7 @@ const EditProduct = () => {
                         { categories !== 0 ? 
                             (
                                 categories.map((category) =>
-                                    <option>{category.id}</option>  
+                                    <option value={category.id}>{category.name}</option>  
                                 )
                             ) : null
                         }

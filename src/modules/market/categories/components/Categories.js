@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Image } from "react-bootstrap";
-import "../style/categories.css";
+import "../styles/categories.css";
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 
 //services
-import CategoryService from '../services/CategoryService';
+import CategoryService from '../providers/CategoryProvider';
 
 const Categories = () => {
 

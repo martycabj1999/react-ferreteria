@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from './footer/Footer';
-import UpperNavbar from "./navbar/UpperNavbar";
-import LowerNavbar from "./navbar/LowerNavbar";
+import Footer from './footer/pages/Footer';
+import UpperNavbar from "./navbar/components/UpperNavbar";
+import LowerNavbar from "./navbar/components/LowerNavbar";
 
  /* Listas de ejemplo */
   // Categorias

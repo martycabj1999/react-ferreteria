@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import EmptyCart from './EmptyCart';
-import ProductPopup from './ProductPopup';
+import EmptyCart from '../components/EmptyCart';
+import ProductPopup from '../components/ProductPopup';
 import { Container, Card, Button, Figure, Row, Col } from 'react-bootstrap';
-import '../style/Cart.css';
+import '../styles/Cart.css';
 
 const Cart = () => {
 

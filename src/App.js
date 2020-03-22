@@ -1,12 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './modules/layouts/Layout';
-import Home from './modules/layouts/home/Home';
+import Home from './modules/layouts/home/pages/Home';
 import Register from './modules/user/register/components/Register';
-import Cart from './modules/market/cart/components/Cart';
+import Cart from './modules/market/cart/pages/Cart';
 import NotFound from "./modules/layouts/NotFound";
-import NewProduct from './modules/market/products/ABMproducts/components/NewProduct';
-import EditProduct from './modules/market/products/ABMproducts/components/EditProduct';
+import NewProduct from './modules/market/products/crudProducts/components/NewProduct';
+import EditProduct from './modules/market/products/crudProducts/components/EditProduct';
 import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
 
 

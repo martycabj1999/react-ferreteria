@@ -1,7 +1,7 @@
 import{
     SHOW_ALERT,
     HIDE_ALERT
-} from '../../types/types';
+} from '../../../../types/types';
 
 // Mostrar una alerta
 export function showAlertAction(alert){

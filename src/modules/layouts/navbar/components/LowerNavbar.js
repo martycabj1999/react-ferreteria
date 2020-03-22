@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Nav, Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
 import CustomDropdown from './CustomDropdown';
-import './LowerNavbar.css';
-import LoginModal from '../../user/login/pages/LoginModal';
+import '../styles/LowerNavbar.css';
+import LoginModal from '../../../user/login/pages/LoginModal';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 
 //services
-import CategoryService from '../../market/categories/services/CategoryService';
+import CategoryService from '../../../market/categories/providers/CategoryProvider';
 
 const LowerNavbar = () => {
 

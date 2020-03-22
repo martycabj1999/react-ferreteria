@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Figure } from 'react-bootstrap';
-import '../style/EmptyCart.css';
+import '../styles/EmptyCart.css';
 import { Link } from "react-router-dom";
 
 const EmptyCart = () => {

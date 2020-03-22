@@ -37,7 +37,7 @@ const Product = ({product}) => {
     // Funcion que redirige de forma programada
     const redirectEdition = product => {
         dispatch(getEditProductAction(product));
-        history.push('/edit/${product.id}');
+        history.push('/edit/' + product.id);
     }
 
     return (

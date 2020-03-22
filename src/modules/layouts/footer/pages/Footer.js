@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import FooterPopup from './FooterPopup';
-import './Footer.css';
+import FooterPopup from '../components/FooterPopup';
+import '../styles/Footer.css';
 import Typography from '@material-ui/core/Typography'
 
 const Footer = () => {
