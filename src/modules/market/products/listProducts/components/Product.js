@@ -7,6 +7,7 @@ const Product = (props) => {
             <Image thumbnail style={{maxWidth:'200'}}
                 src={props.src}
             />
+            <h3>Producto: ${props.name}</h3>
             <h3>Precio: ${props.price}</h3>
             <Button variant="dark">Comprar</Button>
         </div>

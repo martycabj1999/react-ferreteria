@@ -3,7 +3,7 @@ import Rx from 'rxjs/Rx';
 
 const axiosInstance = Axios.create({
   withCredential: true,
-  baseURL: 'https://titoconstrucciones.com/api/',
+  baseURL: 'http://localhost:8000/api/',
   timeout: 30 * 1000,
   headers: {
     'Accept': 'application/json',

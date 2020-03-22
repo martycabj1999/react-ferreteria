@@ -3,7 +3,6 @@ import Slider from '../components/Slider';
 import Categories from '../../../market/categories/components/Categories';
 import FeaturedProducts from '../../../market/products/featuredProducts/components/FeaturedProducts';
 import ListProducts from '../../../market/products/listProducts/pages/ListProducts';
-import Products from '../../../market/products/crudProducts/pages/Products';
 
 const Home = () => {
     return ( 
@@ -12,7 +11,6 @@ const Home = () => {
         <Categories />
         <FeaturedProducts />
         <ListProducts />
-        <Products />
     </div>
     );
 }

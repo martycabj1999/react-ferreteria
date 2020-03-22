@@ -3,6 +3,7 @@ import { Image } from "react-bootstrap";
 import "../styles/categories.css";
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
+import logo from '../../../../assets/carretilla.png'
 
 //services
 import CategoryService from '../providers/CategoryProvider';
@@ -25,7 +26,9 @@ const Categories = () => {
             backgroundColor: currentColors.colorSecondary
             }} key={category.id} className='product'>
             <Image roundedCircle
-                src="https://www.elempleo.com/resources/Content/dist/images/areas/persons/Pda/ejemplo-01.svg"
+                width="100"
+                height="100"
+                src={logo}
             />
             <h6>{category.name}</h6>
         </div>
@@ -45,7 +48,6 @@ const Categories = () => {
                 <div className='scroll'>
                     {listCategories}
                 </div>
-                {categories.length > 0 ? listCategories : noCategories}
             </div>
         </Typography>
 

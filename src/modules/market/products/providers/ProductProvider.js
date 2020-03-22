@@ -7,6 +7,9 @@ const ProductService = {
   getProducts: () => {
     return http.get('admin/products');
   },
+  getProductsFeatured: () => {
+    return http.get('admin/products-featured');
+  },
   postProduct: (product) => {
 
     const productData = new FormData();

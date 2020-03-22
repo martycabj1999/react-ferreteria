@@ -6,24 +6,21 @@ import ProductService from '../../providers/ProductProvider';
 
 const FeaturedProducts = () => {
 
-  let products = [];
+  const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
-      ProductService.getProducts().subscribe(({ status, data }) => {
+      ProductService.getProductsFeatured().subscribe(({ status, data }) => {
         if (status === 200) {
-          data.map((product) => {
-            if (product.images[0].featured === 1)
-              products.push(product)
-          });
+          setProducts(data)
         }
         setStatus(status);
       });
     }
     fetchData();
   }, []);
-
+  
   const listFeaturedProducts = products.map((product) =>
     <div key={product.id} className='product'>
       <Image thumbnail

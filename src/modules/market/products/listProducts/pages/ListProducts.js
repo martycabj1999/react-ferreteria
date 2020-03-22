@@ -8,6 +8,7 @@ import ProductService from '../../providers/ProductProvider';
 const ListProducts = () => {
 
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
     async function fetchData() {
       ProductService.getProducts().subscribe(({ status, data }) => {
@@ -23,6 +24,7 @@ const ListProducts = () => {
     <div key={product.id} className='product'>
       <Product
         src={product.image}
+        name={product.name}
         price={product.price}
       />
     </div>

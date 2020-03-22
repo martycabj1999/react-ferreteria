@@ -8,7 +8,7 @@ import NotFound from "./modules/layouts/NotFound";
 import NewProduct from './modules/market/products/crudProducts/components/NewProduct';
 import EditProduct from './modules/market/products/crudProducts/components/EditProduct';
 import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
-
+import Products from './modules/market/products/crudProducts/pages/Products';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -34,6 +34,7 @@ function App() {
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
               <Route exact path='/customization' component={ColorPicker} />
+              <Route exact path='/crud-products' component={Products} />
 
               <Route component={NotFound} />       
             </Switch>
