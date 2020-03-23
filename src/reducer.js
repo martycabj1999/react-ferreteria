@@ -7,6 +7,6 @@ import ColorPickerReducer from './modules/customization/colorPicker/store/ColorP
 export default combineReducers({
   products: ProductsReducer,
   alert: AlertReducer,
-  user: AuthReducer,
+  security: AuthReducer,
   customization: ColorPickerReducer
 })

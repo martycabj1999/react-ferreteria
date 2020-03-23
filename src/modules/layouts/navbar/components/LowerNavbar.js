@@ -4,41 +4,54 @@ import CustomDropdown from './CustomDropdown';
 import '../styles/LowerNavbar.css';
 import LoginModal from '../../../user/login/pages/LoginModal';
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 
+// Actions de Redux
+import { setAuthUserAction } from '../../../user/login/store/AuthAction';
 //services
 import CategoryService from '../../../market/categories/providers/CategoryProvider';
 
 const LowerNavbar = () => {
 
-    const user = useSelector(state => state.user.colors);  
-    
+    const user = useSelector(state => state.security.user); 
     const currentColors = useSelector(state => state.customization.colors);  
 
-    const [categories, setCategories] = useState([]);
-
     /* Usuario esta logueado o no */
+    const [categories, setCategories] = useState([]);
     const [isLogued, setIsLogued] = useState(false);
 
+    // Utilizar use dispatch
+    const dispatch = useDispatch();
+
+    // Mandar a llamar el action de productoAction
+    const setAuthUser = user => dispatch( setAuthUserAction(user) );
+
     useEffect(() => {
-        const isLogin = () => {
-            if(user){
-                setIsLogued(true);
-                console.log('isLogued');
-                console.log(isLogued);
-            }
-        }  
-        isLogin();
+        
         async function fetchData(){
             await CategoryService.getCategories().subscribe(({ status, data }) => {
                 setCategories(data);
             });
         }
         fetchData();
+        isLogin();
     }, []);
     
-      
+    const isLogin = () => {
+        console.log(user);
+        console.log('isLogued');
+        if(user.id){
+            setIsLogued(true);
+            console.log('isLogued');
+        }
+    }  
+
+    const logout = () => {
+        setIsLogued(false);
+        setAuthUser({});
+        localStorage.removeItem('user');
+    }
 
     /* Listas de ejemplo */
     // Marcas
@@ -92,7 +105,7 @@ const LowerNavbar = () => {
                             </Nav.Item>
                             <Nav.Item>
                                 <Link to="/register" >
-                                    <Button variant="primary">
+                                    <Button hidden={isLogued} variant="primary">
                                         Registrate
                                     </Button>
                                 </Link>
@@ -111,7 +124,7 @@ const LowerNavbar = () => {
                                 <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href='/' hidden={!isLogued}>Cerrar Sesion</Nav.Link>
+                                <Nav.Link href='/' onClick={logout} hidden={!isLogued}>Cerrar Sesion</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
