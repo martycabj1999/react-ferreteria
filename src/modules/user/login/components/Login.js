@@ -8,6 +8,7 @@ import { setAuthUserAction } from '../store/AuthAction';
 import LoginService from '../providers/LoginProvider';
 
 const Login = (props) => {
+
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -55,6 +56,8 @@ const Login = (props) => {
             email: '',
             password: ''
         })
+
+        props.onHide();
     }
 
     return ( 
@@ -79,7 +82,7 @@ const Login = (props) => {
                     placeholder="Contraseña" 
                 />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button align="right" variant="primary" type="submit">
                         Iniciar Sesion
             </Button>
             { error ? <p align="center" className="alerta-error">Todos los campos son obligatorios</p> : null }

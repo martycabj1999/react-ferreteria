@@ -37,20 +37,21 @@ const Categories = () => {
     const noCategories = <div className='alert alert-danger text-center mt-4'>No hay categorias por el momento</div>
 
     return (
-        <Typography style={{color: currentColors.textSecondary}}>
-            <div style={{
-                backgroundColor: currentColors.colorSecondary
-                }} className="categories-container">
+        <div>
+            <Typography style={{color: currentColors.textSecondary}}/>
+            <div 
+                style={{backgroundColor: currentColors.colorSecondary}} 
+                className="categories-container"
+            >
                 <div className="tittle">
                     <h4>Categorias destacadas</h4>
                 </div>
 
                 <div className='scroll'>
-                    {listCategories}
+                    {listCategories ? listCategories : noCategories}
                 </div>
             </div>
-        </Typography>
-
+        </div>
     )
 }
 

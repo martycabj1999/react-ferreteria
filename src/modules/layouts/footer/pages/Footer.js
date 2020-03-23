@@ -17,39 +17,41 @@ const Footer = () => {
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
-      <Typography style={{
-        color: currentColors.textPrimary
-      }}>
+      <div>
         <footer style={{
-            backgroundColor: currentColors.colorPrimary
-            }} className="footer">
+              backgroundColor: currentColors.colorPrimary
+              }} className="footer">
+          <Typography style={{
+            color: currentColors.textPrimary
+          }} />
+          
             <div className="footer-container">
 
-                <div onClick={() => sets('Ferretería')}>
-                    &copy; Ferretería
-                  </div>
+              <div onClick={() => sets('Ferretería')}>
+                &copy; Ferretería
+              </div>
 
-                <div onClick={() => sets('Políticas de privacidad')}>
-                    Políticas de privacidad
-                  </div>
+              <div onClick={() => sets('Políticas de privacidad')}>
+                Políticas de privacidad
+              </div>
 
-                <div onClick={() => sets('FAQ')}>
-                    FAQ
-                  </div>
+              <div onClick={() => sets('FAQ')}>
+                FAQ
+              </div>
 
-                <div onClick={() => sets('Términos y condiciones')}>
-                    Términos y condiciones
-                  </div>
+              <div onClick={() => sets('Términos y condiciones')}>
+                Términos y condiciones
+              </div>
 
-                <FooterPopup
-                    name={modalName}
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
+              <FooterPopup
+                name={modalName}
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
 
             </div>
         </footer>
-      </Typography>
+      </div>
     )
 }
 

@@ -12,18 +12,34 @@ import CategoryService from '../../../market/categories/providers/CategoryProvid
 
 const LowerNavbar = () => {
 
+    const user = useSelector(state => state.user.colors);  
+    
+    const currentColors = useSelector(state => state.customization.colors);  
+
     const [categories, setCategories] = useState([]);
 
+    /* Usuario esta logueado o no */
+    const [isLogued, setIsLogued] = useState(false);
+
     useEffect(() => {
+        const isLogin = () => {
+            if(user){
+                setIsLogued(true);
+                console.log('isLogued');
+                console.log(isLogued);
+            }
+        }  
+        isLogin();
         async function fetchData(){
             await CategoryService.getCategories().subscribe(({ status, data }) => {
                 setCategories(data);
             });
         }
-
         fetchData();
-
     }, []);
+    
+      
+
     /* Listas de ejemplo */
     // Marcas
     const brands = [
@@ -38,9 +54,6 @@ const LowerNavbar = () => {
             url: 'marca_2'
         }
     ];
-
-    /* Usuario esta logueado o no */
-    const isLogued = false;
 
     const obtainItems = (array) => (
         array.map((element) =>
@@ -57,12 +70,11 @@ const LowerNavbar = () => {
     const listCategories = obtainItems(categories);
     const listBrands = obtainItems(brands);
 
-    const currentColors = useSelector(state => state.customization.colors);  
-
     return (
-        <Typography style={{
-            color: currentColors.textPrimary
-        }}>
+        <div>
+            <Typography style={{
+                color: currentColors.textPrimary
+            }}/>
             <Container style={{
                 backgroundColor: currentColors.colorPrimary
                 }} fluid expand='md' className='container-navbar'>
@@ -105,8 +117,7 @@ const LowerNavbar = () => {
                     </Col>
                 </Row>
             </Container>
-        </Typography>
-
+        </div>
     );
 }
 

@@ -1,7 +1,9 @@
+const user = JSON.parse(localStorage.getItem('user'));
+
 //cada reducer tiene su propio state
 const initialState = {
-    token: '',
-    user: [],
+    token: user ? user.token : '',
+    user: user ? user.user : [],
     error: null,
     loading: false
 }

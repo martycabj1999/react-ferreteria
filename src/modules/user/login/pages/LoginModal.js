@@ -1,19 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Login from '../components/Login';
-import RegisterModal from '../../register/pages/RegisterModal';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const LoginModal = (props) => {
-    
-
-    const [showRegister, setShowRegister] = useState(false);
-    const [show, setShow] = useState(true);
-    const handleCloseRegister= () => setShowRegister(false);
-    const handleShowRegister = () => {
-        setShow(false);
-        setShowRegister(true);
-    }
-
     return (
         <div>
             <Modal show={props.showLogin} onHide={props.hideLogin}>
@@ -21,17 +10,8 @@ const LoginModal = (props) => {
                     <Modal.Title>Bienvenido</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Login show={show} />
+                    <Login show={props.showLogin} onHide={props.hideLogin} />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleShowRegister}>
-                        Registrarse
-                    </Button>
-                    <RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister} />
-                    <Button variant="primary" onClick={props.hideLogin}>
-                        Iniciar Sesion
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
         );

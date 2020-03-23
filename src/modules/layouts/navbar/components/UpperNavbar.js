@@ -11,9 +11,10 @@ const UpperNavbar = () => {
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
-        <Typography style={{
-            color: currentColors.textPrimary
-        }}>
+        <div>
+            <Typography style={{
+                color: currentColors.textPrimary
+            }}/>
             <Navbar style={{
                 backgroundColor: currentColors.colorPrimary
                 }} expand="lg">
@@ -50,7 +51,7 @@ const UpperNavbar = () => {
                     </Row>
                 </Container>
             </Navbar>
-        </Typography>
+        </div>
     );
 }
 
