@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 // Redux
 import { useDispatch } from 'react-redux';
 import { removeProductAction, getEditProductAction } from '../../store/ProductsAction';
+import ProductProvider from '../../providers/ProductProvider';
 
 const Product = ({product}) => {
 
@@ -29,6 +30,7 @@ const Product = ({product}) => {
         }).then((result) => {
             if (result.value){
                 // Pasarlo al action
+                ProductProvider.inactiveProduct(id);
                 dispatch (removeProductAction(id));
             }
         })
