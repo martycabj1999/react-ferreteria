@@ -104,18 +104,12 @@ const LowerNavbar = () => {
                                 <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Link to="/register" >
-                                    <Button hidden={isLogued} variant="primary">
-                                        Registrate
-                                    </Button>
-                                </Link>
+                                <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
                                 {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
                                 <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
                             </Nav.Item>
                             <Nav.Item>
-                                <Button variant="primary" hidden={isLogued} onClick={handleShowLogin}>
-                                    Iniciar Sesion
-                                </Button>
+                                <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
                                 <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin}/>
                                 {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
                             </Nav.Item>
