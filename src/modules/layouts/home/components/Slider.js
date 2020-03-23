@@ -1,20 +1,22 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import '../styles/Slider.css';
+import slider1 from '../../../../assets/slider-1.png';
+import slider2 from '../../../../assets/slider-2.jpg';
 
 const Slider = () => {
 
     const items = [
         {
             id: 1,
-            src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
+            src: slider1,
             alt: 'Primer imagen',
             title: 'Primer imagen',
             caption: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
         },
         {
             id: 2,
-            src: 'https://www.pixelstalk.net/wp-content/uploads/2016/06/Green-solid-color-wallpaper-hd-wallpapers.jpg',
+            src: slider2,
             alt: 'Segunda imagen',
             title: 'Segunda imagen',
             caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
