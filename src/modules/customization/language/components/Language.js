@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //Action de redux 
 import { setLanguageAction } from '../store/LanguageAction';
-import { updateLanguage } from '../../provider/CustomizationProvider';
+//import { updateLanguage } from '../../provider/CustomizationProvider';
 import { messagesSpanish, messagesEnglish, messagesPortuguese } from '../messages';
 
 const useStyles = makeStyles(theme => ({
@@ -21,8 +21,8 @@ const useStyles = makeStyles(theme => ({
 
 const Language = () => {
     const classes = useStyles();
-    const currentLanguage = useSelector(state => state.language.language); 
-    const messages = useSelector(state => state.language.messages); 
+    const currentLanguage = useSelector(state => state.languages.language); 
+    const messages = useSelector(state => state.languages.messages); 
     const [language, setLanguage] = useState(currentLanguage);
 
     //utilizar useDispatch y te crea una funcion
@@ -39,7 +39,7 @@ const Language = () => {
                 }
                 dispatch(setLanguageAction(selectedLanguage, messagesSpanish));
                 localStorage.setItem('language', JSON.stringify(languageES))
-                updateLanguage(selectedLanguage);
+                //updateLanguage(selectedLanguage);
                 break;
             case "en":
                 let languageEN = {
@@ -48,7 +48,7 @@ const Language = () => {
                 }
                 dispatch(setLanguageAction(selectedLanguage, messagesEnglish));
                 localStorage.setItem('language', JSON.stringify(languageEN))
-                updateLanguage(selectedLanguage);
+                //updateLanguage(selectedLanguage);
                 break;
             case "pt":
                 let languagePT = {
@@ -57,7 +57,7 @@ const Language = () => {
                 }
                 dispatch(setLanguageAction(selectedLanguage, messagesPortuguese));
                 localStorage.setItem('language', JSON.stringify(languagePT))
-                updateLanguage(selectedLanguage);
+                //updateLanguage(selectedLanguage);
                 break;
             default:
                 break;
