@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
 import "../styles/FeaturedProducts.css";
+import Error from "../../../../layouts/Error";
+
 //services
 import ProductService from '../../providers/ProductProvider';
 
@@ -32,13 +34,11 @@ const FeaturedProducts = () => {
     </div>
   );
 
-  const noFeaturedProducts = <div className='alert alert-danger text-center mt-4'>No hay productos destacados por el momento</div>
-
   return (
     <div className="featured-products-container">
       <h4>Productos destacados</h4>
       <div className='scroll'>
-        {status === 200 && products.length > 0 ? listFeaturedProducts : noFeaturedProducts}
+        {status === 200 && products.length > 0 ? listFeaturedProducts : <Error mensaje="No hay productos destacados por el momento" />}
       </div>
     </div>
   );

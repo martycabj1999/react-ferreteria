@@ -4,6 +4,7 @@ import "../styles/categories.css";
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 import logo from '../../../../assets/carretilla.png'
+import Error from "../../../layouts/Error";
 
 //services
 import CategoryService from '../providers/CategoryProvider';
@@ -36,8 +37,6 @@ const Categories = () => {
         </div>
     );
 
-    const noCategories = <div className='alert alert-danger text-center mt-4'>No hay categorias por el momento</div>
-
     return (
         <div>
             <Typography style={{ color: currentColors.textSecondary }} />
@@ -50,7 +49,7 @@ const Categories = () => {
                 </div>
 
                 <div className='scroll'>
-                    {listCategories ? listCategories : noCategories}
+                    {listCategories ? listCategories : <Error mensaje="No hay categorias por el momento" />}
                 </div>
             </div>
         </div>

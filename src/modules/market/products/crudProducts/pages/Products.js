@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Button } from "react-bootstrap";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import '../styles/Products.css';
 import Product from '../components/Product';
 

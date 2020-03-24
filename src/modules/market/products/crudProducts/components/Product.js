@@ -1,13 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
 
 // Redux
 import { useDispatch } from 'react-redux';
 import { removeProductAction, getEditProductAction } from '../../store/ProductsAction';
 import ProductProvider from '../../providers/ProductProvider';
 
-const Product = ({product}) => {
+const Product = (product) => {
 
     const { name, price, id } = product;
     const dispatch = useDispatch();
@@ -65,6 +66,11 @@ const Product = ({product}) => {
 
         </tr>
     );
+}
+
+// PropTypes
+Product.propTypes = {
+    product: PropTypes.object.isRequired
 }
 
 export default Product;

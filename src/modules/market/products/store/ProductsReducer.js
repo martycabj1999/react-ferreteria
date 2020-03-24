@@ -12,7 +12,11 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
-
+    GET_PRODUCT_DETAILS,
+    GET_CATEGORY,
+    START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID,
+    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR,
+    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS
 } from '../../../../types/types';
 
 //cada reducer tiene su propio state
@@ -20,45 +24,49 @@ import {
 const allProducts = JSON.parse(localStorage.getItem('products'));
 
 const initialState = {
-
     products: allProducts ? allProducts : [],
     error: null,
     loading: false,
-    productremove: null,
-    productEdit: null
+    productRemove: null,
+    productEdit: null,
+    productDetails: null,
+    category: null
 }
 
-export default function ( state = initialState, action ){
+export default function (state = initialState, action) {
     switch (action.type) {
         case "SET_PRODUCT":
             return state;
 
+        case START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID:
         case START_DOWNLOAD_PRODUCTS:
         case ADD_PRODUCT:
-            return{
+            return {
                 ...state,
                 loading: action.payload
             }
-        
+
         case ADD_PRODUCT_SUCCESS:
-            return{
+            return {
                 ...state,
                 loading: false,
                 products: action.payload
             }
 
+        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR:
         case DOWNLOAD_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
         case REMOVE_PRODUCT_ERROR:
         case EDIT_PRODUCT_ERROR:
-            return{
+            return {
                 ...state,
                 loading: false,
                 error: action.payload
-            }        
+            }
 
+        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS:
         case DOWNLOAD_PRODUCTS_SUCCESS:
-            return{
+            return {
                 ...state,
                 loading: false,
                 error: null,
@@ -66,33 +74,45 @@ export default function ( state = initialState, action ){
             }
 
         case GET_PRODUCT_REMOVE:
-            return{
+            return {
                 ...state,
-                productremove: action.payload 
+                productRemove: action.payload
             }
 
         case REMOVE_PRODUCT_SUCCESS:
-            return{
+            return {
                 ...state,
-                products: state.products.filter( product => product.id !== state.productremove),
-                productremove: null
+                products: state.products.filter(product => product.id !== state.productRemove),
+                productRemove: null
             }
 
         case START_EDIT_PRODUCT:
         case GET_PRODUCT_EDIT:
-            return{
+            return {
                 ...state,
                 productEdit: action.payload
             }
-        
+
         case EDIT_PRODUCT_SUCCESS:
-            return{
+            return {
                 ...state,
                 productEdit: null,
-                products: state.products.map( product =>
+                products: state.products.map(product =>
                     product.id === action.payload.id ? product = action.payload : product
                 )
 
+            }
+
+        case GET_PRODUCT_DETAILS:
+            return {
+                ...state,
+                productDetails: action.payload
+            }
+
+        case GET_CATEGORY:
+            return {
+                ...state,
+                category: action.payload
             }
 
         default:

@@ -1,0 +1,25 @@
+.product-details-image{
+    float: left;
+    margin-bottom: 200px;;
+}
+
+.product-details-body{
+    float:left;
+    width: 600px;
+    height: auto;
+    margin-bottom: 200px;;
+}
+
+.product-details-body h3, h5{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.product-details-body .button{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.featured{
+    margin-left: 0px;
+}

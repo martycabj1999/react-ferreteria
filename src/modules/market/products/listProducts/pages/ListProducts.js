@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Container } from 'react-bootstrap';
 import Product from '../components/Product';
 import '../styles/ListProducts.css';
+import Error from "../../../../layouts/Error";
+
 //services
 import ProductService from '../../providers/ProductProvider';
 
@@ -22,24 +24,19 @@ const ListProducts = () => {
 
   const listProducts = products.map((product) =>
     <div key={product.id} className='product'>
-      <Product
-        src={product.image}
-        name={product.name}
-        price={product.price}
+      <Product 
+        product={product}
       />
     </div>
   );
-
-  const noProducts = <div className="alert alert-danger text-center mt-4">No hay productos para mostrar</div>
 
   return (
     <div className="list-products-container">
       <h4>Otros productos</h4>
       <Container>
-        {products.length > 0 ? listProducts : noProducts}
+        {products.length > 0 ? listProducts : <Error mensaje="No hay productos para mostrar" />}
       </Container>
     </div>
   );
 }
-
 export default ListProducts;
