@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
 import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -14,7 +14,7 @@ const Product = ({product}) => {
     }
 
     return (
-        <Link Link to={`/product/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
             <div 
                 onClick={ () => onClick()}
                 style={{width: 'auto'}}

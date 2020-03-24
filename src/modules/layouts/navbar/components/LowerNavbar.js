@@ -73,6 +73,7 @@ const LowerNavbar = () => {
     const obtainItems = (array) => (
         array.map((element) => 
             <Dropdown.Item key={element.id} as='a' >{element.name}</Dropdown.Item>
+
         )
     );
 
