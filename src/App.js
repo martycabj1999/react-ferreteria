@@ -9,6 +9,7 @@ import NewProduct from './modules/market/products/crudProducts/components/NewPro
 import EditProduct from './modules/market/products/crudProducts/components/EditProduct';
 import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
 import Products from './modules/market/products/crudProducts/pages/Products';
+import ProductsByCategory from './modules/market/products/productsByCategory/pages/ProductsByCategory';
 import PrivateRoute from './PrivateRoute';
 
 //Redux
@@ -22,22 +23,23 @@ import {
 } from "react-router-dom";
 
 function App() {
-  
+
   return (
     <div>
       <Router>
         <Provider store={store} >
           <Layout>
             <Switch>
-              <Route exact path='/' component={Home} />       
-              <Route exact path='/register' component={Register} />      
+              <Route exact path='/' component={Home} />
+              <Route exact path='/register' component={Register} />
               <PrivateRoute exact path='/cart' component={Cart} />
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
               <Route exact path='/customization' component={ColorPicker} />
               <Route exact path='/crud-products' component={Products} />
+              <Route exact path='/products-by-category/:id' component={ProductsByCategory} />
 
-              <Route component={NotFound} />       
+              <Route component={NotFound} />
             </Switch>
           </Layout>
         </Provider>

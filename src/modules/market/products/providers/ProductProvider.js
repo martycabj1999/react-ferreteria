@@ -14,6 +14,10 @@ const ProductService = {
     return http.get('admin/products-featured');
   },
 
+  getProductsByCategoryId: (category_id) => {
+    return http.get('/products-by-category/' + category_id);
+  },
+
   postProduct: (product) => {
 
     const productData = new FormData();
@@ -45,7 +49,7 @@ const ProductService = {
   deleteProduct: (id) => {
     return http.deletex('admin/products/' + id);
   }
-  
+
 }
 
 export default ProductService;

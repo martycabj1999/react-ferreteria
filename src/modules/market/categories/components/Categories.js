@@ -10,7 +10,7 @@ import CategoryService from '../providers/CategoryProvider';
 
 const Categories = () => {
 
-    const currentColors = useSelector(state => state.customization.colors);  
+    const currentColors = useSelector(state => state.customization.colors);
 
     const [categories, setCategories] = useState([]);
 
@@ -22,9 +22,11 @@ const Categories = () => {
     }, []);
 
     const listCategories = categories.map((category) =>
-        <div style={{
-            backgroundColor: currentColors.colorSecondary
-            }} key={category.id} className='product'>
+        <div
+            style={{ backgroundColor: currentColors.colorSecondary }}
+            key={category.id}
+            className='product'
+        >
             <Image roundedCircle
                 width="100"
                 height="100"
@@ -38,9 +40,9 @@ const Categories = () => {
 
     return (
         <div>
-            <Typography style={{color: currentColors.textSecondary}}/>
-            <div 
-                style={{backgroundColor: currentColors.colorSecondary}} 
+            <Typography style={{ color: currentColors.textSecondary }} />
+            <div
+                style={{ backgroundColor: currentColors.colorSecondary }}
                 className="categories-container"
             >
                 <div className="tittle">
