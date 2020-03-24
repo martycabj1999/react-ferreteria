@@ -9,9 +9,9 @@ import '../styles/LowerNavbar.css';
 
 // Actions de Redux
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
+import { getCategoryAction } from '../../../market/products/store/ProductsAction';
 //services
 import CategoryService from '../../../market/categories/providers/CategoryProvider';
-import { getCategoryAction } from '../../../market/products/store/ProductsAction';
 
 const LowerNavbar = () => {
 

@@ -30,6 +30,7 @@ const initialState = {
     productRemove: null,
     productEdit: null,
     productDetails: null,
+    productsByCategoryId: null,
     category: null
 }
 
@@ -64,13 +65,20 @@ export default function (state = initialState, action) {
                 error: action.payload
             }
 
-        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS:
         case DOWNLOAD_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: null,
                 products: action.payload
+            }
+
+        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                productsByCategoryId: action.payload
             }
 
         case GET_PRODUCT_REMOVE:

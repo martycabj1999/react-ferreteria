@@ -1,14 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Product from '../../listProducts/components/Product';
 import '../../listProducts/styles/ListProducts.css';
 import Error from '../../../../layouts/Error';
+import { getProductsByCategoryIdAction } from '../../store/ProductsAction';
 
 const ProductsByCategory = () => {
-
-    const products = useSelector(state => state.products.products);
+    
+    const dispatch = useDispatch();
     const category = useSelector(state => state.products.category);
+    dispatch(getProductsByCategoryIdAction(category.id));
+    
+    const products = useSelector(state => state.productsByCategoryId.products);
 
     const listProducts = products.map((product) =>
         <div 

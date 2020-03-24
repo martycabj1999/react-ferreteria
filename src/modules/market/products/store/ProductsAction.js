@@ -108,17 +108,6 @@ const downloadProductsError = () => ({
     payload: true
 });
 
-const downloadProductsByCategoryIdSuccess = products => ({
-    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS,
-    payload: products
-});
-
-const downloadProductsByCategoryIdError = () => ({
-    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR,
-    payload: true
-});
-
-
 // Selecciona y elimina el producto
 export function removeProductAction(id) {
     return async (dispatch) => {
@@ -222,12 +211,12 @@ const getCategory = category => ({
 })
 
 //Funcion que descarga los productos de la base de datos por id de la categoria
-export function getProductsByCategoryIdAction() {
+export function getProductsByCategoryIdAction(category_id) {
     return async (dispatch) => {
         dispatch(downloadProductsByCategoryId());
 
         try {
-            ProductService.getProductsByCategoryId().subscribe(({ data }) => {
+            ProductService.getProductsByCategoryId(category_id).subscribe(({ data }) => {
                 dispatch(downloadProductsByCategoryIdSuccess(data));
             });
 
@@ -240,5 +229,15 @@ export function getProductsByCategoryIdAction() {
 
 const downloadProductsByCategoryId = () => ({
     type: START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID,
+    payload: true
+});
+
+const downloadProductsByCategoryIdSuccess = products => ({
+    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS,
+    payload: products
+});
+
+const downloadProductsByCategoryIdError = () => ({
+    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR,
     payload: true
 });
