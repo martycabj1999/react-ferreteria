@@ -8,7 +8,7 @@
   
   .footer-container {
     display: flex;
-    position: absolute;
+    position: sticky;
     width: 100%;
     justify-content: center;
     height: 30px;

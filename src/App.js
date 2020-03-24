@@ -7,6 +7,7 @@ import Cart from './modules/market/cart/pages/Cart';
 import NotFound from "./modules/layouts/NotFound";
 import NewProduct from './modules/market/products/crudProducts/components/NewProduct';
 import EditProduct from './modules/market/products/crudProducts/components/EditProduct';
+import ProductDetails from './modules/market/products/productDetails/components/ProductDetails';
 import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
 import Products from './modules/market/products/crudProducts/pages/Products';
 import PrivateRoute from './PrivateRoute';
@@ -36,6 +37,7 @@ function App() {
               <Route exact path='/edit/:id' component={EditProduct} />
               <Route exact path='/customization' component={ColorPicker} />
               <Route exact path='/crud-products' component={Products} />
+              <Route exact path='/product/:id' component={ProductDetails} />
 
               <Route component={NotFound} />       
             </Switch>

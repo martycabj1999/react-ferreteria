@@ -31,7 +31,9 @@ const LowerNavbar = () => {
         
         async function fetchData(){
             await CategoryService.getCategories().subscribe(({ status, data }) => {
-                setCategories(data);
+                if (status === 200){
+                    setCategories(data);
+                }
             });
         }
         fetchData();
@@ -69,7 +71,7 @@ const LowerNavbar = () => {
     ];
 
     const obtainItems = (array) => (
-        array.map((element) =>
+        array.map((element) => 
             <Dropdown.Item key={element.id} as='a' >{element.name}</Dropdown.Item>
         )
     );
@@ -80,8 +82,8 @@ const LowerNavbar = () => {
     const handleCloseLogin = () => setShowLogin(false);
     const handleShowLogin = () => setShowLogin(true);
 
-    const listCategories = obtainItems(categories);
-    const listBrands = obtainItems(brands);
+    const listCategories = categories ? obtainItems(categories) : null;
+    const listBrands = brands ? obtainItems(brands) : null;
 
     return (
         <div>

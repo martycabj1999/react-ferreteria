@@ -22,10 +22,8 @@ const ListProducts = () => {
 
   const listProducts = products.map((product) =>
     <div key={product.id} className='product'>
-      <Product
-        src={product.image}
-        name={product.name}
-        price={product.price}
+      <Product 
+        product={product}
       />
     </div>
   );
@@ -41,5 +39,4 @@ const ListProducts = () => {
     </div>
   );
 }
-
 export default ListProducts;
