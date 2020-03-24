@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { removeProductAction, getEditProductAction } from '../../store/ProductsAction';
 import ProductProvider from '../../providers/ProductProvider';
 
-const Product = (product) => {
+const Product = ({product}) => {
 
     const { name, price, id } = product;
     const dispatch = useDispatch();

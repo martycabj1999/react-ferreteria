@@ -42,13 +42,13 @@ const LowerNavbar = () => {
       setIsLogued(true);
       console.log('isLogued');
     }
-  }
+  };
 
   const logout = () => {
     setIsLogued(false);
     setAuthUser({});
     localStorage.removeItem('user');
-  }
+  };
 
   /* Listas de ejemplo */
   // Marcas
@@ -65,7 +65,7 @@ const LowerNavbar = () => {
     }
   ];
 
-  const onClick = (category) => (dispatch(getCategoryAction(category)));
+  const onClick = (category) => dispatch(getCategoryAction(category));
 
   const obtainCategories = (categories) => (
     categories.map((category) =>
@@ -75,68 +75,68 @@ const LowerNavbar = () => {
     )
   );
 
-const obtainBrands = (brands) => (
-  brands.map((brand) =>
-    <Dropdown.Item key={brand.id} as='a' >{brand.name}</Dropdown.Item>
-  )
-);
+  const obtainBrands = (brands) => (
+    brands.map((brand) =>
+      <Dropdown.Item key={brand.id} as='a' >{brand.name}</Dropdown.Item>
+    )
+  );
 
-//States
-const [showLogin, setShowLogin] = useState(false);
-const [categories, setCategories] = useState([]);
-/* Usuario esta logueado o no */
-const [isLogued, setIsLogued] = useState(false);
+  //States
+  const [showLogin, setShowLogin] = useState(false);
+  const [categories, setCategories] = useState([]);
+  /* Usuario esta logueado o no */
+  const [isLogued, setIsLogued] = useState(false);
 
-const handleCloseLogin = () => setShowLogin(false);
-const handleShowLogin = () => setShowLogin(true);
+  const handleCloseLogin = () => setShowLogin(false);
+  const handleShowLogin = () => setShowLogin(true);
 
-const listCategories = categories ? obtainCategories(categories) : null;
-const listBrands = brands ? obtainBrands(brands) : null;
+  const listCategories = categories ? obtainCategories(categories) : null;
+  const listBrands = brands ? obtainBrands(brands) : null;
 
-return (
-  <div>
-    <Typography style={{
-      color: currentColors.textPrimary
-    }} />
-    <Container
-      style={{ backgroundColor: currentColors.colorPrimary }}
-      fluid expand='md'
-      className='container-navbar'
-    >
-      <Row>
-        <Col>
-          <Nav className='justify-content-start'>
-            <CustomDropdown title='Categorias' list={listCategories} />
-            <CustomDropdown title='Marcas' list={listBrands} />
-          </Nav>
-        </Col>
-        <Col>
-          <Nav className='justify-content-end'>
-            <Nav.Item>
-              <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
-              {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
+  return (
+    <div>
+      <Typography style={{
+        color: currentColors.textPrimary
+      }} />
+      <Container
+        style={{ backgroundColor: currentColors.colorPrimary }}
+        fluid expand='md'
+        className='container-navbar'
+      >
+        <Row>
+          <Col>
+            <Nav className='justify-content-start'>
+              <CustomDropdown title='Categorias' list={listCategories} />
+              <CustomDropdown title='Marcas' list={listBrands} />
+            </Nav>
+          </Col>
+          <Col>
+            <Nav className='justify-content-end'>
+              <Nav.Item>
+                <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
+                {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
                                 <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-              <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin} />
-            </Nav.Item>
-            <Nav.Item>
-              {/* Este link deberia rediregirnos al carrito */}
-              <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href='/' onClick={logout} hidden={!isLogued}>Cerrar Sesion</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
+                <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin} />
+              </Nav.Item>
+              <Nav.Item>
+                {/* Este link deberia rediregirnos al carrito */}
+                <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href='/' onClick={logout} hidden={!isLogued}>Cerrar Sesion</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default LowerNavbar;

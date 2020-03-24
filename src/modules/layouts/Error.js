@@ -7,4 +7,8 @@ const Error = ({ mensaje }) => (
     </div>
 );
 
+Error.propTypes = {
+    mensaje: PropTypes.string.isRequired
+}
+
 export default Error;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 //Redux
 import { getProductDetailsAction } from '../../store/ProductsAction';
 
-const Product = (product) => {
+const Product = ({product}) => {
 
     const dispatch = useDispatch();
 
