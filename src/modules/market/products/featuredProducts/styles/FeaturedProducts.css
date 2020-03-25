@@ -1,6 +1,7 @@
 .featured-products-container{
     background-color: grey;
-}
+    align-items: left;
+  }
 
 .featured-products-container h4{
     padding-top: 30px;
@@ -8,8 +9,6 @@
 }
 
 .featured-products-container div.scroll {
-    margin-left: auto;
-    margin-right: auto;
     background-color: #333;
 	  overflow: auto;
 	  white-space: nowrap;
