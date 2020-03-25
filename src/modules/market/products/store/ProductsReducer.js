@@ -12,6 +12,7 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
+    GET_PRODUCT_DETAILS
 
 } from '../../../../types/types';
 
@@ -24,8 +25,9 @@ const initialState = {
     products: allProducts ? allProducts : [],
     error: null,
     loading: false,
-    productremove: null,
-    productEdit: null
+    productRemove: null,
+    productEdit: null,
+    productDetails: null,
 }
 
 export default function ( state = initialState, action ){
@@ -68,14 +70,14 @@ export default function ( state = initialState, action ){
         case GET_PRODUCT_REMOVE:
             return{
                 ...state,
-                productremove: action.payload 
+                productRemove: action.payload 
             }
 
         case REMOVE_PRODUCT_SUCCESS:
             return{
                 ...state,
-                products: state.products.filter( product => product.id !== state.productremove),
-                productremove: null
+                products: state.products.filter( product => product.id !== state.productRemove),
+                productRemove: null
             }
 
         case START_EDIT_PRODUCT:
@@ -93,6 +95,12 @@ export default function ( state = initialState, action ){
                     product.id === action.payload.id ? product = action.payload : product
                 )
 
+            }
+        
+        case GET_PRODUCT_DETAILS:
+            return{
+                ...state,
+                productDetails: action.payload
             }
 
         default:

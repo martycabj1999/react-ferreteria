@@ -1,17 +1,33 @@
-import React from 'react'
+import React from 'react';
 import { Image, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+//Redux
+import { getProductDetailsAction } from '../../store/ProductsAction';
 
-const Product = (props) => {
+const Product = ({product}) => {
+
+    const dispatch = useDispatch();
+   
+    const onClick = () => {
+        dispatch(getProductDetailsAction(product));
+    }
+
     return (
-        <div style={{width: 'auto'}}>
-            <Image thumbnail style={{maxWidth:'200'}}
-                src={props.src}
-            />
-            <h3>Producto: ${props.name}</h3>
-            <h3>Precio: ${props.price}</h3>
-            <Button variant="dark">Comprar</Button>
-        </div>
-    )
+        <Link to={`/product/${product.id}`}>
+            <div 
+                onClick={ () => onClick()}
+                style={{width: 'auto'}}
+            >
+                <Image thumbnail style={{maxWidth:'200'}}
+                    src={product.image}
+                />
+                <h3>Producto: {product.name}</h3>
+                <h3>Precio: ${product.price}</h3>
+                <Button className="button" variant="dark">Comprar</Button>      
+            </div>
+        </Link>
+    );
 }
 
 export default Product;
