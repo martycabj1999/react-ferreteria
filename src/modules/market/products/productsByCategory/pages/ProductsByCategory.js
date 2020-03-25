@@ -12,7 +12,7 @@ const ProductsByCategory = () => {
     const category = useSelector(state => state.products.category);
     dispatch(getProductsByCategoryIdAction(category.id));
     
-    const products = useSelector(state => state.productsByCategoryId.products);
+    const products = useSelector(state => state.products.productsByCategoryId);
 
     const listProducts = products.map((product) =>
         <div 
