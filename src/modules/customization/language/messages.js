@@ -4,6 +4,8 @@ export const messagesSpanish = {
     home_hello: "Hola",
     home_welcome: "Bienvenido",
 
+    footer_pop_up_close: "Cerrar",
+
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
     text_primary: "Fuente Primaria",

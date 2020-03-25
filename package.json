@@ -10,6 +10,7 @@
         "@testing-library/user-event": "^7.2.1",
         "axios": "^0.19.2",
         "bootstrap": "^4.4.1",
+        "jwt-decode": "^2.2.0",
         "react": "^16.12.0",
         "react-bootstrap": "^1.0.0-beta.16",
         "react-color": "^2.18.0",

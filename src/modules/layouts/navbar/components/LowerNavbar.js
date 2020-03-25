@@ -14,7 +14,7 @@ import CategoryService from '../../../market/categories/providers/CategoryProvid
 
 const LowerNavbar = () => {
 
-    const user = useSelector(state => state.security.user); 
+    const auth = useSelector(state => state.security.user); 
     const currentColors = useSelector(state => state.customization.colors);  
 
     /* Usuario esta logueado o no */
@@ -35,15 +35,12 @@ const LowerNavbar = () => {
             });
         }
         fetchData();
-        isLogin();
+        isLogin(auth);
     }, []);
     
-    const isLogin = () => {
-        console.log(user);
-        console.log('isLogued');
+    const isLogin = (user) => {
         if(user.id){
             setIsLogued(true);
-            console.log('isLogued');
         }
     }  
 
@@ -101,7 +98,12 @@ const LowerNavbar = () => {
                     <Col>
                         <Nav className='justify-content-end'>
                             <Nav.Item>
-                                <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
+                                {/* Este link deberia rediregirnos al carrito */}
+                                <Nav.Link href='/customization' hidden={!isLogued}>Personalización</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                {/* Este link deberia rediregirnos al carrito */}
+                                <Nav.Link href='/crud-products' hidden={!isLogued}>CRUD productos</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
@@ -110,7 +112,7 @@ const LowerNavbar = () => {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-                                <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
                                 {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
                             </Nav.Item>
                             <Nav.Item>

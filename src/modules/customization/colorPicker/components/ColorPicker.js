@@ -6,6 +6,9 @@ import { MaterialPicker, ChromePicker } from 'react-color';
 import SaveIcon from '@material-ui/icons/Save';
 import Language from '../../language/components/Language';
 
+//Provider
+import CustomizationProvider from '../../provider/CustomizationProvider';
+
 //Action de redux 
 import { setColorsAction } from '../store/ColorPickerActions';
 
@@ -29,6 +32,7 @@ const ColorPicker = () => {
     const dispatch = useDispatch();
 
     const messages = useSelector(state => state.languages.messages);
+    const user = useSelector(state => state.security.user);
     const currentColors = useSelector(state => state.customization.colors);
 
     const classes = useStyles();
@@ -87,7 +91,7 @@ const ColorPicker = () => {
         // Mando colors al local storage y a redux
         localStorage.setItem('colors', JSON.stringify(colorPicker))
         dispatch(setColorsAction(colorPicker));
-        //return updateColors(colorPicker);
+        return CustomizationProvider.updateColors(colorPicker);
     }
 
     return ( 
