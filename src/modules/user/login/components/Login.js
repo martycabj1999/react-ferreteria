@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 // Actions de Redux
 import { setAuthUserAction } from '../store/AuthAction';
 //services
-import LoginService from '../providers/LoginProvider';
+import LoginProvider from '../providers/LoginProvider';
 
 const Login = (props) => {
 
@@ -43,12 +44,13 @@ const Login = (props) => {
         setError(false);
 
         // Loguearse
-        LoginService.login(form).subscribe(({ status, data }) => {
+        LoginProvider.login(form).subscribe(({ status, data }) => {
             if(status === 200){
                 // Guardamos en el store al user
                 setAuthUser( data );
+
+                props.isLogin(data.user);
                 localStorage.setItem('user', JSON.stringify(data))
-                console.log('exito');
             } else {
                 console.log('error en el logueo');
             }
@@ -58,9 +60,7 @@ const Login = (props) => {
             email: '',
             password: ''
         })
-
         props.onHide();
-        history.push('/');
     }
 
     return ( 

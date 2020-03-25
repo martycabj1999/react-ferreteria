@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 //services
-import RegisterService from '../providers/RegisterProvider';
+import RegisterProvider from '../providers/RegisterProvider';
 
 const Register = (props) => {
 
@@ -35,7 +35,7 @@ const Register = (props) => {
         setError(false);
 
         // Loguearse
-        RegisterService.register(form).subscribe(({ status, data }) => {
+        RegisterProvider.register(form).subscribe(({ status, data }) => {
             if(status === 200){
                 console.log('exito');
             } else {

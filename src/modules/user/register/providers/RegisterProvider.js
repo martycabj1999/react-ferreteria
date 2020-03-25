@@ -1,6 +1,6 @@
 import * as http from '../../../../services/AxiosFactory';
 
-const RegisterService = {
+const RegisterProvider = {
     register: (form) => {
 
         const formData = new FormData();
@@ -16,4 +16,4 @@ const RegisterService = {
       }
 }
 
-export default RegisterService;
+export default RegisterProvider;
