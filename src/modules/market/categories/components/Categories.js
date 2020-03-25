@@ -8,6 +8,7 @@ import Error from "../../../layouts/Error";
 
 //services
 import CategoryService from '../providers/CategoryProvider';
+import { Link } from "react-router-dom";
 
 const Categories = () => {
 
@@ -23,18 +24,20 @@ const Categories = () => {
     }, []);
 
     const listCategories = categories.map((category) =>
-        <div
-            style={{ backgroundColor: currentColors.colorSecondary }}
-            key={category.id}
-            className='product'
-        >
-            <Image roundedCircle
-                width="100"
-                height="100"
-                src={logo}
-            />
-            <h6>{category.name}</h6>
-        </div>
+        <Link to={`/products-by-category/${category.id}`}>
+            <div
+                style={{ backgroundColor: currentColors.colorSecondary }}
+                key={category.id}
+                className='product'
+            >
+                <Image roundedCircle
+                    width="100"
+                    height="100"
+                    src={logo}
+                />
+                <h6>{category.name}</h6>
+            </div>
+        </Link>
     );
 
     return (
