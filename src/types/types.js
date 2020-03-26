@@ -20,4 +20,3 @@ export const HIDE_ALERT = 'HIDE_ALERT';
 
 export const SET_COLORS = "SET_COLORS";
 
-export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";

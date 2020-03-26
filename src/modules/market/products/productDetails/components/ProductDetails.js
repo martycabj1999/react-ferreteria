@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, Button, Carousel, Row, Col, Container } from "react-bootstrap";
 import '../styles/ProductDetails.css';
-import { useSelector } from 'react-redux';
 import FeaturedProducts from '../../featuredProducts/components/FeaturedProducts';
+import ProductService from '../../providers/ProductProvider';
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
 
-    const product = useSelector(state => state.products.productDetails);
+    const productId = (window.location.pathname).split('/')[2];
+    const [product, setProduct] = useState([]);
+    const [status, setStatus] = useState(0);
+
+    useEffect(() => {
+        async function fetchData() {
+          ProductService.getProductById(productId).subscribe(({ status, data }) => {
+            if (status === 200) {
+              setProduct(data)
+            }
+            setStatus(status);
+          });
+        }
+        fetchData();
+      }, []);
+
+      console.log(product);
 
     return (
         <div>
@@ -14,13 +30,13 @@ const ProductDetails = () => {
                     <Row style={{width: 'auto'}}>
                         <Col lg={3}>
                             <Carousel>
-                                {product.images.map((productImage) =>
+                                {/*product.images.map((productImage) =>
                                     <Carousel.Item key={productImage.image}>
                                         <Image
                                             src={productImage.image}
                                         />
                                     </Carousel.Item>
-                                )}
+                                )*/}
                             </Carousel>
                         </Col>
                         <Col>

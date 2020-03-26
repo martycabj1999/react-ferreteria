@@ -11,8 +11,7 @@ import {
     GET_PRODUCT_EDIT,
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
-    EDIT_PRODUCT_ERROR,
-    GET_PRODUCT_DETAILS
+    EDIT_PRODUCT_ERROR
 
 } from '../../../../types/types';
 
@@ -28,7 +27,6 @@ const initialState = {
     loading: false,
     productRemove: null,
     productEdit: null,
-    productDetails: productDetails ? productDetails : null,
 }
 
 export default function ( state = initialState, action ){
@@ -96,12 +94,6 @@ export default function ( state = initialState, action ){
                     product.id === action.payload.id ? product = action.payload : product
                 )
 
-            }
-        
-        case GET_PRODUCT_DETAILS:
-            return{
-                ...state,
-                productDetails: action.payload
             }
 
         default:

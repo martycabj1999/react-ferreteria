@@ -14,22 +14,20 @@ import {
     GET_PRODUCT_EDIT,
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
-    EDIT_PRODUCT_ERROR,
-    GET_PRODUCT_DETAILS
-
+    EDIT_PRODUCT_ERROR
 } from '../../../../types/types';
 
 // Crear nuevos productos
-export function newProductAction(product){
+export function newProductAction(product) {
     return async (dispatch) => {
-        dispatch( addProduct() );
+        dispatch(addProduct());
 
-        try{
+        try {
             // Inserto producto en la base de datos
             await ProductService.postProduct(product);
 
             //Si todo sale bien actualizo el state
-            dispatch( addProductSuccess(product) );
+            dispatch(addProductSuccess(product));
 
             // Alerta de exito
             Swal.fire(
@@ -38,10 +36,10 @@ export function newProductAction(product){
                 'success'
             )
 
-        }catch (error){
-                        
+        } catch (error) {
+
             // Si hay un error cambiar el state
-            dispatch( addProductError(true) );
+            dispatch(addProductError(true));
 
             // Mostrar el error
             //console.log(error);
@@ -73,18 +71,17 @@ const addProductError = state => ({
     payload: state
 })
 
-
 //Funcion que descarga los productos de la base de datos
-export function getProductsAction(){
+export function getProductsAction() {
     return async (dispatch) => {
-        dispatch( downloadProducts() );
-    
-        try{
-            await ProductService.getProducts().subscribe(({data}) => {
+        dispatch(downloadProducts());
+
+        try {
+            await ProductService.getProducts().subscribe(({ data }) => {
                 dispatch(downloadProductsSuccess(data));
             });
 
-        }catch (error){
+        } catch (error) {
             console.log(error);
             dispatch(downloadProductsError());
         }
@@ -108,11 +105,11 @@ const downloadProductsError = () => ({
 
 
 // Selecciona y elimina el producto
-export function removeProductAction(id){
+export function removeProductAction(id) {
     return async (dispatch) => {
         dispatch(getRemoveProduct(id));
 
-        try{
+        try {
             await ProductService.deleteProduct(id);
             dispatch(removeProductSuccess());
 
@@ -123,13 +120,13 @@ export function removeProductAction(id){
                 'succes'
             )
 
-        }catch{
+        } catch{
             dispatch(removeProductError());
         }
     }
 }
 
-const getRemoveProduct = id =>({
+const getRemoveProduct = id => ({
     type: GET_PRODUCT_REMOVE,
     payload: id
 });
@@ -145,8 +142,8 @@ const removeProductError = () => ({
 
 
 // Colocar producto en edicion
-export function getEditProductAction(product){
-    return(dispatch) => {
+export function getEditProductAction(product) {
+    return (dispatch) => {
         dispatch(getEditProduct(product))
     }
 }
@@ -158,14 +155,14 @@ const getEditProduct = product => ({
 
 
 // Edita un registro en la api y en el state
-export function editProductAction(product){
+export function editProductAction(product) {
     return async (dispatch) => {
         dispatch(editProduct(product));
 
-        try{
+        try {
             ProductService.putProduct(product);
             dispatch(editProductSuccess(product));
-        }catch{
+        } catch{
             dispatch(editProductError());
         }
     }
@@ -185,14 +182,7 @@ const editProductError = () => ({
     payload: true
 })
 
-// Producto para ver detalles
-export function getProductDetailsAction(product){
-    return(dispatch) => {
-        dispatch(getProductDetails(product))
-    }
-}
 
-const getProductDetails = product => ({
-    type: GET_PRODUCT_DETAILS,
-    payload: product
-})
+
+
+

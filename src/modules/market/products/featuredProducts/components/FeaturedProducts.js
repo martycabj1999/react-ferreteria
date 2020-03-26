@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "../styles/FeaturedProducts.css";
-import { useDispatch } from 'react-redux';
-//Redux
-import { getProductDetailsAction } from '../../store/ProductsAction';
 //services
 import ProductService from '../../providers/ProductProvider';
 
@@ -24,20 +21,10 @@ const FeaturedProducts = () => {
     }
     fetchData();
   }, []);
-
-  // Llamo al dispatch para llamar a la funcion de redux
-  const dispatch = useDispatch();
-   
-  const onClick = product => {
-    localStorage.setItem('productDetails', JSON.stringify(product))
-    dispatch(getProductDetailsAction(product));
-  }
-
   
   const listFeaturedProducts = products.map((product) =>
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/products/${product.id}`}>
       <div                 
-        onClick={ () => onClick(product)}
         key={product.id} 
         className='product'
       >

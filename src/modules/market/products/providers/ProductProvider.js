@@ -6,6 +6,10 @@ const ProductService = {
     //return http.get('products/' + productId );
   },
 
+  getProductById: (productId) => {
+    return http.get('products/' + productId );
+  },
+
   getProducts: () => {
     return http.get('admin/products');
   },

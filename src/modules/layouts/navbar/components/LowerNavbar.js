@@ -37,14 +37,9 @@ const LowerNavbar = () => {
             });
         }
         fetchData();
-        isLogin(auth);
+        //isLogin(auth);
     }, []);
     
-    const isLogin = (user) => {
-        if(user.id){
-            setIsLogued(true);
-        }
-    }  
 
     const logout = () => {
         setIsLogued(false);
@@ -115,7 +110,7 @@ const LowerNavbar = () => {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-                                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                                <LoginModal /*isLogin={isLogin}*/ showLogin={showLogin} hideLogin={handleCloseLogin}/>
                                 {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
                             </Nav.Item>
                             <Nav.Item>

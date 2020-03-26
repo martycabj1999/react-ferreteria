@@ -1,23 +1,12 @@
 import React from 'react';
 import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-//Redux
-import { getProductDetailsAction } from '../../store/ProductsAction';
+
 
 const Product = ({product}) => {
-
-    const dispatch = useDispatch();
-   
-    const onClick = () => {
-        localStorage.setItem('productDetails', JSON.stringify(product))
-        dispatch(getProductDetailsAction(product));
-    }
-
     return (
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/products/${product.id}`}>
             <div 
-                onClick={ () => onClick()}
                 style={{width: 'auto'}}
             >
                 <Image thumbnail style={{maxWidth:'200'}}
