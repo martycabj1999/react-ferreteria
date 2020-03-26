@@ -67,7 +67,7 @@ const LowerNavbar = () => {
   // const onClick = (category) => dispatch(getCategoryAction(category));
   const obtainCategories = (categories) => (
     categories.map((category) =>
-      <Link to={`/products-by-category/${category.id}`}>
+      <Link to={`/products-by-category/${category.id}`} onClick={() => localStorage.setItem('category', JSON.stringify(category))}>
         <Dropdown.Item key={category.id} as='a'>{category.name}</Dropdown.Item>
       </Link >
     )

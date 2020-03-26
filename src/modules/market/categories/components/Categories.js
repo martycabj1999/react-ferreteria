@@ -24,7 +24,7 @@ const Categories = () => {
     }, []);
 
     const listCategories = categories.map((category) =>
-        <Link to={`/products-by-category/${category.id}`}>
+        <Link to={`/products-by-category/${category.id}`} onClick={() => localStorage.setItem('category', JSON.stringify(category))}>
             <div
                 style={{ backgroundColor: currentColors.colorSecondary }}
                 key={category.id}

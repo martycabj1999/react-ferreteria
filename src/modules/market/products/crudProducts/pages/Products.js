@@ -7,6 +7,7 @@ import Product from '../components/Product';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsAction } from '../../store/ProductsAction';
+import Error from '../../../../layouts/Error';
 
 const Products = () => {
 
@@ -47,7 +48,7 @@ const Products = () => {
                         </thead>
                         <tbody>
                             {products.length === 0 ?
-                                <p className="font-weigth-bold alert alert-primary text-center mt-4"> No hay productos </p>
+                                <Error mensaje="No hay productos" />
                                 :
                                 products.map((product) => (
                                     <Product
