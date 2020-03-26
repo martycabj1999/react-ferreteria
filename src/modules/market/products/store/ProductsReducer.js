@@ -12,11 +12,7 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
-    GET_PRODUCT_DETAILS,
-    GET_CATEGORY,
-    START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID,
-    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR,
-    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS
+    GET_PRODUCT_DETAILS
 } from '../../../../types/types';
 
 //cada reducer tiene su propio state
@@ -29,9 +25,7 @@ const initialState = {
     loading: false,
     productRemove: null,
     productEdit: null,
-    productDetails: null,
-    productsByCategoryId: null,
-    category: null
+    productDetails: null
 }
 
 export default function (state = initialState, action) {
@@ -39,7 +33,6 @@ export default function (state = initialState, action) {
         case "SET_PRODUCT":
             return state;
 
-        case START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID:
         case START_DOWNLOAD_PRODUCTS:
         case ADD_PRODUCT:
             return {
@@ -54,7 +47,6 @@ export default function (state = initialState, action) {
                 products: action.payload
             }
 
-        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR:
         case DOWNLOAD_PRODUCTS_ERROR:
         case ADD_PRODUCT_ERROR:
         case REMOVE_PRODUCT_ERROR:
@@ -71,14 +63,6 @@ export default function (state = initialState, action) {
                 loading: false,
                 error: null,
                 products: action.payload
-            }
-
-        case DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                error: null,
-                productsByCategoryId: action.payload
             }
 
         case GET_PRODUCT_REMOVE:
@@ -115,12 +99,6 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 productDetails: action.payload
-            }
-
-        case GET_CATEGORY:
-            return {
-                ...state,
-                category: action.payload
             }
 
         default:

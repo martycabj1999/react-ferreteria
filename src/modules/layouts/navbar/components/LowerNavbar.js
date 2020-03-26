@@ -9,7 +9,6 @@ import '../styles/LowerNavbar.css';
 
 // Actions de Redux
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
-import { getCategoryAction } from '../../../market/products/store/ProductsAction';
 //services
 import CategoryService from '../../../market/categories/providers/CategoryProvider';
 
@@ -65,12 +64,11 @@ const LowerNavbar = () => {
     }
   ];
 
-  const onClick = (category) => dispatch(getCategoryAction(category));
-
+  // const onClick = (category) => dispatch(getCategoryAction(category));
   const obtainCategories = (categories) => (
     categories.map((category) =>
       <Link to={`/products-by-category/${category.id}`}>
-        <Dropdown.Item key={category.id} as='a' onClick={() => onClick(category)}>{category.name}</Dropdown.Item>
+        <Dropdown.Item key={category.id} as='a'>{category.name}</Dropdown.Item>
       </Link >
     )
   );

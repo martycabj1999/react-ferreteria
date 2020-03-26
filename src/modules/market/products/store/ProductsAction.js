@@ -15,11 +15,7 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
-    GET_PRODUCT_DETAILS,
-    GET_CATEGORY,
-    START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID,
-    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS,
-    DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR
+    GET_PRODUCT_DETAILS
 } from '../../../../types/types';
 
 // Crear nuevos productos
@@ -197,47 +193,3 @@ const getProductDetails = product => ({
     type: GET_PRODUCT_DETAILS,
     payload: product
 })
-
-// Trae la categoria para mostrar todos los productos que hay en tal categoria
-export function getCategoryAction(category) {
-    return (dispatch) => {
-        dispatch(getCategory(category))
-    }
-}
-
-const getCategory = category => ({
-    type: GET_CATEGORY,
-    payload: category
-})
-
-//Funcion que descarga los productos de la base de datos por id de la categoria
-export function getProductsByCategoryIdAction(category_id) {
-    return async (dispatch) => {
-        dispatch(downloadProductsByCategoryId());
-
-        try {
-            ProductService.getProductsByCategoryId(category_id).subscribe(({ data }) => {
-                dispatch(downloadProductsByCategoryIdSuccess(data));
-            });
-
-        } catch (error) {
-            console.log(error);
-            dispatch(downloadProductsByCategoryIdError());
-        }
-    }
-}
-
-const downloadProductsByCategoryId = () => ({
-    type: START_DOWNLOAD_PRODUCTS_BY_CATEGORY_ID,
-    payload: true
-});
-
-const downloadProductsByCategoryIdSuccess = products => ({
-    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_SUCCESS,
-    payload: products
-});
-
-const downloadProductsByCategoryIdError = () => ({
-    type: DOWNLOAD_PRODUCTS_BY_CATEGORY_ID_ERROR,
-    payload: true
-});
