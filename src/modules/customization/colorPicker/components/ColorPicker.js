@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import SaveIcon from '@material-ui/icons/Save';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, CardContent, Dialog, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialPicker, ChromePicker } from 'react-color';
+import SaveIcon from '@material-ui/icons/Save';
+import Language from '../../language/components/Language';
 
+//Provider
+import CustomizationProvider from '../../provider/CustomizationProvider';
 
 //Action de redux 
 import { setColorsAction } from '../store/ColorPickerActions';
-
 
 const ColorPicker = () => {
 
@@ -29,6 +31,8 @@ const ColorPicker = () => {
     //utilizar useDispatch y te crea una funcion
     const dispatch = useDispatch();
 
+    const messages = useSelector(state => state.languages.messages);
+    const user = useSelector(state => state.security.user);
     const currentColors = useSelector(state => state.customization.colors);
 
     const classes = useStyles();
@@ -87,171 +91,185 @@ const ColorPicker = () => {
         // Mando colors al local storage y a redux
         localStorage.setItem('colors', JSON.stringify(colorPicker))
         dispatch(setColorsAction(colorPicker));
+        return CustomizationProvider.updateColors(colorPicker);
     }
 
     return ( 
-        <Grid className={classes.control} container justify="center" spacing={2} item xs={12} lg={12}>
-            <Grid className={classes.control} item xs={5} lg={5}>
-                <Card variant="outlined" className={classes.root}>
-                    <CardContent>
-                        <Grid className={classes.control} item xs={10} lg={10}>
-                            <Grid container justify="center" spacing={4}>
-                                <Grid className={classes.text} xs={2} lg={2} >
-                                    <br/><br/><br/>
-                                    <span>color_primary</span>
+        <Card variant="outlined" className={classes.box}>
+            <CardContent>
+                <Grid className={classes.control} container justify="center" spacing={2} item xs={12} lg={12}>
+                    <Grid className={classes.control} item xs={5} lg={5}>
+                        <Card variant="outlined" className={classes.root}>
+                            <CardContent>
+                                <Grid className={classes.control} item xs={10} lg={10}>
+                                    <Grid container justify="center" spacing={4}>
+                                        <Grid className={classes.text} xs={2} lg={2} >
+                                            <br/><br/><br/>
+                                            <span>{messages.color_primary}</span>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <div style={{
+                                                backgroundColor: colorPrimary,
+                                                height: 130,
+                                                width: 130,
+                                                transition: 'ease all 500ms'
+                                            }}>
+                                            </div>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <MaterialPicker 
+                                                color={colorPrimary} 
+                                                onChangeComplete={(colorPrimary) => {onChangeColorPrimary(colorPrimary.hex)}} 
+                                            />
+                                        </Grid>
+                                        <Grid xs={2} lg={2} item>
+                                            <br/><br/><br/>
+                                            <Button variant="contained" color="primary" onClick={openColorPrimary} >{messages.color_picker_change}</Button>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <div style={{
-                                        backgroundColor: colorPrimary,
-                                        height: 130,
-                                        width: 130,
-                                        transition: 'ease all 500ms'
-                                    }}>
-                                    </div>
+                            </CardContent>
+                        </Card>
+                        <br/>
+                        <Card variant="outlined" className={classes.root}>
+                            <CardContent>
+                                <Grid className={classes.control} item xs={10} lg={10}>
+                                    <Grid container justify="center" spacing={5}>
+                                        <Grid className={classes.text} xs={2} lg={2} >
+                                            <br/><br/><br/>
+                                            <span>{messages.color_secondary}</span>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <div style={{
+                                                backgroundColor: colorSecondary,
+                                                height: 130,
+                                                width: 130,
+                                                transition: 'ease all 500ms'
+                                            }}>
+                                            </div>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <MaterialPicker 
+                                                color={colorSecondary} 
+                                                onChangeComplete={(colorSecondary) => {onChangeColorSecondary(colorSecondary.hex)}} 
+                                            />
+                                        </Grid>
+                                        <Grid xs={2} lg={2} item>
+                                            <br/><br/><br/>
+                                            <Button variant="contained" color="primary" onClick={openColorSecondary} >{messages.color_picker_change}</Button>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <MaterialPicker 
-                                        color={colorPrimary} 
-                                        onChangeComplete={(colorPrimary) => {onChangeColorPrimary(colorPrimary.hex)}} 
-                                    />
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid className={classes.control} item xs={5} lg={5}>
+                        <Card variant="outlined" className={classes.root}>
+                            <CardContent>
+                                <Grid className={classes.control} item xs={10} lg={10}>
+                                    <Grid container justify="center" spacing={4}>
+                                        <Grid className={classes.text} xs={2} lg={2} >
+                                            <br/><br/><br/>
+                                            <span>{messages.text_primary}</span>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <div style={{
+                                                backgroundColor: textPrimary,
+                                                height: 130,
+                                                width: 130,
+                                                transition: 'ease all 500ms'
+                                            }}>
+                                            </div>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <MaterialPicker 
+                                                color={textPrimary} 
+                                                onChangeComplete={(textPrimary) => {onChangeTextPrimary(textPrimary.hex)}} 
+                                            />
+                                        </Grid>
+                                        <Grid xs={2} lg={2} item>
+                                            <br/><br/><br/>
+                                            <Button variant="contained" color="primary" onClick={openTextPrimary} >{messages.color_picker_change}</Button>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={2} lg={2} item>
-                                    <br/><br/><br/>
-                                    <Button variant="contained" color="primary" onClick={openColorPrimary} >Cambiar</Button>
+                            </CardContent>
+                        </Card>
+                        <br/>
+                        <Card variant="outlined" className={classes.root}>
+                            <CardContent>
+                                <Grid className={classes.control} item xs={10} lg={10} >
+                                    <Grid container justify="center" spacing={4}>
+                                        <Grid className={classes.text} xs={2} lg={2} >
+                                            <br/><br/><br/>
+                                            <span>{messages.text_secondary}</span>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <div style={{
+                                                backgroundColor: textSecondary,
+                                                height: 130,
+                                                width: 130,
+                                                transition: 'ease all 500ms'
+                                            }}>
+                                            </div>
+                                        </Grid>
+                                        <Grid xs={4} lg={4} item>
+                                            <MaterialPicker 
+                                                color={textSecondary} 
+                                                onChangeComplete={(textSecondary) => {onChangeTextSecondary(textSecondary.hex)}} 
+                                            />
+                                        </Grid>
+                                        <Grid xs={2} lg={2} item>
+                                            <br/><br/><br/>
+                                            <Button variant="contained" color="primary" onClick={openTextSecondary} >{messages.color_picker_change}</Button>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Dialog open={showColorPrimary} onClose={openColorPrimary} aria-labelledby="form-dialog-title">
+                        <ChromePicker 
+                            color={colorPrimary} 
+                            onChangeComplete={(colorPrimary) => {onChangeColorPrimary(colorPrimary.hex)}} 
+                        />
+                    </Dialog>            
+                    <Dialog open={showColorSecondary} onClose={openColorSecondary} aria-labelledby="form-dialog-title">
+                        <ChromePicker 
+                            color={colorSecondary} 
+                            onChangeComplete={(colorSecondary) => {onChangeColorSecondary(colorSecondary.hex)}} 
+                        />
+                    </Dialog>            
+                    <Dialog open={showTextPrimary} onClose={openTextPrimary} aria-labelledby="form-dialog-title">
+                        <ChromePicker 
+                            color={textPrimary} 
+                            onChangeComplete={(textPrimary) => {onChangeTextPrimary(textPrimary.hex)}} 
+                        />
+                    </Dialog>            
+                    <Dialog open={showTextSecondary} onClose={openTextSecondary} aria-labelledby="form-dialog-title">
+                        <ChromePicker 
+                            color={textSecondary} 
+                            onChangeComplete={(textSecondary) => {onChangeTextSecondary(textSecondary.hex)}} 
+                        />
+                    </Dialog>            
+                    <Grid className={classes.control} container justify="center" spacing={2} item xs={8} lg={8}>
+                        <Card variant="outlined" className={classes.root}>
+                            <CardContent>
+                                <Grid className={classes.control} item xs={5} lg={6}>
+                                    <Language />
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                        <Grid className={classes.control} align="right" item xs={5} lg={6}>
+                            <br/><br/><br/>
+                            <Button startIcon={<SaveIcon />} align="center" variant="contained" onClick={onClick} color="primary">
+                                {messages.color_picker_save}
+                            </Button>
                         </Grid>
-                    </CardContent>
-                </Card>
-                <br/>
-                <Card variant="outlined" className={classes.root}>
-                    <CardContent>
-                        <Grid className={classes.control} item xs={10} lg={10}>
-                            <Grid container justify="center" spacing={5}>
-                                <Grid className={classes.text} xs={2} lg={2} >
-                                    <br/><br/><br/>
-                                    <span>color_secondary</span>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <div style={{
-                                        backgroundColor: colorSecondary,
-                                        height: 130,
-                                        width: 130,
-                                        transition: 'ease all 500ms'
-                                    }}>
-                                    </div>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <MaterialPicker 
-                                        color={colorSecondary} 
-                                        onChangeComplete={(colorSecondary) => {onChangeColorSecondary(colorSecondary.hex)}} 
-                                    />
-                                </Grid>
-                                <Grid xs={2} lg={2} item>
-                                    <br/><br/><br/>
-                                    <Button variant="contained" color="primary" onClick={openColorSecondary} >Cambiar</Button>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
-            </Grid>
-            <Grid className={classes.control} item xs={5} lg={5}>
-                <Card variant="outlined" className={classes.root}>
-                    <CardContent>
-                        <Grid className={classes.control} item xs={10} lg={10}>
-                            <Grid container justify="center" spacing={4}>
-                                <Grid className={classes.text} xs={2} lg={2} >
-                                    <br/><br/><br/>
-                                    <span>text_primary</span>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <div style={{
-                                        backgroundColor: textPrimary,
-                                        height: 130,
-                                        width: 130,
-                                        transition: 'ease all 500ms'
-                                    }}>
-                                    </div>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <MaterialPicker 
-                                        color={textPrimary} 
-                                        onChangeComplete={(textPrimary) => {onChangeTextPrimary(textPrimary.hex)}} 
-                                    />
-                                </Grid>
-                                <Grid xs={2} lg={2} item>
-                                    <br/><br/><br/>
-                                    <Button variant="contained" color="primary" onClick={openTextPrimary} >Cambiar</Button>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
-                <br/>
-                <Card variant="outlined" className={classes.root}>
-                    <CardContent>
-                        <Grid className={classes.control} item xs={10} lg={10} >
-                            <Grid container justify="center" spacing={4}>
-                                <Grid className={classes.text} xs={2} lg={2} >
-                                    <br/><br/><br/>
-                                    <span>text_secondary</span>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <div style={{
-                                        backgroundColor: textSecondary,
-                                        height: 130,
-                                        width: 130,
-                                        transition: 'ease all 500ms'
-                                    }}>
-                                    </div>
-                                </Grid>
-                                <Grid xs={4} lg={4} item>
-                                    <MaterialPicker 
-                                        color={textSecondary} 
-                                        onChangeComplete={(textSecondary) => {onChangeTextSecondary(textSecondary.hex)}} 
-                                    />
-                                </Grid>
-                                <Grid xs={2} lg={2} item>
-                                    <br/><br/><br/>
-                                    <Button variant="contained" color="primary" onClick={openTextSecondary} >Cambiar</Button>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
-            </Grid>
-            <Dialog open={showColorPrimary} onClose={openColorPrimary} aria-labelledby="form-dialog-title">
-                <ChromePicker 
-                    color={colorPrimary} 
-                    onChangeComplete={(colorPrimary) => {onChangeColorPrimary(colorPrimary.hex)}} 
-                />
-            </Dialog>            
-            <Dialog open={showColorSecondary} onClose={openColorSecondary} aria-labelledby="form-dialog-title">
-                <ChromePicker 
-                    color={colorSecondary} 
-                    onChangeComplete={(colorSecondary) => {onChangeColorSecondary(colorSecondary.hex)}} 
-                />
-            </Dialog>            
-            <Dialog open={showTextPrimary} onClose={openTextPrimary} aria-labelledby="form-dialog-title">
-                <ChromePicker 
-                    color={textPrimary} 
-                    onChangeComplete={(textPrimary) => {onChangeTextPrimary(textPrimary.hex)}} 
-                />
-            </Dialog>            
-            <Dialog open={showTextSecondary} onClose={openTextSecondary} aria-labelledby="form-dialog-title">
-                <ChromePicker 
-                    color={textSecondary} 
-                    onChangeComplete={(textSecondary) => {onChangeTextSecondary(textSecondary.hex)}} 
-                />
-            </Dialog>            
-  
-            <Grid className={classes.control} item xs={5} lg={6}>
-                <Button startIcon={<SaveIcon />} align="center" variant="contained" onClick={onClick} color="primary">
-                    Guardar configuración
-                </Button>
-            </Grid>
-        </Grid>
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
     );
 }
  

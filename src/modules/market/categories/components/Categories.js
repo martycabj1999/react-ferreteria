@@ -26,8 +26,8 @@ const Categories = () => {
             backgroundColor: currentColors.colorSecondary
             }} key={category.id} className='product'>
             <Image roundedCircle
-                width="100"
-                height="100"
+                width="150"
+                height="150"
                 src={logo}
             />
             <h6>{category.name}</h6>
@@ -37,17 +37,16 @@ const Categories = () => {
     const noCategories = <div className='alert alert-danger text-center mt-4'>No hay categorias por el momento</div>
 
     return (
-        <div>
-            <Typography style={{color: currentColors.textSecondary}}/>
+        <div style={{backgroundColor: currentColors.colorSecondary}}>
             <div 
                 style={{backgroundColor: currentColors.colorSecondary}} 
                 className="categories-container"
             >
                 <div className="tittle">
-                    <h4>Categorias destacadas</h4>
+                    <h4 style={{color: currentColors.textSecondary}}>Categorias destacadas</h4>
                 </div>
 
-                <div className='scroll'>
+                <div style={{backgroundColor: currentColors.colorSecondary}}  className='scroll'>
                     {listCategories ? listCategories : noCategories}
                 </div>
             </div>

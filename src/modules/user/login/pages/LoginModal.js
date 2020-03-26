@@ -10,7 +10,7 @@ const LoginModal = (props) => {
                     <Modal.Title>Bienvenido</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Login show={props.showLogin} onHide={props.hideLogin} />
+                    <Login isLogin={props.isLogin} show={props.showLogin} onHide={props.hideLogin} />
                 </Modal.Body>
             </Modal>
         </div>

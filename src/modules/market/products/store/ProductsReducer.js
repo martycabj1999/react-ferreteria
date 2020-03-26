@@ -19,6 +19,7 @@ import {
 //cada reducer tiene su propio state
 
 const allProducts = JSON.parse(localStorage.getItem('products'));
+const productDetails = JSON.parse(localStorage.getItem('productDetails'));
 
 const initialState = {
 
@@ -27,7 +28,7 @@ const initialState = {
     loading: false,
     productRemove: null,
     productEdit: null,
-    productDetails: null,
+    productDetails: productDetails ? productDetails : null,
 }
 
 export default function ( state = initialState, action ){
