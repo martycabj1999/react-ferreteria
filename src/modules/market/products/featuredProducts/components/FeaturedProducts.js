@@ -29,7 +29,8 @@ const FeaturedProducts = () => {
   const dispatch = useDispatch();
    
   const onClick = product => {
-      dispatch(getProductDetailsAction(product));
+    localStorage.setItem('productDetails', JSON.stringify(product))
+    dispatch(getProductDetailsAction(product));
   }
 
   

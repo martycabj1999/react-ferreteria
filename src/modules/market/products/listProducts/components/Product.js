@@ -10,6 +10,7 @@ const Product = ({product}) => {
     const dispatch = useDispatch();
    
     const onClick = () => {
+        localStorage.setItem('productDetails', JSON.stringify(product))
         dispatch(getProductDetailsAction(product));
     }
 
