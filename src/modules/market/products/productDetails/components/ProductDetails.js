@@ -47,9 +47,9 @@ const ProductDetails = (props) => {
                         </Col>
                     </Row>
             </Container>
-            <Row>
+            <Col>
                 <FeaturedProducts />
-            </Row>
+            </Col>
         </div>
 
     )

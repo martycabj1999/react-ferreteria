@@ -35,7 +35,7 @@ function App() {
               <PrivateRoute exact path='/cart' component={Cart} />
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
-              <Route exact path='/customization' component={ColorPicker} />
+              <PrivateRoute exact path='/customization' component={ColorPicker} />
               <Route exact path='/crud-products' component={Products} />
               <Route exact path='/product/:id' component={ProductDetails} />
 
