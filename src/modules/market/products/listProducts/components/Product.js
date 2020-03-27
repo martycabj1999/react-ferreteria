@@ -1,26 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { object } from 'prop-types';
 
-//Redux
-import { getProductDetailsAction } from '../../store/ProductsAction';
-
-const Product = ({product}) => {
-
-    const dispatch = useDispatch();
-
-    const onClick = () => {
-        dispatch(getProductDetailsAction(product));
-    }
+const Product = ({ product }) => {
 
     return (
         <Link to={`/product/${product.id}`}>
-            <div
-                onClick={() => onClick()}
-                style={{ width: 'auto' }}
-            >
+            <div style={{ width: 'auto' }}>
                 <Image thumbnail style={{ maxWidth: '200' }}
                     src={product.image}
                 />
@@ -34,7 +21,7 @@ const Product = ({product}) => {
 
 // PropTypes
 Product.propTypes = {
-    product: PropTypes.object.isRequired
+    product: object.isRequired
 }
 
 export default Product;

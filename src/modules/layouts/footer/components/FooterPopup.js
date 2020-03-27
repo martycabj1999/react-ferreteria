@@ -1,7 +1,10 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const FooterPopup = (props) => {
+
+    const messages = useSelector(state => state.languages.messages);
 
     return(
         <Modal
@@ -81,7 +84,7 @@ const FooterPopup = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={props.onHide} variant="outline-secondary">Close</Button>
+                <Button onClick={props.onHide} variant="outline-secondary">{messages['footer_pop_up_close']}</Button>
             </Modal.Footer>
 
         </Modal>

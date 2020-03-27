@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Image, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import "../styles/FeaturedProducts.css";
 import Error from "../../../../layouts/Error";
 
@@ -24,14 +25,19 @@ const FeaturedProducts = () => {
   }, []);
   
   const listFeaturedProducts = products.map((product) =>
-    <div key={product.id} className='product'>
-      <Image thumbnail
-        src={product.image}
-      />
-      <h2>Producto: {product.name}</h2>
-      <h4>Precio: ${product.price}</h4>
-      <Button variant="dark">Comprar</Button>
-    </div>
+    <Link to={`/product/${product.id}`}>
+      <div                 
+        key={product.id} 
+        className='product'
+      >
+        <Image thumbnail
+          src={product.image}
+        />
+        <h2>Producto: {product.name}</h2>
+        <h4>Precio: ${product.price}</h4>
+        <Button variant="dark">Comprar</Button>
+      </div>
+    </Link>
   );
 
   return (

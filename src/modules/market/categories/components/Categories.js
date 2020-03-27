@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { Image } from "react-bootstrap";
 import "../styles/categories.css";
 import { useSelector } from 'react-redux';
-import Typography from '@material-ui/core/Typography'
 import logo from '../../../../assets/carretilla.png'
 import Error from "../../../layouts/Error";
 
@@ -13,7 +12,6 @@ import { Link } from "react-router-dom";
 const Categories = () => {
 
   const currentColors = useSelector(state => state.customization.colors);
-
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -25,14 +23,12 @@ const Categories = () => {
 
   const listCategories = categories.map((category) =>
     <Link to={`/products-by-category/${category.id}`}>
-      <div
-        style={{ backgroundColor: currentColors.colorSecondary }}
-        key={category.id}
-        className='product'
-      >
+      <div style={{
+        backgroundColor: currentColors.colorSecondary
+      }} key={category.id} className='product'>
         <Image roundedCircle
-          width="100"
-          height="100"
+          width="150"
+          height="150"
           src={logo}
         />
         <h6>{category.name}</h6>
@@ -41,17 +37,15 @@ const Categories = () => {
   );
 
   return (
-    <div>
-      <Typography style={{ color: currentColors.textSecondary }} />
+    <div style={{ backgroundColor: currentColors.colorSecondary }}>
       <div
         style={{ backgroundColor: currentColors.colorSecondary }}
         className="categories-container"
       >
         <div className="tittle">
-          <h4>Categorias destacadas</h4>
+          <h4 style={{ color: currentColors.textSecondary }}>Categorias destacadas</h4>
         </div>
-
-        <div className='scroll'>
+        <div style={{ backgroundColor: currentColors.colorSecondary }} className='scroll'>
           {listCategories ? listCategories : <Error mensaje="No hay categorias por el momento" />}
         </div>
       </div>

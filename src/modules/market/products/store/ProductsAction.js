@@ -14,8 +14,7 @@ import {
     GET_PRODUCT_EDIT,
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
-    EDIT_PRODUCT_ERROR,
-    GET_PRODUCT_DETAILS
+    EDIT_PRODUCT_ERROR
 } from '../../../../types/types';
 
 // Crear nuevos productos
@@ -182,14 +181,7 @@ const editProductError = () => ({
     payload: true
 })
 
-// Producto para ver detalles
-export function getProductDetailsAction(product) {
-    return (dispatch) => {
-        dispatch(getProductDetails(product))
-    }
-}
 
-const getProductDetails = product => ({
-    type: GET_PRODUCT_DETAILS,
-    payload: product
-})
+
+
+

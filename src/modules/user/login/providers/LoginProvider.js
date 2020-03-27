@@ -1,6 +1,6 @@
 import * as http from '../../../../services/AxiosFactory';
 
-const LoginService = {
+const LoginProvider = {
   login: (form) => {
     
     const formData = new FormData();
@@ -12,4 +12,4 @@ const LoginService = {
   }
 }
 
-export default LoginService;
+export default LoginProvider;

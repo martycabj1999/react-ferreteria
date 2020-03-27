@@ -6,29 +6,28 @@ import Error from '../../../../layouts/Error';
 import ProductService from '../../providers/ProductProvider';
 import CategoryService from '../../../categories/providers/CategoryProvider';
 
-const ProductsByCategory = () => {
+const ProductsByCategory = (props) => {
 
   // Obtener el id de la categoria desde la url
-  const category_id = (window.location.pathname).split('/')[2];
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      ProductService.getProductsByCategoryId(category_id).subscribe(({ status, data }) => {
+      const categoryId = (window.location.pathname).split('/')[2];
+      ProductService.getProductsByCategoryId(categoryId).subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data);
         }
       });
-      CategoryService.getCategoryById(category_id).subscribe(({ status, data }) => {
+      CategoryService.getCategoryById(categoryId).subscribe(({ status, data }) => {
         if (status === 200) {
           setCategory(data);
         }
-        console.log(category);
       });
     }
     fetchData();
-  }, [category_id, setProducts, setCategory]);
+  }, [props.location.pathname, setProducts, setCategory]);
 
   const listProducts = products.map((product) =>
     <div
