@@ -37,15 +37,19 @@ const LowerNavbar = () => {
             });
         }
         fetchData();
-        //isLogin(auth);
     }, []);
     
+
 
     const logout = () => {
         setIsLogued(false);
         setAuthUser({});
         localStorage.removeItem('user');
     }
+
+    const isLogin = () => {
+        setIsLogued(true);
+    }  
 
     /* Listas de ejemplo */
     // Marcas
@@ -110,7 +114,7 @@ const LowerNavbar = () => {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-                                <LoginModal /*isLogin={isLogin}*/ showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
                                 {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
                             </Nav.Item>
                             <Nav.Item>

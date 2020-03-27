@@ -6,23 +6,20 @@ import ProductService from '../../providers/ProductProvider';
 
 const ProductDetails = (props) => {
 
-    const productId = (window.location.pathname).split('/')[2];
     const [product, setProduct] = useState([]);
-    const [status, setStatus] = useState(0);
 
     useEffect(() => {
         async function fetchData() {
-          ProductService.getProductById(productId).subscribe(({ status, data }) => {
+            const productId = (window.location.pathname).split('/')[2]
+            ProductService.getProductById(productId).subscribe(({ status, data }) => {
             if (status === 200) {
               setProduct(data)
             }
-            setStatus(status);
           });
         }
         fetchData();
-      }, []);
-
-      console.log(product);
+    }, [props.location.pathname]);
+    
 
     return (
         <div>

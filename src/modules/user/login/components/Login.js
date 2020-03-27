@@ -49,7 +49,7 @@ const Login = (props) => {
                 // Guardamos en el store al user
                 setAuthUser( data );
 
-                props.isLogin(data.user);
+                props.isLogin();
                 localStorage.setItem('user', JSON.stringify(data))
             } else {
                 console.log('error en el logueo');

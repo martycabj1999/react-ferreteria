@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 const Product = ({product}) => {
+
     return (
         <Link to={`/products/${product.id}`}>
-            <div 
-                style={{width: 'auto'}}
-            >
+            <div style={{width: 'auto'}}>
                 <Image thumbnail style={{maxWidth:'200'}}
                     src={product.image}
                 />
