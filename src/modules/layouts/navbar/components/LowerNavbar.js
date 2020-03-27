@@ -36,10 +36,12 @@ const LowerNavbar = () => {
                 }
             });
         }
+        if(auth.id){
+            setIsLogued(true);
+        }
         fetchData();
     }, []);
     
-
 
     const logout = () => {
         setIsLogued(false);

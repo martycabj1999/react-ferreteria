@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-
 // Actions de Redux
 import { setAuthUserAction } from '../store/AuthAction';
 //services
@@ -19,8 +16,6 @@ const Login = (props) => {
 
     // Utilizar use dispatch
     const dispatch = useDispatch();
-    const history = useHistory();
-
     // Mandar a llamar el action de productoAction
     const setAuthUser = user => dispatch( setAuthUserAction(user) );
 
