@@ -2,11 +2,10 @@ import React from 'react';
 import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-
 const Product = ({product}) => {
 
     return (
-        <Link to={`/products/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
             <div style={{width: 'auto'}}>
                 <Image thumbnail style={{maxWidth:'200'}}
                     src={product.image}

@@ -37,7 +37,7 @@ function App() {
               <Route exact path='/edit/:id' component={EditProduct} />
               <Route exact path='/customization' component={ColorPicker} />
               <Route exact path='/crud-products' component={Products} />
-              <Route exact path='/products/:id' component={ProductDetails} />
+              <Route exact path='/product/:id' component={ProductDetails} />
 
               <Route component={NotFound} />       
             </Switch>

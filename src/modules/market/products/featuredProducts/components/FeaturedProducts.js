@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
   }, []);
   
   const listFeaturedProducts = products.map((product) =>
-    <Link to={`/products/${product.id}`}>
+    <Link to={`/product/${product.id}`}>
       <div                 
         key={product.id} 
         className='product'

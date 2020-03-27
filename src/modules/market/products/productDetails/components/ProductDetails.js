@@ -7,6 +7,7 @@ import ProductService from '../../providers/ProductProvider';
 const ProductDetails = (props) => {
 
     const [product, setProduct] = useState([]);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -14,29 +15,31 @@ const ProductDetails = (props) => {
             ProductService.getProductById(productId).subscribe(({ status, data }) => {
             if (status === 200) {
               setProduct(data)
+              setImages(data.images)
             }
           });
         }
         fetchData();
     }, [props.location.pathname]);
-    
 
     return (
         <div>
             <Container>
                     <Row style={{width: 'auto'}}>
                         <Col lg={3}>
-                            <Carousel>
-                                {/*product.images.map((productImage) =>
+                            <Carousel >
+                                { images.map((productImage) =>
                                     <Carousel.Item key={productImage.image}>
                                         <Image
+                                            width="250" 
+                                            height="250"
                                             src={productImage.image}
                                         />
-                                    </Carousel.Item>
-                                )*/}
-                            </Carousel>
+                                    </Carousel.Item>) 
+                                }
+                            </Carousel> 
                         </Col>
-                        <Col>
+                        <Col lg={8}>
                             <h3>Producto: {product.name}</h3>
                             <h3>Precio: $ {product.price}</h3>
                             <h5>Descripción: {product.long_description}</h5>
