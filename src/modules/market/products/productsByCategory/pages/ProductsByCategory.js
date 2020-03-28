@@ -4,8 +4,8 @@ import { Container } from 'react-bootstrap';
 import Product from '../../productsByCategory/components/Product';
 import '../../listProducts/styles/ListProducts.css';
 import Error from '../../../../layouts/Error';
-import ProductService from '../../providers/ProductProvider';
-import CategoryService from '../../../categories/providers/CategoryProvider';
+import ProductProvider from '../../providers/ProductProvider';
+import CategoryProvider from '../../../categories/providers/CategoryProvider';
 
 const ProductsByCategory = (props) => {
 
@@ -17,12 +17,12 @@ const ProductsByCategory = (props) => {
   useEffect(() => {
     async function fetchData() {
       const categoryId = (window.location.pathname).split('/')[2];
-      ProductService.getProductsByCategoryId(categoryId).subscribe(({ status, data }) => {
+      ProductProvider.getProductsByCategoryId(categoryId).subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data);
         }
       });
-      CategoryService.getCategoryById(categoryId).subscribe(({ status, data }) => {
+      CategoryProvider.getCategoryById(categoryId).subscribe(({ status, data }) => {
         if (status === 200) {
           setCategory(data);
         }

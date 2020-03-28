@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import '../styles/UpperNavbar.css';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 import logo from '../../../../assets/carrito.png';
+import SearchProvider from '../providers/SearchProvider';
 
 
 const UpperNavbar = () => {
 
     const messages = useSelector(state => state.languages.messages);  
     const currentColors = useSelector(state => state.customization.colors);  
+
+    const [search, setSearch] = useState('');
+    const [products, setProducts] = useState([]);
+
+    const onChangeSearch = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const onSubmitSearch = (e) => {
+        e.preventDefault();
+        SearchProvider.getSearch(search).subscribe(({ status, data }) => {
+            if (status === 200){
+                console.log(data);
+                setProducts(data);
+            }
+        });
+    }
 
     return (
         <div>
@@ -37,12 +55,16 @@ const UpperNavbar = () => {
                                     <FormControl
                                         id="search"
                                         type="search"
+                                        name="search"
+                                        onChange={ e => onChangeSearch(e) }
                                         placeholder={messages['upper_navbar_placeholder_search']}
                                     />
                                     <InputGroup.Append>
                                         <Button
                                             className="input-group-text btn btn-outline-primary"
-                                            type="sumbit">
+                                            type="sumbit"
+                                            onClick={ e => onSubmitSearch(e) }
+                                        >
                                             {messages['upper_navbar_search']}
                                         </Button>
                                     </InputGroup.Append>

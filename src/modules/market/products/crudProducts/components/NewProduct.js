@@ -7,8 +7,8 @@ import { newProductAction } from '../../store/ProductsAction';
 import { showAlertAction, hideAlertAction } from '../../store/AlertAction';
 
 //Service
-import ProductService from '../../providers/ProductProvider';
-import CategoryService from '../../../categories/providers/CategoryProvider';
+import ProductProvider from '../../providers/ProductProvider';
+import CategoryProvider from '../../../categories/providers/CategoryProvider';
 
 
 const NewProduct = () => {
@@ -63,7 +63,7 @@ const NewProduct = () => {
         addProduct(product);
 
         // Mandar el producto a la base de datos
-        ProductService.postProduct(product);
+        ProductProvider.createProduct(product);
 
         //Limpiar inputs
         setProduct({
@@ -87,7 +87,7 @@ const NewProduct = () => {
 
     useEffect(() => {
         async function fetchData(){
-            await CategoryService.getCategories().subscribe(({ status, data }) => {
+            await CategoryProvider.getCategories().subscribe(({ status, data }) => {
                 setCategories(data);
             });
         }

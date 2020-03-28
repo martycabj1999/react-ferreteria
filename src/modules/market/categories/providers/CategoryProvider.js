@@ -1,6 +1,6 @@
 import * as http from '../../../../services/AxiosFactory';
 
-const CategoryService = {
+const CategoryProvider = {
 
   getCategories: () => {
     return http.get('categories');
@@ -11,4 +11,4 @@ const CategoryService = {
   }
 }
 
-export default CategoryService;
+export default CategoryProvider;

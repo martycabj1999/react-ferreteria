@@ -1,6 +1,6 @@
 import * as http from '../../../../services/AxiosFactory';
 
-const ProductService = {
+const ProductProvider = {
 
   getById: (productId) => {
     //return http.get('products/' + productId );
@@ -22,7 +22,7 @@ const ProductService = {
     return http.get('/products-by-category/' + category_id);
   },
 
-  postProduct: (product) => {
+  createProduct: (product) => {
 
     const productData = new FormData();
     productData.append('name', product.name);
@@ -34,7 +34,7 @@ const ProductService = {
     return http.post('admin/products', productData);
   },
 
-  putProduct: (product) => {
+  editProduct: (product) => {
 
     const productData = new FormData();
     productData.append('name', product.name);
@@ -56,4 +56,4 @@ const ProductService = {
 
 }
 
-export default ProductService;
+export default ProductProvider;

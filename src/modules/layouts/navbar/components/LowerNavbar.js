@@ -10,7 +10,7 @@ import '../styles/LowerNavbar.css';
 // Actions de Redux
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
 //services
-import CategoryService from '../../../market/categories/providers/CategoryProvider';
+import CategoryProvider from '../../../market/categories/providers/CategoryProvider';
 
 const LowerNavbar = () => {
 
@@ -26,7 +26,7 @@ const LowerNavbar = () => {
 
   useEffect(() => {
     async function fetchData() {
-      CategoryService.getCategories().subscribe(({ status, data }) => {
+      CategoryProvider.getCategories().subscribe(({ status, data }) => {
         if (status === 200)
           setCategories(data);
       });

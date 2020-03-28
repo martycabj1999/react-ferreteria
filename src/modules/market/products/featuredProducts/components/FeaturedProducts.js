@@ -7,7 +7,7 @@ import Error from "../../../../layouts/Error";
 import { useSelector } from 'react-redux';
 
 //services
-import ProductService from '../../providers/ProductProvider';
+import ProductProvider from '../../providers/ProductProvider';
 
 const FeaturedProducts = () => {
 
@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     async function fetchData() {
-      ProductService.getProductsFeatured().subscribe(({ status, data }) => {
+      ProductProvider.getProductsFeatured().subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data)
         }

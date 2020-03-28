@@ -6,7 +6,7 @@ import logo from '../../../../assets/carretilla.png'
 import Error from "../../../layouts/Error";
 
 //services
-import CategoryService from '../providers/CategoryProvider';
+import CategoryProvider from '../providers/CategoryProvider';
 import { Link } from "react-router-dom";
 
 const Categories = () => {
@@ -16,7 +16,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    CategoryService.getCategories().subscribe(({ status, data }) => {
+    CategoryProvider.getCategories().subscribe(({ status, data }) => {
       if (status === 200)
         setCategories(data);
     });

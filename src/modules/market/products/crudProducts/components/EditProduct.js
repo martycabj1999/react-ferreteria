@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { editProductAction } from '../../store/ProductsAction';
 
 // Services
-import CategoryService from '../../../categories/providers/CategoryProvider';
+import CategoryProvider from '../../../categories/providers/CategoryProvider';
 
 const EditProduct = () => {
 
@@ -53,7 +53,7 @@ const EditProduct = () => {
 
     useEffect(() => {
         async function fetchData(){
-            await CategoryService.getCategories().subscribe(({ status, data }) => {
+            await CategoryProvider.getCategories().subscribe(({ status, data }) => {
                 setCategories(data);
             });
         }

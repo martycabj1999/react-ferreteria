@@ -6,7 +6,7 @@ import '../styles/ListProducts.css';
 import Error from "../../../../layouts/Error";
 
 //services
-import ProductService from '../../providers/ProductProvider';
+import ProductProvider from '../../providers/ProductProvider';
 
 const ListProducts = () => {
 
@@ -15,7 +15,7 @@ const ListProducts = () => {
   
   useEffect(() => {
     async function fetchData() {
-      ProductService.getProducts().subscribe(({ status, data }) => {
+      ProductProvider.getProducts().subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data)
         }

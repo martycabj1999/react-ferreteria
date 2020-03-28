@@ -1,4 +1,4 @@
-import ProductService from '../providers/ProductProvider';
+import ProductProvider from '../providers/ProductProvider';
 import Swal from 'sweetalert2';
 
 import {
@@ -24,7 +24,7 @@ export function newProductAction(product) {
 
         try {
             // Inserto producto en la base de datos
-            await ProductService.postProduct(product);
+            await ProductProvider.createProduct(product);
 
             //Si todo sale bien actualizo el state
             dispatch(addProductSuccess(product));
@@ -77,7 +77,7 @@ export function getProductsAction() {
         dispatch(downloadProducts());
 
         try {
-            await ProductService.getProducts().subscribe(({ data }) => {
+            await ProductProvider.getProducts().subscribe(({ data }) => {
                 dispatch(downloadProductsSuccess(data));
             });
 
@@ -109,7 +109,7 @@ export function removeProductAction(id) {
         dispatch(getRemoveProduct(id));
 
         try {
-            await ProductService.deleteProduct(id);
+            await ProductProvider.inactiveProduct(id);
             dispatch(removeProductSuccess());
 
             // Si se elimina, mostrar la alerta
@@ -159,7 +159,7 @@ export function editProductAction(product) {
         dispatch(editProduct(product));
 
         try {
-            ProductService.putProduct(product);
+            ProductProvider.editProduct(product);
             dispatch(editProductSuccess(product));
         } catch{
             dispatch(editProductError());
