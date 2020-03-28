@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector} from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 //services
 import RegisterProvider from '../providers/RegisterProvider';
 
 const Register = (props) => {
 
+    const messages = useSelector(state => state.languages.messages); 
     const [form, setForm] = useState({
         name: '',
         lastname: '',
@@ -56,33 +58,33 @@ const Register = (props) => {
     return ( 
         <Form onSubmit={onSubmit}>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Nombre: </Form.Label>
-                <Form.Control type="text" name="name" placeholder="Francisco" onChange={onChange} value={form.name}/>
+                <Form.Label>{messages['register_name']}: </Form.Label>
+                <Form.Control type="text" name="name" placeholder={messages['register_placeholder_name']} onChange={onChange} value={form.name}/>
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Apellido: </Form.Label>
-                <Form.Control type="text" name="lastname" placeholder="Fernandez" onChange={onChange} value={form.lastname} />
+                <Form.Label>{messages['register_lastname']}: </Form.Label>
+                <Form.Control type="text" name="lastname" placeholder={messages['register_placeholder_lastname']}onChange={onChange} value={form.lastname} />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Telefono : </Form.Label>
+                <Form.Label>{messages['register_telephone']} : </Form.Label>
                 <Form.Control type="text" name="telephone" placeholder="1144323422" onChange={onChange} value={form.telephone} />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Direccion: </Form.Label>
-                <Form.Control type="text" name="address" placeholder="Av. Falsa 123" onChange={onChange} value={form.address} />
+                <Form.Label>{messages['register_address']}: </Form.Label>
+                <Form.Control type="text" name="address" placeholder={messages['register_placeholder_address']} onChange={onChange} value={form.address} />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Correo Electronico: </Form.Label>
+                <Form.Label>{messages['register_email']}: </Form.Label>
                 <Form.Control type="email" name="email" placeholder="example@gmail.com" onChange={onChange} value={form.email} />
             </Form.Group>
             <Form.Group controlId="formGroupPassword">
-                <Form.Label>Contraseña: </Form.Label>
+                <Form.Label>{messages['register_password']}: </Form.Label>
                 <Form.Control type="password" name="password" placeholder="********" onChange={onChange} value={form.password} />
             </Form.Group>
             <Button variant="primary" type="submit">
-                Registrarse
+            {messages['register_text']}
             </Button>
-            { error ? <p align="center" className="alerta-error">Todos los campos son obligatorios</p> : null }
+            { error ? <p align="center" className="alerta-error">{messages['register_obligatory']}</p> : null }
         </Form>
      );
 }

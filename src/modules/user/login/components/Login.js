@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 // Actions de Redux
 import { setAuthUserAction } from '../store/AuthAction';
 //services
@@ -8,6 +8,7 @@ import LoginProvider from '../providers/LoginProvider';
 
 const Login = (props) => {
 
+    const messages = useSelector(state => state.languages.messages); 
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -61,7 +62,7 @@ const Login = (props) => {
     return ( 
         <Form onSubmit={onSubmit} show={props.show} > 
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Correo Electronico: </Form.Label>
+                <Form.Label>{messages['login_email']}: </Form.Label>
                 <Form.Control 
                     type="email"
                     onChange={onChange}
@@ -71,19 +72,19 @@ const Login = (props) => {
                 />
             </Form.Group>
             <Form.Group controlId="formGroupPassword">
-                <Form.Label>Contraseña: </Form.Label>
+                <Form.Label>{messages['login_password']}: </Form.Label>
                 <Form.Control 
                     type="password" 
                     name="password"
                     onChange={onChange}
                     value={form.password}
-                    placeholder="Contraseña" 
+                    placeholder={messages['login_password']} 
                 />
             </Form.Group>
             <Button align="right" variant="primary" type="submit">
-                        Iniciar Sesion
+                {messages['login_log_in']}
             </Button>
-            { error ? <p align="center" className="alerta-error">Todos los campos son obligatorios</p> : null }
+            { error ? <p align="center" className="alerta-error">{messages['login_obligatory']}</p> : null }
         </Form>
      );
 }

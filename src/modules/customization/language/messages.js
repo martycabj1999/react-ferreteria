@@ -1,9 +1,6 @@
 // ACA ESTARIAN MENSAJES EN Español
 export const messagesSpanish = {
 
-    home_hello: "Hola",
-    home_welcome: "Bienvenido",
-
     footer_pop_up_close: "Cerrar",
     footer_business: "Ferretería",
     footer_policies: "Políticas de privacidad",
@@ -16,13 +13,33 @@ export const messagesSpanish = {
     lower_navbar_register: "Registrarse",
     lower_navbar_login: "Iniciar Sesión",
     lower_navbar_cart: "Carrito",
-    lower_navbar_logout: "Cerrar Sesion",
+    lower_navbar_logout: "Cerrar Sesión",
 
     upper_navbar_business: "Ferretería",
     upper_navbar_placeholder_search: "Que estas buscando? Ejemplo: Tornillos",
     upper_navbar_search: "Buscar",
 
     not_found_text: "No encontrado",
+
+    login_email: "Correo Electronico",
+    login_password: "Contraseña",
+    login_log_in: "Iniciar Sesión",
+    login_obligatory: "Todos los campos son obligatorios",
+    login_modal_welcome: "Bienvenido",
+    
+    register_name: "Nombre",
+    register_placeholder_name: "Francisco",
+    register_lastname: "Apellido",
+    register_placeholder_lastname: "Férnandez",
+    register_telephone: "Teléfono",
+    register_address: "Direccion",
+    register_placeholder_address: "Av. Falsa 123",
+    register_email: "Correo Electronico",
+    register_password: "Contraseña",
+    register_text: "Registrarse",
+    register_obligatory: "Todos los campos son obligatorios",
+    register_modal_obligatory: "Ingrese los siguiente datos", 
+    register_modal_text: "Registrarse", 
 
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
@@ -54,7 +71,7 @@ export const messagesEnglish = {
     lower_navbar_customization: "Customization",
     lower_navbar_crud_products: "CRUD products",
     lower_navbar_register: "Register",
-    lower_navbar_login: "Login",
+    lower_navbar_login: "Log In",
     lower_navbar_cart: "Cart",
     lower_navbar_logout: "Logout",
 
@@ -63,6 +80,26 @@ export const messagesEnglish = {
     upper_navbar_search: "Search",
 
     not_found_text: "Not Found",
+
+    login_email: "Email",
+    login_password: "Password",
+    login_log_in: "Log In",
+    login_obligatory: "All fields are required",
+    login_modal_welcome: "Welcome",
+    
+    register_name: "Name",
+    register_placeholder_name: "Adam",
+    register_lastname: "Lastname",
+    register_placeholder_lastname: "Smith",
+    register_telephone: "Telephone",
+    register_address: "Address",
+    register_placeholder_address: "Av. False 123",
+    register_email: "Email",
+    register_password: "Password",
+    register_text: "Register",
+    register_obligatory: "All fields are required", 
+    register_modal_obligatory: "Enter the following data", 
+    register_modal_text: "Register", 
 
     color_primary: "Color Primary",
     color_secondary: "Color Secondary",
@@ -80,9 +117,6 @@ export const messagesEnglish = {
 
 // ACA ESTARIAN MENSAJES EN PORTUGUES
 export const messagesPortuguese = {
-    
-    home_hello: "Ola",
-    home_welcome: "Bemvimda",
 
     footer_pop_up_close: "Fechar",
     footer_business: "Loja de ferragens",
@@ -103,6 +137,26 @@ export const messagesPortuguese = {
     upper_navbar_search: "Pesquisar",
 
     not_found_text: "Não encontrado",
+
+    login_email: "Email",
+    login_password: "Senha",
+    login_log_in: "Iniciar sessão",
+    login_obligatory: "Todos os campos são necessários",
+    login_modal_welcome: "Bem-vinda",   
+
+    register_name: "Nome",
+    register_placeholder_name: "Ronaldo",
+    register_lastname: "Último nome",
+    register_placeholder_lastname: "Da Silva",
+    register_telephone: "Telefone",
+    register_address: "Morada",
+    register_placeholder_address: "Av. False 123",
+    register_email: "Email",
+    register_password: "Senha",
+    register_text: "Registro",
+    register_obligatory: "Todos os campos são necessários", 
+    register_modal_obligatory: "Digite os seguintes dados", 
+    register_modal_text: "Registro", 
 
     color_primary: "Cor primária",
     color_secondary: "Cor secundária",
