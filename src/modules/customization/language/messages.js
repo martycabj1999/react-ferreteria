@@ -5,6 +5,10 @@ export const messagesSpanish = {
     home_welcome: "Bienvenido",
 
     footer_pop_up_close: "Cerrar",
+    footer_business: "Ferretería",
+    footer_policies: "Políticas de privacidad",
+    footer_faq: "FAQ",
+    footer_term_and_conditions: "Términos y condiciones",
 
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
@@ -26,6 +30,12 @@ export const messagesEnglish = {
     home_hello: "Hello",
     home_welcome: "Welcome",
 
+    footer_pop_up_close: "Close",
+    footer_business: "Hardware store",
+    footer_policies: "Privacy policies",
+    footer_faq: "FAQ",
+    footer_term_and_conditions: "Terms and Conditions",
+
     color_primary: "Color Primary",
     color_secondary: "Color Secondary",
     text_primary: "Font Primary",
@@ -45,6 +55,12 @@ export const messagesPortuguese = {
     
     home_hello: "Ola",
     home_welcome: "Bemvimda",
+
+    footer_pop_up_close: "Fechar",
+    footer_business: "Loja de ferragens",
+    footer_policies: "Políticas de privacidade",
+    footer_faq: "FAQ",
+    footer_term_and_conditions: "Termos e Condições",
 
     color_primary: "Cor primária",
     color_secondary: "Cor secundária",

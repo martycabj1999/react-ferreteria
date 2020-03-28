@@ -14,6 +14,7 @@ const Footer = () => {
         setModalName(name);
     }
 
+    const messages = useSelector(state => state.languages.messages);  
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
@@ -28,19 +29,19 @@ const Footer = () => {
             <div className="footer-container">
 
               <div onClick={() => sets('Ferretería')}>
-                &copy; Ferretería
+                &copy; {messages.footer_business}
               </div>
 
               <div onClick={() => sets('Políticas de privacidad')}>
-                Políticas de privacidad
+                {messages.footer_policies}
               </div>
 
               <div onClick={() => sets('FAQ')}>
-                FAQ
+                {messages.footer_faq}
               </div>
 
               <div onClick={() => sets('Términos y condiciones')}>
-                Términos y condiciones
+                {messages.footer_term_and_conditions}
               </div>
 
               <FooterPopup

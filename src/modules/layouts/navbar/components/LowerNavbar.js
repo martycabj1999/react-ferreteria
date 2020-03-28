@@ -14,7 +14,7 @@ import CategoryService from '../../../market/categories/providers/CategoryProvid
 
 const LowerNavbar = () => {
 
-  const user = useSelector(state => state.security.user);
+  const auth = useSelector(state => state.security.user);
   const currentColors = useSelector(state => state.customization.colors);
 
   // Utilizar use dispatch
@@ -31,15 +31,12 @@ const LowerNavbar = () => {
       });
     }
     fetchData();
-    isLogedIn();
+    isLogin();
   }, []);
 
-  const isLogedIn = () => {
-    console.log(user);
-    console.log('isLogued');
-    if (user.id) {
+  const isLogin = () => {
+    if (auth.id) {
       setIsLogued(true);
-      console.log('isLogued');
     }
   };
 
@@ -120,7 +117,7 @@ const LowerNavbar = () => {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-                <LoginModal showLogin={showLogin} hideLogin={handleCloseLogin} />
+                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin} />
               </Nav.Item>
               <Nav.Item>
                 {/* Este link deberia rediregirnos al carrito */}
