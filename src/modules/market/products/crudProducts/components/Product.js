@@ -4,12 +4,13 @@ import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 
 // Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeProductAction, getEditProductAction } from '../../store/ProductsAction';
 import ProductProvider from '../../providers/ProductProvider';
 
 const Product = ({product}) => {
 
+    const messages = useSelector(state => state.languages.messages);
     const { name, price, id } = product;
     const dispatch = useDispatch();
     const history = useHistory();
@@ -19,14 +20,14 @@ const Product = ({product}) => {
 
         // Preguntar al usuario
         Swal.fire({
-            title: '¿Desea eliminar el producto?',
-            text: 'Un producto que se elimina no se puede recuperar',
+            title: messages['crud_product_delete_question'],
+            text: messages['crud_product_delete_message'],
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar',
-            cancelButtonText: 'Cancelar',
+            confirmButtonText: messages['crud_product_delete_confirm'],
+            cancelButtonText: messages['crud_product_delete_cancel'],
 
         }).then((result) => {
             if (result.value){
@@ -53,14 +54,14 @@ const Product = ({product}) => {
                     onClick={() => redirectEdition(product)}
                     className="btn btn-primary mr-2"
                 >    
-                    Editar
+                    {messages['crud_product_edit']}
                 </button>
                 <button 
                     type="button" 
                     className="btn btn-danger"
                     onClick={() => confirmRemoveProduct(id)}    
                 >
-                    Eliminar
+                    {messages['crud_product_delete']}
                 </button>
             </td>
 

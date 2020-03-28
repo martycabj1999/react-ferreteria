@@ -11,6 +11,7 @@ import CategoryService from '../../../categories/providers/CategoryProvider';
 
 const EditProduct = () => {
 
+    const messages = useSelector(state => state.languages.messages);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -65,28 +66,28 @@ const EditProduct = () => {
                 onSubmit={submitEditProduct}
             >
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Nombre del producto</Form.Label>
-                    <Form.Control name="name" type="string" placeholder="Nombre del producto" value={product.name} onChange={onChange}/>
+                    <Form.Label>{messages['edit_product_name']}</Form.Label>
+                    <Form.Control name="name" type="string" placeholder={messages['edit_product_name']} value={product.name} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Precio del producto</Form.Label>
-                    <Form.Control name="price" type="number" placeholder="Precio del producto" value={product.price} onChange={onChange}/>
+                    <Form.Label>{messages['edit_product_price']}</Form.Label>
+                    <Form.Control name="price" type="number" placeholder={messages['edit_product_price']} value={product.price} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Descripción breve</Form.Label>
-                    <Form.Control name="description" type="text" placeholder="Descripcion breve" value={product.description} onChange={onChange}/>
+                    <Form.Label>{messages['edit_product_description']}</Form.Label>
+                    <Form.Control name="description" type="text" placeholder={messages['edit_product_description']} value={product.description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Descripción larga</Form.Label>
-                    <Form.Control name="long_description" type="text" placeholder="Descripcion larga" value={product.long_description} onChange={onChange}/>
+                    <Form.Label>{messages['edit_product_long_description']}</Form.Label>
+                    <Form.Control name="long_description" type="text" placeholder={messages['edit_product_long_description']} value={product.long_description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Número de la categoría</Form.Label>
-                    <select name="category_id" type="number" placeholder="Número de la categoría"  value={product.category_id} onChange={onChange}>
+                    <Form.Label>{messages['edit_product_category']}</Form.Label>
+                    <select name="category_id" type="number" placeholder={messages['edit_product_category']}  value={product.category_id} onChange={onChange}>
                         { categories !== 0 ? 
                             (
                                 categories.map((category) =>
@@ -98,7 +99,7 @@ const EditProduct = () => {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Guardar cambios
+                    {messages['edit_product_save']}
                 </Button>
             </Form>
         </div>

@@ -26,6 +26,7 @@ const NewProduct = () => {
     const dispatch = useDispatch();
 
     // Acceder al state del store
+    const messages = useSelector( state => state.languages.messages);
     const loading = useSelector( state => state.products.loading);
     const alert = useSelector( state => state.alert.alert);
 
@@ -45,7 +46,7 @@ const NewProduct = () => {
         {
             
             const alert = {
-                msg: 'Todos los campos son obligatorios',
+                msg: messages['new_product_obligatory'],
                 classes: 'alert alert-danger text-center text-uppercase p3'
             }
 
@@ -102,27 +103,27 @@ const NewProduct = () => {
                 onSubmit={submitNewProduct}
             >
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Nombre del producto</Form.Label>
+                    <Form.Label>{messages['new_product_name']}</Form.Label>
                     <Form.Control name="name" type="string" placeholder="Nombre del producto" value={product.name} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Precio del producto</Form.Label>
+                    <Form.Label>{messages['new_product_price']}</Form.Label>
                     <Form.Control name="price" type="number" placeholder="Precio del producto" value={product.price} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Descripción breve</Form.Label>
+                    <Form.Label>{messages['new_product_description']}</Form.Label>
                     <Form.Control name="description" type="text" placeholder="Descripcion breve" value={product.description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Descripción larga</Form.Label>
+                    <Form.Label>{messages['new_product_long_description']}</Form.Label>
                     <Form.Control name="long_description" type="text" placeholder="Descripcion larga" value={product.long_description} onChange={onChange}/>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Número de la categoría: </Form.Label>
+                    <Form.Label>{messages['new_product_category']}: </Form.Label>
                     <select name="category_id" type="number" placeholder="Número de la categoría" value={product.category_id} onChange={onChange}>
                         { categories !== 0 ? 
                             (
@@ -135,11 +136,11 @@ const NewProduct = () => {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Agregar producto
+                    {messages['new_product_add']}
                 </Button>
             </Form>
 
-            { loading ? <p>Cargando...</p> : null }
+            { loading ? <p>{messages['new_product_loading']}</p> : null }
         </div>
     )
 }
