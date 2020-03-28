@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 const Categories = () => {
 
+  const messages = useSelector(state => state.languages.messages);
   const currentColors = useSelector(state => state.customization.colors);
   const [categories, setCategories] = useState([]);
 
@@ -43,10 +44,10 @@ const Categories = () => {
         className="categories-container"
       >
         <div className="tittle">
-          <h4 style={{ color: currentColors.textSecondary }}>Categorias destacadas</h4>
+          <h4 style={{ color: currentColors.textSecondary }}>{messages['categories_featured']}</h4>
         </div>
         <div style={{ backgroundColor: currentColors.colorSecondary }} className='scroll'>
-          {listCategories ? listCategories : <Error mensaje="No hay categorias por el momento" />}
+          {listCategories ? listCategories : <Error mensaje={messages['categories_not']} />}
         </div>
       </div>
     </div>

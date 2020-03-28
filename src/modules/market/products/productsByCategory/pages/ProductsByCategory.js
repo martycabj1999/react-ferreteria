@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import Product from '../../listProducts/components/Product';
+import Product from '../../productsByCategory/components/Product';
 import '../../listProducts/styles/ListProducts.css';
 import Error from '../../../../layouts/Error';
 import ProductService from '../../providers/ProductProvider';
@@ -8,6 +9,7 @@ import CategoryService from '../../../categories/providers/CategoryProvider';
 
 const ProductsByCategory = (props) => {
 
+  const messages = useSelector(state => state.languages.messages);
   // Obtener el id de la categoria desde la url
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState({});
@@ -41,9 +43,9 @@ const ProductsByCategory = (props) => {
 
   return (
     <div className="list-products-container">
-      <h4>Productos de la categoria: {category.name}</h4>
+      <h4>{messages['product_category_products']}: {category.name}</h4>
       <Container>
-        {products.length > 0 ? listProducts : <Error mensaje="No hay productos para mostrar" />}
+        {products.length > 0 ? listProducts : <Error mensaje={messages['product_category_not_products']} />}
       </Container>
     </div>
   );

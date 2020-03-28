@@ -14,9 +14,9 @@ const Product = ({ product }) => {
                 <Image thumbnail style={{ maxWidth: '200' }}
                     src={product.image}
                 />
-                <h3>{messages['list_products_product_name']}: {product.name}</h3>
-                <h3>{messages['list_products_product_price']}: ${product.price}</h3>
-                <Button className="button" variant="dark">{messages['list_products_product_buy']}</Button>
+                <h3>{messages['product_category_product_name']}: {product.name}</h3>
+                <h3>{messages['product_category_product_price']}: ${product.price}</h3>
+                <Button className="button" variant="dark">{messages['product_category_product_buy']}</Button>
             </div>
         </Link>
     );

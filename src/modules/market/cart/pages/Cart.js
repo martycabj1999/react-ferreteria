@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import EmptyCart from '../components/EmptyCart';
 import ProductPopup from '../components/ProductPopup';
 import { Container, Card, Button, Figure, Row, Col } from 'react-bootstrap';
@@ -31,6 +32,7 @@ const Cart = () => {
     ]
     const quantityProductsInCart = productsInCart.length
 
+    const messages = useSelector(state => state.languages.messages);
     const [modalShow, setModalShow] = useState(false);
     const [modalName, setModalName] = useState('');
     const [modalSrc, setModalSrc] = useState('');
@@ -56,7 +58,7 @@ const Cart = () => {
                     onClick={() => sets(product.name, product.src, product.description, product.price)}
                     as='button'
                     variant="primary">
-                    Ver mas
+                    {messages['cart_text_see_more']}
 				</Button>
             </Card>
         )
@@ -69,7 +71,7 @@ const Cart = () => {
             <body>
                 <div id='cart-title'>
                     <Container>
-                        <h2>Mi <strong>Carrito</strong></h2>
+                        <h2>{messages['cart_text_my']} <strong>{messages['cart_text_cart']}</strong></h2>
                     </Container>
                 </div>
                 <Container className='product-container'>

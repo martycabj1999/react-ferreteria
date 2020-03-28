@@ -3,12 +3,15 @@ import { Image, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "../styles/FeaturedProducts.css";
 import Error from "../../../../layouts/Error";
+// Redux
+import { useSelector } from 'react-redux';
 
 //services
 import ProductService from '../../providers/ProductProvider';
 
 const FeaturedProducts = () => {
 
+  const messages = useSelector(state => state.languages.messages);
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(0);
 
@@ -33,18 +36,18 @@ const FeaturedProducts = () => {
         <Image thumbnail
           src={product.image}
         />
-        <h2>Producto: {product.name}</h2>
-        <h4>Precio: ${product.price}</h4>
-        <Button variant="dark">Comprar</Button>
+        <h2>{messages['featured_products_product_name']}: {product.name}</h2>
+        <h4>{messages['featured_products_product_price']}: ${product.price}</h4>
+        <Button variant="dark">{messages['featured_products_product_buy']}</Button>
       </div>
     </Link>
   );
 
   return (
     <div className="featured-products-container">
-      <h4>Productos destacados</h4>
+      <h4>{messages['featured_products_product_featured']}</h4>
       <div className='scroll'>
-        {status === 200 && products.length > 0 ? listFeaturedProducts : <Error mensaje="No hay productos destacados por el momento" />}
+        {status === 200 && products.length > 0 ? listFeaturedProducts : <Error mensaje={messages['featured_products_not_product_featured']} />}
       </div>
     </div>
   );

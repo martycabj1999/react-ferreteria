@@ -21,6 +21,7 @@ export const messagesSpanish = {
 
     not_found_text: "No encontrado",
 
+    //USER
     login_email: "Correo Electronico",
     login_password: "Contraseña",
     login_log_in: "Iniciar Sesión",
@@ -39,7 +40,17 @@ export const messagesSpanish = {
     register_text: "Registrarse",
     register_obligatory: "Todos los campos son obligatorios",
     register_modal_obligatory: "Ingrese los siguiente datos", 
-    register_modal_text: "Registrarse", 
+    register_modal_text: "Registrarse",
+    
+    //MARKET
+    cart_empty: "¡Su carrito está vacío!",
+    cart_back: "Volver",
+    cart_text_see_more: "Ver más",
+    cart_text_my: "Mi",
+    cart_text_cart: "Carrito",
+    
+    categories_featured: "Categorías destacadas",
+    categories_not: "No hay categorías destacadas por el momento",
 
     new_product_name: "Nombre del producto",
     new_product_price: "Precio del producto",
@@ -73,6 +84,29 @@ export const messagesSpanish = {
     crud_products_actions: "Acciones",
     crud_products_not_products: "No hay productos",
 
+    featured_products_product_name: "Producto",
+    featured_products_product_price: "Precio",
+    featured_products_product_buy: "Comprar",
+    featured_products_product_featured: "Productos destacados",
+    featured_products_not_product_featured: "No hay productos destacados por el momento",
+
+    list_products_product_name: "Producto",
+    list_products_product_price: "Precio",
+    list_products_product_buy: "Comprar",
+    list_products_others: "Otros productos",
+    list_products_not_product: "No hay productos para mostrar",
+
+    product_details_product_name: "Producto",
+    product_details_product_price: "Precio",
+    product_details_product_description: "Descripción",
+    product_details_product_buy: "Comprar",
+
+    product_category_product_name: "Producto",
+    product_category_product_price: "Precio",
+    product_category_product_buy: "Comprar",
+    product_category_products: "Productos de la categoría",
+    product_category_not_products: "No hay productos para mostrar",
+
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
     text_primary: "Fuente Primaria",
@@ -89,9 +123,6 @@ export const messagesSpanish = {
 
 // ACA ESTARIAN MENSAJES EN INGLES
 export const messagesEnglish = {
-
-    home_hello: "Hello",
-    home_welcome: "Welcome",
 
     footer_pop_up_close: "Close",
     footer_business: "Hardware store",
@@ -133,6 +164,16 @@ export const messagesEnglish = {
     register_modal_obligatory: "Enter the following data", 
     register_modal_text: "Register",
 
+    //MARKET
+    cart_empty: "Your cart is empty!",
+    cart_back: "Back",
+    cart_text_see_more: "See more",
+    cart_text_my: "My",
+    cart_text_cart: "Cart",
+
+    categories_featured: "Featured Categories",
+    categories_not: "There are no featured categories at the moment",
+
     new_product_name: "Product name",
     new_product_price: "Price of the product",
     new_product_description: "Short description",
@@ -145,7 +186,7 @@ export const messagesEnglish = {
     edit_product_name: "Product name",
     edit_product_price: "Price of the product",
     edit_product_description: "Short description",
-    edit_product_long_description: "DLong description",
+    edit_product_long_description: "Long description",
     edit_product_category: "Category",
     edit_product_save: "Save changes",
     edit_product_obligatory: "All fields are required",
@@ -164,6 +205,29 @@ export const messagesEnglish = {
     crud_products_price: "Price",
     crud_products_actions: "Actions",
     crud_products_not_products: "There are no products",
+
+    featured_products_product_name: "Product",
+    featured_products_product_price: "Price",
+    featured_products_product_buy: "Buy",
+    featured_products_product_featured: "Featured Products",
+    featured_products_not_product_featured: "There are no featured products at the moment",
+
+    list_products_product_name: "Product",
+    list_products_product_price: "Price",
+    list_products_product_buy: "Buy",
+    list_products_other: "Other products",
+    list_products_not_product: "There are no products to show",
+
+    product_details_product_name: "Product",
+    product_details_product_price: "Price",
+    product_details_product_description: "Description",
+    product_details_product_buy: "Buy",
+
+    product_category_product_name: "Product",
+    product_category_product_price: "Price",
+    product_category_product_buy: "Buy",
+    product_category_products: "Products in category",
+    product_category_not_products: "There are no products to show.",
 
     color_primary: "Color Primary",
     color_secondary: "Color Secondary",
@@ -221,6 +285,16 @@ export const messagesPortuguese = {
     register_obligatory: "Todos os campos são necessários", 
     register_modal_obligatory: "Digite os seguintes dados", 
     register_modal_text: "Registro", 
+    
+    //MARKET
+    cart_empty: "Seu carrinho está vazio!",
+    cart_back: "Voltar",
+    cart_text_see_more: "Ver mais",
+    cart_text_my: "Meu",
+    cart_text_cart: "Carrinho",
+
+    categories_featured: "Categorias em destaque",
+    categories_not: "Não há categorias em destaque no momento",
 
     new_product_name: "Nome do produto",
     new_product_price: "Preço do produto",
@@ -253,6 +327,29 @@ export const messagesPortuguese = {
     crud_products_price: "Preço",
     crud_products_actions: "Acções",
     crud_products_not_products: "Não existem produtos",
+
+    featured_products_product_name: "Produto",
+    featured_products_product_price: "Preço",
+    featured_products_product_buy: "Comprar",
+    featured_products_product_featured: "Produtos em destaque",
+    featured_products_not_product_featured: "Não há produtos em destaque no momento",
+
+    list_products_product_name: "Produto",
+    list_products_product_price: "Preço",
+    list_products_product_buy: "Comprar",
+    list_products_other: "Outros produtos",
+    list_products_not_product: "Não há produtos para mostrar.",
+
+    product_details_product_name: "Produto",
+    product_details_product_price: "Preço",
+    product_details_product_description: "Descrição do produto",
+    product_details_product_buy: "Comprar",
+
+    product_category_product_name: "Produto",
+    product_category_product_price: "Preço",
+    product_category_product_buy: "Comprar",
+    product_category_products: "Categoria Produtos",
+    product_category_not_products: "Não há produtos para mostrar.",
 
     color_primary: "Cor primária",
     color_secondary: "Cor secundária",

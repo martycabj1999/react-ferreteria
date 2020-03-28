@@ -103,7 +103,7 @@ const LowerNavbar = () => {
           <Col>
             <Nav className='justify-content-start'>
               <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
-              <CustomDropdown title={'Marcas'}  list={listBrands} />
+              <CustomDropdown title={'Marcas'} list={listBrands} />
             </Nav>
           </Col>
           <Col>
