@@ -14,6 +14,7 @@ import CategoryService from '../../../market/categories/providers/CategoryProvid
 
 const LowerNavbar = () => {
 
+  const messages = useSelector(state => state.languages.messages);
   const auth = useSelector(state => state.security.user);
   const currentColors = useSelector(state => state.customization.colors);
 
@@ -101,36 +102,36 @@ const LowerNavbar = () => {
         <Row>
           <Col>
             <Nav className='justify-content-start'>
-              <CustomDropdown title='Categorias' list={listCategories} />
-              <CustomDropdown title='Marcas' list={listBrands} />
+              <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
+              <CustomDropdown title={'Marcas'}  list={listBrands} />
             </Nav>
           </Col>
           <Col>
             <Nav className='justify-content-end'>
               <Nav.Item>
                 {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/customization' hidden={!isLogued}>Personalización</Nav.Link>
+                <Nav.Link href='/customization' hidden={!isLogued}>{messages['lower_navbar_customization']}</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/crud-products' hidden={!isLogued}>CRUD productos</Nav.Link>
+                <Nav.Link href='/crud-products' hidden={!isLogued}>{messages['lower_navbar_crud_products']}</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
+                <Nav.Link href='/register' hidden={isLogued}>{messages['lower_navbar_register']}</Nav.Link>
                 {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
                 <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
+                <Nav.Link onClick={handleShowLogin} hidden={isLogued}>{messages['lower_navbar_login']}</Nav.Link>
                 <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
                 {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
               </Nav.Item>
               <Nav.Item>
                 {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/cart' hidden={!isLogued}>Carrito</Nav.Link>
+                <Nav.Link href='/cart' hidden={!isLogued}>{messages['lower_navbar_cart']}</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href='/' onClick={logout} hidden={!isLogued}>Cerrar Sesion</Nav.Link>
+                <Nav.Link href='/' onClick={logout} hidden={!isLogued}>{messages['lower_navbar_logout']}</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>

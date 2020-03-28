@@ -10,6 +10,20 @@ export const messagesSpanish = {
     footer_faq: "FAQ",
     footer_term_and_conditions: "Términos y condiciones",
 
+    lower_navbar_custom_dropdown_categories: "Categorías",
+    lower_navbar_customization: "Personalización",
+    lower_navbar_crud_products: "CRUD productos",
+    lower_navbar_register: "Registrarse",
+    lower_navbar_login: "Iniciar Sesión",
+    lower_navbar_cart: "Carrito",
+    lower_navbar_logout: "Cerrar Sesion",
+
+    upper_navbar_business: "Ferretería",
+    upper_navbar_placeholder_search: "Que estas buscando? Ejemplo: Tornillos",
+    upper_navbar_search: "Buscar",
+
+    not_found_text: "No encontrado",
+
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
     text_primary: "Fuente Primaria",
@@ -36,6 +50,20 @@ export const messagesEnglish = {
     footer_faq: "FAQ",
     footer_term_and_conditions: "Terms and Conditions",
 
+    lower_navbar_custom_dropdown_categories: "Categories",
+    lower_navbar_customization: "Customization",
+    lower_navbar_crud_products: "CRUD products",
+    lower_navbar_register: "Register",
+    lower_navbar_login: "Login",
+    lower_navbar_cart: "Cart",
+    lower_navbar_logout: "Logout",
+
+    upper_navbar_business: "Hardware store",
+    upper_navbar_placeholder_search: "What are you looking for? Example: Screws",
+    upper_navbar_search: "Search",
+
+    not_found_text: "Not Found",
+
     color_primary: "Color Primary",
     color_secondary: "Color Secondary",
     text_primary: "Font Primary",
@@ -61,6 +89,20 @@ export const messagesPortuguese = {
     footer_policies: "Políticas de privacidade",
     footer_faq: "FAQ",
     footer_term_and_conditions: "Termos e Condições",
+
+    lower_navbar_custom_dropdown_categories: "Categorias",
+    lower_navbar_customization: "Personalização",
+    lower_navbar_crud_products: "CRUD produtos",
+    lower_navbar_register: "Registro",
+    lower_navbar_login: "Iniciar sessão",
+    lower_navbar_cart: "Carrinho",
+    lower_navbar_logout: "Fechar Sessão",
+
+    upper_navbar_business: "Loja de ferragens",
+    upper_navbar_placeholder_search: "O que você está buscando? Exemplo: Parafusos",
+    upper_navbar_search: "Pesquisar",
+
+    not_found_text: "Não encontrado",
 
     color_primary: "Cor primária",
     color_secondary: "Cor secundária",

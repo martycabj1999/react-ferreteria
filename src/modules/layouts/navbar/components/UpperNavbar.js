@@ -8,6 +8,7 @@ import logo from '../../../../assets/carrito.png';
 
 const UpperNavbar = () => {
 
+    const messages = useSelector(state => state.languages.messages);  
     const currentColors = useSelector(state => state.customization.colors);  
 
     return (
@@ -27,7 +28,7 @@ const UpperNavbar = () => {
                                 id="logo"
                             >
                                 <img src={logo} width="80" height="60" alt="Logo de la pagina"/>
-                                Ferreteria
+                                {messages['upper_navbar_business']}
                             </Navbar.Brand>
                         </Col>
                         <Col md={8} lg={6}>
@@ -36,13 +37,13 @@ const UpperNavbar = () => {
                                     <FormControl
                                         id="search"
                                         type="search"
-                                        placeholder="Que estas buscando? Ejemplo: Tornillos"
+                                        placeholder={messages['upper_navbar_placeholder_search']}
                                     />
                                     <InputGroup.Append>
                                         <Button
                                             className="input-group-text btn btn-outline-primary"
                                             type="sumbit">
-                                            Buscar
+                                            {messages['upper_navbar_search']}
                                         </Button>
                                     </InputGroup.Append>
                                 </InputGroup>

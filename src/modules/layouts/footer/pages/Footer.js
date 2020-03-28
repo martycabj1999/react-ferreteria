@@ -29,19 +29,19 @@ const Footer = () => {
             <div className="footer-container">
 
               <div onClick={() => sets('Ferretería')}>
-                &copy; {messages.footer_business}
+                &copy; {messages['footer_business']}
               </div>
 
               <div onClick={() => sets('Políticas de privacidad')}>
-                {messages.footer_policies}
+                {messages['footer_policies']}
               </div>
 
               <div onClick={() => sets('FAQ')}>
-                {messages.footer_faq}
+                {messages['footer_faq']}
               </div>
 
               <div onClick={() => sets('Términos y condiciones')}>
-                {messages.footer_term_and_conditions}
+                {messages['footer_term_and_conditions']}
               </div>
 
               <FooterPopup
