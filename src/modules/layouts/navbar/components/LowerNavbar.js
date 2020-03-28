@@ -31,10 +31,10 @@ const LowerNavbar = () => {
       });
     }
     fetchData();
-    isLogin();
+    isLogin(auth);
   }, []);
 
-  const isLogin = () => {
+  const isLogin = (auth) => {
     if (auth.id) {
       setIsLogued(true);
     }
@@ -108,16 +108,22 @@ const LowerNavbar = () => {
           <Col>
             <Nav className='justify-content-end'>
               <Nav.Item>
-                <Nav.Link href='/' className='nav-link'>Contactanos</Nav.Link>
+                {/* Este link deberia rediregirnos al carrito */}
+                <Nav.Link href='/customization' hidden={!isLogued}>Personalización</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                {/* Este link deberia rediregirnos al carrito */}
+                <Nav.Link href='/crud-products' hidden={!isLogued}>CRUD productos</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href='/register' hidden={isLogued}> Registrarse</Nav.Link>
                 {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
-                                <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
+                <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link onClick={handleShowLogin} hidden={isLogued}> Iniciar Sesion</Nav.Link>
-                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin} />
+                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
+                {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
               </Nav.Item>
               <Nav.Item>
                 {/* Este link deberia rediregirnos al carrito */}

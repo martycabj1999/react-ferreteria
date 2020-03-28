@@ -44,7 +44,7 @@ const Login = (props) => {
                 // Guardamos en el store al user
                 setAuthUser( data );
 
-                props.isLogin();
+                props.isLogin(data.user);
                 localStorage.setItem('user', JSON.stringify(data))
             } else {
                 console.log('error en el logueo');
