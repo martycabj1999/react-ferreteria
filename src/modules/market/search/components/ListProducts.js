@@ -10,26 +10,41 @@ import SearchProvider from '../providers/SearchProvider';
 
 const ListProducts = (props) => {
 
+  const user = useSelector(state => state.security.user);
+  const coords = JSON.parse(localStorage.getItem('geolocation'));
   const messages = useSelector(state => state.languages.messages);
   const [products, setProducts] = useState([]);
 
-
-  
   useEffect(() => {
+
+    let pathname = (window.location.pathname).split('/')[2];
+    var search = pathname.replace("%20", " ");
+
     async function fetchData() {
-
-      let pathname = (window.location.pathname).split('/')[2];
-      var search = pathname.replace("%20", " ");
-
       SearchProvider.getSearch(search).subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data)
         }
       });
     }
-    fetchData();
-  }, [(window.location.pathname).split('/')[2]]);
 
+    fetchData();
+    
+    async function searchResults (searchResults, userId, keywords, categoryName, coords) {
+
+      SearchProvider.searchResults(searchResults, userId, keywords, categoryName, coords);
+    }
+
+    if(coords && user.id){
+      searchResults(user.id, search, coords);
+    } else if (user.id) {
+      searchResults(user.id, search, coords);
+    } else if (coords){
+      searchResults(null, search, coords);
+    }
+    
+  }, [(window.location.pathname).split('/')[2]]);
+  
   const listProducts = products.map((product) =>
     <div key={product.id} className='product'>
       <Product 

@@ -19,11 +19,8 @@ const PrivateRoute = ({component: Component, roles, ...rest}) => {
     const isAuthorized = () => {
          
         if (user.id) {
-            console.log('pasa')
             return true;
         }
-        
-        console.log('no pasa')
         return false;
     }
 

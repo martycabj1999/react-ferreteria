@@ -7,11 +7,13 @@ import CustomizationProvider from '../../../customization/provider/Customization
 import { useDispatch } from 'react-redux';
 //Action de redux 
 import { setColorsAction } from '../../../customization/colorPicker/store/ColorPickerActions';
+import useGeolocation from 'react-hook-geolocation';
 
 const Home = () => {
 
     //utilizar useDispatch y te crea una funcion
     const dispatch = useDispatch();
+    const geolocation = useGeolocation();
 
     CustomizationProvider.getCustomization().subscribe(({ status, data }) => {
         if (status === 200) {
@@ -22,10 +24,8 @@ const Home = () => {
                 textSecondary: data[0].text_secondary
             }
             localStorage.setItem('colors', JSON.stringify(colorPicker))
+            localStorage.setItem('geolocation', JSON.stringify(geolocation))
             dispatch(setColorsAction(colorPicker));
-            console.log('exito');
-        } else {
-            console.log('error en el register');
         }
     });
 

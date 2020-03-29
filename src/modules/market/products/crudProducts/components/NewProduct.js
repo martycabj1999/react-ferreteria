@@ -51,7 +51,6 @@ const NewProduct = () => {
             }
 
             dispatch(showAlertAction(alert));
-            console.log(alert);
 
             return;
         }

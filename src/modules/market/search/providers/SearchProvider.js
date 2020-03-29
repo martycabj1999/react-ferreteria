@@ -11,9 +11,18 @@ const SearchProvider = {
     return http.post('search=' + searchText, searchData);
   },
 
-  searchResults: (searchResults) => {
+  searchResults: (userId, keywords, coords) => {
 
     const searchData = new FormData();
+    
+    if(coords){
+      searchData.append('latitude', coords.latitude);
+      searchData.append('longitude', coords.longitude);
+    }
+    if(userId){
+      searchData.append('user_id', userId);
+    }
+    searchData.append('keywords', keywords);
     
     return http.post('search-results', searchData);
   }
