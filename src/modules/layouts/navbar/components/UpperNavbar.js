@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import '../styles/UpperNavbar.css';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
 import logo from '../../../../assets/carrito.png';
 import SearchProvider from '../providers/SearchProvider';
+import { useHistory } from "react-router-dom";
 
+const UpperNavbar = (props) => {
 
-const UpperNavbar = () => {
-
+    const history = useHistory();
     const messages = useSelector(state => state.languages.messages);  
     const currentColors = useSelector(state => state.customization.colors);  
 
@@ -23,10 +24,11 @@ const UpperNavbar = () => {
         e.preventDefault();
         SearchProvider.getSearch(search).subscribe(({ status, data }) => {
             if (status === 200){
-                console.log(data);
+                history.push('/search/' + search);
                 setProducts(data);
             }
         });
+        setSearch('');
     }
 
     return (

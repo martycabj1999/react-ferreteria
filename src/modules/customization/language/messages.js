@@ -94,7 +94,7 @@ export const messagesSpanish = {
     list_products_product_price: "Precio",
     list_products_product_buy: "Comprar",
     list_products_others: "Otros productos",
-    list_products_not_product: "No hay productos para mostrar",
+    list_products_not_products: "No hay productos para mostrar",
 
     product_details_product_name: "Producto",
     product_details_product_price: "Precio",
@@ -106,6 +106,9 @@ export const messagesSpanish = {
     product_category_product_buy: "Comprar",
     product_category_products: "Productos de la categoría",
     product_category_not_products: "No hay productos para mostrar",
+
+    search_list_products_results: 'Resultados',
+    search_list_products_not_products: 'No hay productos para mostrar',
 
     color_primary: "Color Primario",
     color_secondary: "Color Secundario",
@@ -216,7 +219,7 @@ export const messagesEnglish = {
     list_products_product_price: "Price",
     list_products_product_buy: "Buy",
     list_products_other: "Other products",
-    list_products_not_product: "There are no products to show",
+    list_products_not_products: "There are no products to show",
 
     product_details_product_name: "Product",
     product_details_product_price: "Price",
@@ -227,7 +230,10 @@ export const messagesEnglish = {
     product_category_product_price: "Price",
     product_category_product_buy: "Buy",
     product_category_products: "Products in category",
-    product_category_not_products: "There are no products to show.",
+    product_category_not_products: "There are no products to show",
+
+    search_list_products_results: "Results",
+    search_list_products_not_products: "There are no products to show",
 
     color_primary: "Color Primary",
     color_secondary: "Color Secondary",
@@ -338,7 +344,7 @@ export const messagesPortuguese = {
     list_products_product_price: "Preço",
     list_products_product_buy: "Comprar",
     list_products_other: "Outros produtos",
-    list_products_not_product: "Não há produtos para mostrar.",
+    list_products_not_products: "Não há produtos para mostrar.",
 
     product_details_product_name: "Produto",
     product_details_product_price: "Preço",
@@ -349,7 +355,10 @@ export const messagesPortuguese = {
     product_category_product_price: "Preço",
     product_category_product_buy: "Comprar",
     product_category_products: "Categoria Produtos",
-    product_category_not_products: "Não há produtos para mostrar.",
+    product_category_not_products: "Não há produtos para mostrar",
+
+    search_list_products_results: "Resultados",
+    search_list_products_not_products: "Não há produtos para mostrar",
 
     color_primary: "Cor primária",
     color_secondary: "Cor secundária",

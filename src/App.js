@@ -11,6 +11,7 @@ import ProductDetails from './modules/market/products/productDetails/components/
 import ColorPicker from './modules/customization/colorPicker/components/ColorPicker';
 import Products from './modules/market/products/crudProducts/pages/Products';
 import ProductsByCategory from './modules/market/products/productsByCategory/pages/ProductsByCategory';
+import SearchProducts from './modules/market/search/pages/SearchProducts';
 import PrivateRoute from './PrivateRoute';
 
 //Redux
@@ -29,7 +30,7 @@ function App() {
     <div>
       <Router>
         <Provider store={store} >
-          <Layout>
+          <Layout >
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/register' component={Register} />
@@ -40,6 +41,7 @@ function App() {
               <Route exact path='/crud-products' component={Products} />
               <Route exact path='/products-by-category/:id' component={ProductsByCategory} />
               <Route exact path='/product/:id' component={ProductDetails} />
+              <Route exact path='/search/:text' component={SearchProducts} />
 
               <Route component={NotFound} />
             </Switch>

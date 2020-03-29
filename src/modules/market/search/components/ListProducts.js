@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from "react"
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import Product from '../components/Product';
+import Product from './Product';
 import '../styles/ListProducts.css';
-import Error from "../../../../layouts/Error";
+import Error from "../../../layouts/Error";
 
 //services
-import ProductProvider from '../../providers/ProductProvider';
+import SearchProvider from '../providers/SearchProvider';
 
-const ListProducts = () => {
+const ListProducts = (props) => {
 
   const messages = useSelector(state => state.languages.messages);
   const [products, setProducts] = useState([]);
+
+
   
   useEffect(() => {
     async function fetchData() {
-      ProductProvider.getProducts().subscribe(({ status, data }) => {
+
+      let pathname = (window.location.pathname).split('/')[2];
+      var search = pathname.replace("%20", " ");
+
+      SearchProvider.getSearch(search).subscribe(({ status, data }) => {
         if (status === 200) {
           setProducts(data)
         }
       });
     }
     fetchData();
-  }, []);
+  }, [(window.location.pathname).split('/')[2]]);
 
   const listProducts = products.map((product) =>
     <div key={product.id} className='product'>
@@ -34,9 +40,9 @@ const ListProducts = () => {
 
   return (
     <div className="list-products-container">
-      <h4>{messages['list_products_other']}</h4>
+      <h4>{messages['search_list_products_results']}</h4>
       <Container>
-        {products.length > 0 ? listProducts : <Error mensaje={messages['list_products_not_products']} />}
+        {products.length > 0 ? listProducts : <Error mensaje={messages['search_list_products_not_products']} />}
       </Container>
     </div>
   );

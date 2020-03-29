@@ -3,7 +3,7 @@ import Footer from './footer/pages/Footer';
 import UpperNavbar from "./navbar/components/UpperNavbar";
 import LowerNavbar from "./navbar/components/LowerNavbar";
 
-const Layout = ({children}) => {
+const Layout = ({ children}) => {
     return (
         <div>
             <header>
