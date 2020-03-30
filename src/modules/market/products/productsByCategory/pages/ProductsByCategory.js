@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container } from 'react-bootstrap';
-import Product from '../../productsByCategory/components/Product';
-import '../../listProducts/styles/ListProducts.css';
+import { Container, Row } from 'react-bootstrap';
+import Product from '../../../products/listProducts/components/Product';
 import Error from '../../../../layouts/Error';
 import ProductProvider from '../../providers/ProductProvider';
 import CategoryProvider from '../../../categories/providers/CategoryProvider';
@@ -32,22 +31,19 @@ const ProductsByCategory = (props) => {
   }, [props.location.pathname, setProducts, setCategory]);
 
   const listProducts = products.map((product) =>
-    <div
+    <Product
       key={product.id}
-      className='product'>
-      <Product
-        product={product}
-      />
-    </div>
+      product={product}
+    />
   );
 
   return (
-    <div className="list-products-container">
-      <h4>{messages['product_category_products']}: {category.name}</h4>
       <Container>
-        {products.length > 0 ? listProducts : <Error mensaje={messages['product_category_not_products']} />}
+        <h4 className="mt-3 mb-3">{messages['product_category_products']}: {category.name}</h4>
+        <Row>
+          {products.length > 0 ? listProducts : <Error mensaje={messages['product_category_not_products']} />}
+        </Row>
       </Container>
-    </div>
   );
 }
 
