@@ -40,11 +40,12 @@ const Product = ({ product }) => {
           <div className="d-flex justify-content-between align-items-center">
             <Button
               type="button"
-              variant="outline-secondary"
-              className="btn-sm"
+              className="btn-info"
               onClick={() => sendProductToCart(product)}
-            >{messages['list_products_product_buy']}</Button>
-            <small className="text-muted">$ {product.price}</small>
+            >
+              {messages['list_products_product_buy']}
+            </Button>
+            <strong className="text-muted">$ {product.price}</strong>
           </div>
         </Card.Body>
       </Card>

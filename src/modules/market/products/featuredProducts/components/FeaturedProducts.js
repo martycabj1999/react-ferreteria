@@ -29,20 +29,20 @@ const FeaturedProducts = () => {
 
   const listFeaturedProducts = products.map((product) =>
       <Card key={product.id} className='product'>
-      <Link to={`/product/${product.id}`}>
-        <Image 
-            width="200"
-            height="200"
-            src={product.images[0].image}
-        />
-        <Card.Body>
-          <Card.Title align="center">{product.name}</Card.Title>
-          <Card.Text align="center">
-            ${product.price}
-          </Card.Text>
-        </Card.Body>
-    </Link>
-          <Button align="center" className="btn btn-block" variant="dark">{messages['featured_products_product_buy']}</Button>
+        <Link to={`/product/${product.id}`}>
+          <Image 
+              width="200"
+              height="200"
+              src={product.images[0].image}
+          />
+          <Card.Body>
+            <Card.Title align="center">{product.name}</Card.Title>
+            <Card.Text align="center">
+              ${product.price}
+            </Card.Text>
+          </Card.Body>
+        </Link>
+        <Button align="center" className="btn btn-block" variant="dark">{messages['featured_products_product_buy']}</Button>
       </Card>
   );
 
