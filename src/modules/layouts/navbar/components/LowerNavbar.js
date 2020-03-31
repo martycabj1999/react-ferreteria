@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, Container, Row, Col, Dropdown } from 'react-bootstrap';
+import { Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import Typography from '@material-ui/core/Typography'
-import CustomDropdown from './CustomDropdown';
 import LoginModal from '../../../user/login/pages/LoginModal';
-import '../styles/LowerNavbar.css';
+import CustomDropdown from './CustomDropdown';
 
 // Actions de Redux
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
@@ -66,14 +65,14 @@ const LowerNavbar = () => {
   const obtainCategories = (categories) => (
     categories.map((category) =>
       <Link to={`/products-by-category/${category.id}`}>
-        <Dropdown.Item key={category.id} as='a'>{category.name}</Dropdown.Item>
+        <NavDropdown.Item key={category.id} as='a'>{category.name}</NavDropdown.Item>
       </Link >
     )
   );
 
   const obtainBrands = (brands) => (
     brands.map((brand) =>
-      <Dropdown.Item key={brand.id} as='a' >{brand.name}</Dropdown.Item>
+      <NavDropdown.Item key={brand.id}>{brand.name}</NavDropdown.Item>
     )
   );
 
@@ -94,49 +93,41 @@ const LowerNavbar = () => {
       <Typography style={{
         color: currentColors.textPrimary
       }} />
-      <Container
-        style={{ backgroundColor: currentColors.colorPrimary }}
-        fluid expand='md'
-        className='container-navbar'
-      >
-        <Row>
-          <Col>
-            <Nav className='justify-content-start'>
-              <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
-              <CustomDropdown title={'Marcas'} list={listBrands} />
-            </Nav>
-          </Col>
-          <Col>
-            <Nav className='justify-content-end'>
-              <Nav.Item>
-                {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/customization' hidden={!isLogued}>{messages['lower_navbar_customization']}</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/crud-products' hidden={!isLogued}>{messages['lower_navbar_crud_products']}</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href='/register' hidden={isLogued}>{messages['lower_navbar_register']}</Nav.Link>
-                {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
+      <Navbar expand="md" style={{ backgroundColor: currentColors.colorPrimary }}>
+        <Navbar.Brand>{messages['lower_navbar_menu']}</Navbar.Brand>
+        <Navbar.Toggle aria-controls="collapse" />
+        <Navbar.Collapse id="collapse">
+          <Nav fluid expand='md'>
+            <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
+            <CustomDropdown title={'Marcas'} list={listBrands} />
+            <Nav.Item>
+              {/* Este link deberia rediregirnos al carrito */}
+              <Nav.Link href='/customization' hidden={!isLogued}>{messages['lower_navbar_customization']}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              {/* Este link deberia rediregirnos al carrito */}
+              <Nav.Link href='/crud-products' hidden={!isLogued}>{messages['lower_navbar_crud_products']}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='/register' hidden={isLogued}>{messages['lower_navbar_register']}</Nav.Link>
+              {/*<RegisterModal showRegister={showRegister} hideRegister={handleCloseRegister}/>
                 <Nav.Link href="/" hidden={isLogued}>Registrate</Nav.Link>*/}
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link onClick={handleShowLogin} hidden={isLogued}>{messages['lower_navbar_login']}</Nav.Link>
-                <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin}/>
-                {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
-              </Nav.Item>
-              <Nav.Item>
-                {/* Este link deberia rediregirnos al carrito */}
-                <Nav.Link href='/cart' hidden={!isLogued}>{messages['lower_navbar_cart']}</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href='/' onClick={logout} hidden={!isLogued}>{messages['lower_navbar_logout']}</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-        </Row>
-      </Container>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={handleShowLogin} hidden={isLogued}>{messages['lower_navbar_login']}</Nav.Link>
+              <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin} />
+              {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
+            </Nav.Item>
+            <Nav.Item>
+              {/* Este link deberia rediregirnos al carrito */}
+              <Nav.Link href='/cart' hidden={!isLogued}>{messages['lower_navbar_cart']}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='/' onClick={logout} hidden={!isLogued}>{messages['lower_navbar_logout']}</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   );
 }

@@ -7,6 +7,7 @@ export const messagesSpanish = {
     footer_faq: "FAQ",
     footer_term_and_conditions: "Términos y condiciones",
 
+    lower_navbar_menu: "Menú",
     lower_navbar_custom_dropdown_categories: "Categorías",
     lower_navbar_customization: "Personalización",
     lower_navbar_crud_products: "CRUD productos",
@@ -133,6 +134,7 @@ export const messagesEnglish = {
     footer_faq: "FAQ",
     footer_term_and_conditions: "Terms and Conditions",
 
+    lower_navbar_menu: "Menu",
     lower_navbar_custom_dropdown_categories: "Categories",
     lower_navbar_customization: "Customization",
     lower_navbar_crud_products: "CRUD products",
@@ -257,7 +259,8 @@ export const messagesPortuguese = {
     footer_policies: "Políticas de privacidade",
     footer_faq: "FAQ",
     footer_term_and_conditions: "Termos e Condições",
-
+    
+    lower_navbar_menu: "Menu",
     lower_navbar_custom_dropdown_categories: "Categorias",
     lower_navbar_customization: "Personalização",
     lower_navbar_crud_products: "CRUD produtos",

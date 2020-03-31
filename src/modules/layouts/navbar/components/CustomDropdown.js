@@ -1,21 +1,16 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const CustomDropdown = ({ title, list }) => (
-  <Dropdown>
-    <Dropdown.Toggle as="ul">
-      {title}
-    </Dropdown.Toggle>
-    <Dropdown.Menu as="li">
-      {list}
-    </Dropdown.Menu>
-  </Dropdown>
+  <NavDropdown title={title} id="nav-dropdown">
+    {list}
+  </NavDropdown>
 );
 
 CustomDropdown.propTypes = {
   title: PropTypes.string.isRequired,
-  list: PropTypes.isRequired
+  list: PropTypes.any.isRequired
 }
 
 export default CustomDropdown;
