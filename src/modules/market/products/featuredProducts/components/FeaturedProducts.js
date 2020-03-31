@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Image, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "../styles/FeaturedProducts.css";
 import Error from "../../../../layouts/Error";
@@ -29,17 +29,16 @@ const FeaturedProducts = () => {
   
   const listFeaturedProducts = products.map((product) =>
     <Link to={`/product/${product.id}`}>
-      <div                 
-        key={product.id} 
-        className='product'
-      >
-        <Image thumbnail
-          src={product.image}
-        />
-        <h2>{messages['featured_products_product_name']}: {product.name}</h2>
-        <h4>{messages['featured_products_product_price']}: ${product.price}</h4>
-        <Button variant="dark">{messages['featured_products_product_buy']}</Button>
-      </div>
+      <Card key={product.id} className='product'>
+        <Card.Img variant="top" src={product.image} />
+        <Card.Body>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Text>
+            ${product.price}
+          </Card.Text>
+          <Button variant="dark">{messages['featured_products_product_buy']}</Button>
+        </Card.Body>
+      </Card>
     </Link>
   );
 

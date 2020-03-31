@@ -17,33 +17,34 @@ const Product = ({ product }) => {
   }
 
   return (
+
     <Col md={4}>
-      <Card mb={4} className="shadow-sm">
-        <Card.Img
-          variant="top"
-          className="bd-placeholder-img"
-          width="100%"
-          height="225"
-          src="https://i.ytimg.com/vi/wjxwpKXcONQ/maxresdefault.jpg"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-          role="img">
-        </Card.Img>
-        <Card.Body>
-          <Link to={`/product/${product.id}`}>
-            <Card.Text>{product.description}</Card.Text>
-          </Link>
-          <div className="d-flex justify-content-between align-items-center">
-            <Button
-              type="button"
-              variant="outline-secondary"
-              className="btn-sm"
-              onClick={() => sendProductToCart(product)}
-            >{messages['list_products_product_buy']}</Button>
-            <small className="text-muted">$ {product.price}</small>
-          </div>
-        </Card.Body>
-      </Card>
+      <Link to={`/product/${product.id}`}>
+        <Card mb={4} className="shadow-sm">
+          <Card.Img
+            variant="top"
+            className="bd-placeholder-img"
+            width="100%"
+            height="225"
+            src={product.images[0]}
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            role="img">
+          </Card.Img>
+          <Card.Body>
+              <Card.Text>{product.description}</Card.Text>
+            <div className="d-flex justify-content-between align-items-center">
+              <Button
+                type="button"
+                variant="outline-secondary"
+                className="btn-sm"
+                onClick={() => sendProductToCart(product)}
+              >{messages['list_products_product_buy']}</Button>
+              <small className="text-muted">$ {product.price}</small>
+            </div>
+          </Card.Body>
+        </Card>
+      </Link>
     </Col>
   );
 }
