@@ -30,7 +30,7 @@ const Categories = () => {
         <Image roundedCircle
           width="150"
           height="150"
-          src={logo}
+          src={category.image}
         />
         <h6>{category.name}</h6>
       </div>
