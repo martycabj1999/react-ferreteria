@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { Image } from "react-bootstrap";
 import "../styles/categories.css";
 import { useSelector } from 'react-redux';
-import logo from '../../../../assets/carretilla.png'
 import Error from "../../../layouts/Error";
 
 //services

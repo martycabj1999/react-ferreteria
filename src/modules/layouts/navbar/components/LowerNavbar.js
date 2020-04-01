@@ -10,6 +10,7 @@ import CustomDropdown from './CustomDropdown';
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
 //services
 import CategoryProvider from '../../../market/categories/providers/CategoryProvider';
+import { Fragment } from 'react';
 
 const LowerNavbar = () => {
 
@@ -46,8 +47,7 @@ const LowerNavbar = () => {
     localStorage.removeItem('user');
   };
 
-  /* Listas de ejemplo */
-  // Marcas
+  // Marcas de ejemplo
   const brands = [
     {
       id: 1,
@@ -63,7 +63,9 @@ const LowerNavbar = () => {
   const obtainCategories = (categories) => (
     categories.map((category) =>
       <Link to={`/products-by-category/${category.id}`}>
-        <NavDropdown.Item key={category.id}>{category.name}</NavDropdown.Item>
+        <NavDropdown.Item key={category.id}>
+          {category.name}
+        </NavDropdown.Item>
       </Link >
     )
   );
@@ -83,11 +85,12 @@ const LowerNavbar = () => {
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
 
+  // Obtener los items del dropdown
   const listCategories = categories ? obtainCategories(categories) : null;
   const listBrands = brands ? obtainBrands(brands) : null;
 
   return (
-    <div>
+    <Fragment>
       <Typography style={{
         color: currentColors.textPrimary
       }} />
@@ -95,15 +98,16 @@ const LowerNavbar = () => {
         <Navbar.Brand>{messages['lower_navbar_menu']}</Navbar.Brand>
         <Navbar.Toggle aria-controls="collapse" />
         <Navbar.Collapse id="collapse">
-          <Nav>
+          <Nav> {/* Nav izquierdo */}
             <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
             <CustomDropdown title={'Marcas'} list={listBrands} />
+          </Nav> {/* Fin nav izquierdo */}
+          <div className="m-auto">{/* Este div separa el nav izquierdo del derecho */}</div>
+          <Nav> {/* Nav derecho */}
             <Nav.Item>
-              {/* Este link deberia rediregirnos al carrito */}
               <Nav.Link href='/customization' hidden={!isLogued}>{messages['lower_navbar_customization']}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              {/* Este link deberia rediregirnos al carrito */}
               <Nav.Link href='/crud-products' hidden={!isLogued}>{messages['lower_navbar_crud_products']}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
@@ -114,19 +118,17 @@ const LowerNavbar = () => {
             <Nav.Item>
               <Nav.Link onClick={handleShowLogin} hidden={isLogued}>{messages['lower_navbar_login']}</Nav.Link>
               <LoginModal isLogin={isLogin} showLogin={showLogin} hideLogin={handleCloseLogin} />
-              {/*<Nav.Link href="/" >Iniciar Sesion</Nav.Link>*/}
             </Nav.Item>
             <Nav.Item>
-              {/* Este link deberia rediregirnos al carrito */}
               <Nav.Link href='/cart' hidden={!isLogued}>{messages['lower_navbar_cart']}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href='/' onClick={logout} hidden={!isLogued}>{messages['lower_navbar_logout']}</Nav.Link>
             </Nav.Item>
-          </Nav>
+          </Nav> {/* Fin nav derecho */}
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </Fragment>
   );
 }
 
