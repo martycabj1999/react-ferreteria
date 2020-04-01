@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useSelector } from 'react-redux';
-import { Container } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 import Product from './Product';
 import '../styles/ListProducts.css';
 import Error from "../../../layouts/Error";
@@ -46,20 +46,19 @@ const ListProducts = (props) => {
   }, [(window.location.pathname).split('/')[2]]);
   
   const listProducts = products.map((product) =>
-    <div key={product.id} className='product'>
-      <Product 
-        product={product}
-      />
-    </div>
+    <Product
+      key={product.id}
+      product={product}
+    />
   );
 
   return (
-    <div className="list-products-container">
-      <h4>{messages['search_list_products_results']}</h4>
-      <Container>
-        {products.length > 0 ? listProducts : <Error mensaje={messages['search_list_products_not_products']} />}
-      </Container>
-    </div>
+    <Container>
+      <h4 className="mt-3 mb-3">{messages['list_products_others']}</h4>
+      <Row>
+        {products.length > 0 ? listProducts : <Error mensaje={messages['list_products_not_products']} />}
+      </Row>
+    </Container>
   );
 }
 export default ListProducts;

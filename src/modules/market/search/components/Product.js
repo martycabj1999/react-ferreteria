@@ -1,30 +1,61 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Image, Button } from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Col, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { object } from 'prop-types';
+import { getCartProductAction } from '../../products/store/ProductsAction';
+import '../styles/Product.css';
 
 const Product = ({ product }) => {
 
-    const messages = useSelector(state => state.languages.messages);
+  const messages = useSelector(state => state.languages.messages);
+  const dispatch = useDispatch();
 
-    return (
+  const sendProductToCart = product => {
+    dispatch(getCartProductAction(product));
+    console.log(product);
+  }
+
+  return (
+
+    <Col md={4}>
+      <Card mb={4} className="shadow-sm">
         <Link to={`/product/${product.id}`}>
-            <div style={{ width: 'auto' }}>
-                <Image thumbnail style={{ maxWidth: '200' }}
-                    src={product.image}
-                />
-                <h3>{messages['list_products_product_name']}: {product.name}</h3>
-                <h3>{messages['list_products_product_price']}: ${product.price}</h3>
-                <Button className="button" variant="dark">{messages['list_products_product_buy']}</Button>
-            </div>
+          <Card.Img
+            variant="top"
+            className="bd-placeholder-img"
+            width="100%"
+            height="225"
+            src={product.images[0].image}
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            role="img">
+          </Card.Img>
         </Link>
-    );
+        <Card.Body>
+          <Card.Title style={{color:"#000000"}} align="center">{product.name}</Card.Title>
+          <Link to={`/product/${product.id}`}>
+            <Card.Text>{product.description}</Card.Text>
+          </Link>
+          <div className="d-flex justify-content-between align-items-center">
+            <Button
+              type="button"
+              className="btn-info"
+              onClick={() => sendProductToCart(product)}
+            >
+              {messages['list_products_product_buy']}
+            </Button>
+            <strong className="text-muted">$ {product.price}</strong>
+          </div>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
 }
 
 // PropTypes
 Product.propTypes = {
-    product: object.isRequired
+  product: object.isRequired
 }
 
 export default Product;
