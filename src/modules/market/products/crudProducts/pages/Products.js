@@ -19,7 +19,7 @@ const Products = () => {
     // Obtener el state
     const messages = useSelector(state => state.languages.messages);
     const products = useSelector(state => state.products.products);
-    console.log(products);
+    
     //const [products, setProducts] = ('');
     localStorage.setItem('products', JSON.stringify(products));
 

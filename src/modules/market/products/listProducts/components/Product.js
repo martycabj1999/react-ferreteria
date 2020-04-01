@@ -13,7 +13,6 @@ const Product = ({ product }) => {
 
   const sendProductToCart = product => {
     dispatch(getCartProductAction(product));
-    console.log(product);
   }
 
   return (
