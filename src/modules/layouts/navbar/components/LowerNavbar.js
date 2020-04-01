@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Typography from '@material-ui/core/Typography'
 import LoginModal from '../../../user/login/pages/LoginModal';
 import CustomDropdown from './CustomDropdown';
@@ -20,6 +20,7 @@ const LowerNavbar = () => {
 
   // Utilizar use dispatch
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Mandar a llamar el action de productoAction
   const setAuthUser = user => dispatch(setAuthUserAction(user));
@@ -51,22 +52,28 @@ const LowerNavbar = () => {
   const brands = [
     {
       id: 1,
-      title: 'marca 1',
+      name: 'marca 1',
     },
     {
       id: 2,
-      title: 'marca 2',
+      name: 'marca 2',
     }
   ];
+
+  const redirect = (category) => {
+    history.push('/products-by-category/' + category.id)
+  }
 
   // const onClick = (category) => dispatch(getCategoryAction(category));
   const obtainCategories = (categories) => (
     categories.map((category) =>
-      <Link to={`/products-by-category/${category.id}`}>
-        <NavDropdown.Item key={category.id}>
-          {category.name}
-        </NavDropdown.Item>
-      </Link >
+      <Link to={`/products-by-category/${category.id}`} >
+        <div>
+          <NavDropdown.Item onClick={ e => redirect(category)} key={category.id}>
+            {category.name}
+          </NavDropdown.Item>
+        </div>
+      </Link>
     )
   );
 

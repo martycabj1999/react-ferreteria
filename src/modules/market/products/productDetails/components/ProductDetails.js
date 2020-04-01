@@ -44,7 +44,8 @@ const ProductDetails = (props) => {
                     <Col lg={8}>
                         <h3>{messages['product_details_product_name']}: {product.name}</h3>
                         <h3>{messages['product_details_product_price']}: $ {product.price}</h3>
-                        <h5>{messages['product_details_product_description']}: {product.long_description}</h5>
+                        <h5>{messages['product_details_product_description']}: {product.description}</h5>
+                        <h5>{messages['product_details_product_description']} Larga: {product.long_description}</h5>
                         <Button className="button" variant="dark">{messages['product_details_product_buy']}</Button>
                     </Col>
                 </Row>

@@ -25,7 +25,7 @@ const initialState = {
     loading: false,
     productRemove: null,
     productEdit: null,
-    productCart: null,
+    productCart: [],
 }
 
 export default function (state = initialState, action) {
@@ -88,7 +88,7 @@ export default function (state = initialState, action) {
         case ADD_PRODUCT_CART:
             return {
                 ...state,
-                productCart: action.payload
+                productCart: [ ...state.productCart, action.payload]
             }
         
         case EDIT_PRODUCT_SUCCESS:
