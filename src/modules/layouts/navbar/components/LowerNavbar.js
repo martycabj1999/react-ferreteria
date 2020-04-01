@@ -52,12 +52,10 @@ const LowerNavbar = () => {
     {
       id: 1,
       title: 'marca 1',
-      url: 'marca_1'
     },
     {
       id: 2,
       title: 'marca 2',
-      url: 'marca_2'
     }
   ];
 
@@ -65,7 +63,7 @@ const LowerNavbar = () => {
   const obtainCategories = (categories) => (
     categories.map((category) =>
       <Link to={`/products-by-category/${category.id}`}>
-        <NavDropdown.Item key={category.id} as='a'>{category.name}</NavDropdown.Item>
+        <NavDropdown.Item key={category.id}>{category.name}</NavDropdown.Item>
       </Link >
     )
   );
@@ -97,7 +95,7 @@ const LowerNavbar = () => {
         <Navbar.Brand>{messages['lower_navbar_menu']}</Navbar.Brand>
         <Navbar.Toggle aria-controls="collapse" />
         <Navbar.Collapse id="collapse">
-          <Nav fluid expand='md'>
+          <Nav>
             <CustomDropdown title={messages['lower_navbar_custom_dropdown_categories']} list={listCategories} />
             <CustomDropdown title={'Marcas'} list={listBrands} />
             <Nav.Item>
