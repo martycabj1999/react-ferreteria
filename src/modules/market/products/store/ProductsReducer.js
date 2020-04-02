@@ -12,7 +12,6 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
-    ADD_PRODUCT_CART
 
 } from '../../../../types/types';
 
@@ -25,7 +24,6 @@ const initialState = {
     loading: false,
     productRemove: null,
     productEdit: null,
-    productCart: [],
 }
 
 export default function (state = initialState, action) {
@@ -85,11 +83,6 @@ export default function (state = initialState, action) {
                 productEdit: action.payload
             }
 
-        case ADD_PRODUCT_CART:
-            return {
-                ...state,
-                productCart: [ ...state.productCart, action.payload]
-            }
         
         case EDIT_PRODUCT_SUCCESS:
             return {

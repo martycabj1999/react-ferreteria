@@ -15,7 +15,6 @@ import {
     START_EDIT_PRODUCT,
     EDIT_PRODUCT_SUCCESS,
     EDIT_PRODUCT_ERROR,
-    ADD_PRODUCT_CART
 } from '../../../../types/types';
 
 // Crear nuevos productos
@@ -182,18 +181,5 @@ const editProductError = () => ({
     payload: true
 })
 
-
-// Colocar producto en el carrito
-export function getCartProductAction(product) {
-    return (dispatch) => {
-        dispatch(getCartProduct(product))
-        console.log(product);
-    }
-}
-
-const getCartProduct = product => ({
-    type: ADD_PRODUCT_CART,
-    payload: product
-})
 
 

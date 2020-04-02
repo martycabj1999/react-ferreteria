@@ -34,7 +34,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/register' component={Register} />
-              <PrivateRoute exact path='/cart' component={Cart} />
+              <Route exact path='/cart' component={Cart} />
               <Route exact path='/new' component={NewProduct} />
               <Route exact path='/edit/:id' component={EditProduct} />
               <PrivateRoute exact path='/customization' component={ColorPicker} />

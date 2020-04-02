@@ -1,38 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EmptyCart from '../components/EmptyCart';
 import ProductPopup from '../components/ProductPopup';
-import { Container, Card, Button, Figure, Row, Col } from 'react-bootstrap';
+import Product from '../components/Product';
+import { Container, Row } from 'react-bootstrap';
 import '../styles/Cart.css';
+//import Product from '../components/Product';
 
 const Cart = () => {
 
-    const productsInCart = [
-        {
-            id: 1,
-            name: 'Nombre del producto lorem ipsum dolor sit amet',
-            src: 'https://www.ocu.org/-/media/ocu/images/home/vivienda%20y%20energia/equipamiento%20hogar/herramientas%20cabecera.jpg?la=es-es&rev=9e765ac9-da97-4833-a910-e2168b4c0749&hash=4138B2A3F478CC996CF1384D157DCCFA56D61528',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            price: 1566.15
-        },
-        {
-            id: 4,
-            name: 'Nombre del producto',
-            src: 'https://www.ocu.org/-/media/ocu/images/home/vivienda%20y%20energia/equipamiento%20hogar/herramientas%20cabecera.jpg?la=es-es&rev=9e765ac9-da97-4833-a910-e2168b4c0749&hash=4138B2A3F478CC996CF1384D157DCCFA56D61528',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            price: 1566.15
-        },
-        {
-            id: 1,
-            name: 'Nombre del producto',
-            src: 'https://i.ytimg.com/vi/p4wdZbIg2b0/hqdefault.jpg',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            price: 1566.15
-        }
-    ]
-    const quantityProductsInCart = productsInCart.length
+    const productsInCart = useSelector( state => state.cart.productCart);
+    const [quantityProductsInCart, setQuantityProductsInCart] = useState(0);
 
     const messages = useSelector(state => state.languages.messages);
+
     const [modalShow, setModalShow] = useState(false);
     const [modalName, setModalName] = useState('');
     const [modalSrc, setModalSrc] = useState('');
@@ -47,24 +28,31 @@ const Cart = () => {
         setModalPrice(price);
     }
 
-    const showAllProductsInCart = (products) => (
-        products.map((product) =>
-            <Card className='product'>
-                <Row>
-                    <Col md={6} lg={6}><Figure.Image id='img' src={product.src} /></Col>
-                    <Col md={6} lg={6}><Card.Title id='title'>{product.name}</Card.Title></Col>
-                </Row>
-                <Button
-                    onClick={() => sets(product.name, product.src, product.description, product.price)}
-                    as='button'
-                    variant="primary">
-                    {messages['cart_text_see_more']}
-				</Button>
-            </Card>
-        )
-    )
+    useEffect(()=> {        
+        setQuantityProductsInCart(productsInCart.length);
+    }, [productsInCart]);
 
-    const listProductsInCart = quantityProductsInCart !== 0 ? showAllProductsInCart(productsInCart) : <EmptyCart />;
+    const showAllProductsInCart = (products) => (
+        <table className="table">
+            <thead className="thead">
+                <tr>
+                    <th>{messages['cart_products_name']}</th>
+                    <th>{messages['cart_products_price']}</th>
+                    <th>{messages['cart_products_actions']}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    products.map((product) => (
+                        <Product
+                            product={product}
+                        />
+                    ))
+                }
+            </tbody>
+        </table>
+        
+    )
 
     return (
         <div>
@@ -75,7 +63,13 @@ const Cart = () => {
                     </Container>
                 </div>
                 <Container className='product-container'>
-                    {listProductsInCart}
+                    <Row>
+                        {
+                            quantityProductsInCart !== 0 
+                            ? showAllProductsInCart(productsInCart) 
+                            : <EmptyCart />
+                        }
+                    </Row>
                     <ProductPopup
                         name={modalName}
                         src={modalSrc}

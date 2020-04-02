@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Image, Button, Carousel, Row, Col, Container } from 'react-bootstrap';
 import FeaturedProducts from '../../featuredProducts/components/FeaturedProducts';
 import ProductProvider from '../../providers/ProductProvider';
 import QuestionPopup from '../../../cart/components/QuestionPopup';
 import '../styles/ProductDetails.css';
 
+// Redux
+import { getCartProductAction } from '../../../cart/store/CartActions';
+
 const ProductDetails = (props) => {
 
-
-  const messages = useSelector(state => state.languages.messages);
+  const dispatch = useDispatch();
   const [product, setProduct] = useState([]);
   const [images, setImages] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+  const messages = useSelector(state => state.languages.messages);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,6 +29,12 @@ const ProductDetails = (props) => {
     }
     fetchData();
   }, [props.location.pathname]);
+
+  const sendProductToCart = product => {
+    dispatch(getCartProductAction(product));
+    // Mostrar modal con pregunta
+    setModalShow(true);
+  };
 
   return (
     <div>
@@ -54,7 +63,7 @@ const ProductDetails = (props) => {
               setShow={setModalShow}
             />
             <Button
-              onClick={() => setModalShow(true)}
+              onClick={() => sendProductToCart(product)}
               className="button"
               variant="dark"
             >

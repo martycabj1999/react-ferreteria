@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button, Col, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { object } from 'prop-types';
-import { getCartProductAction } from '../../store/ProductsAction';
+import { getCartProductAction } from '../../../cart/store/CartActions';
 import QuestionPopup from '../../../cart/components/QuestionPopup';
 import '../styles/Product.css';
 
