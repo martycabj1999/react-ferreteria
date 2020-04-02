@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
@@ -10,7 +10,6 @@ import CustomDropdown from './CustomDropdown';
 import { setAuthUserAction } from '../../../user/login/store/AuthAction';
 //services
 import CategoryProvider from '../../../market/categories/providers/CategoryProvider';
-import { Fragment } from 'react';
 
 const LowerNavbar = () => {
 
@@ -68,11 +67,9 @@ const LowerNavbar = () => {
   const obtainCategories = (categories) => (
     categories.map((category) =>
       <Link to={`/products-by-category/${category.id}`} >
-        <div>
-          <NavDropdown.Item onClick={ e => redirect(category)} key={category.id}>
-            {category.name}
-          </NavDropdown.Item>
-        </div>
+        <NavDropdown.Item onClick={() => redirect(category)} key={category.id}>
+          {category.name}
+        </NavDropdown.Item>
       </Link>
     )
   );

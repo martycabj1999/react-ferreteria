@@ -1,3 +1,23 @@
+.product-link {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.product-title {
+    color: black;
+}
+
+.product-text {
+    color: #979290;
+    /* Altura minima para que queden todos los productos
+    del mismo alto y no dependa la altura del texto de su descripcion*/
+    min-height: 5rem;
+}
+
+.product-title:hover {
+    font-weight: bold;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
