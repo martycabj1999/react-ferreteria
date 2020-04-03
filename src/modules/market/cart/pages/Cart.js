@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Product from '../components/Product';
 import EmptyCart from '../components/EmptyCart';
 import '../styles/Cart.css';
@@ -17,38 +17,21 @@ const Cart = () => {
   }, [productsInCart]);
 
   const showAllProductsInCart = (products) => (
-    <table className="table">
-      <thead className="thead">
-        <tr>
-          <th>{messages['cart_products_name']}</th>
-          <th>{messages['cart_products_price']}</th>
-          <th>{messages['cart_products_actions']}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((product) => (
-          <Product
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </tbody>
-    </table>
+    products.map((product) => (
+      <Product
+        key={product.id}
+        product={product}
+      />
+    ))
   )
 
   return (
     <Fragment>
-      <div id='cart-title'>
-        <Container>
-          <h2>{messages['cart_text_my']} <strong>{messages['cart_text_cart']}</strong></h2>
-        </Container>
-      </div>
-      <Container className='product-container'>
-        <Row>
-          {quantityProductsInCart !== 0
-            ? showAllProductsInCart(productsInCart)
-            : <EmptyCart />}
-        </Row>
+      <Container>
+        <h2 className="my-4">
+          {messages['cart_text_my']} <strong>{messages['cart_text_cart']}</strong>
+        </h2>
+        {quantityProductsInCart > 0 ? showAllProductsInCart(productsInCart) : <EmptyCart />}
       </Container>
     </Fragment>
   );

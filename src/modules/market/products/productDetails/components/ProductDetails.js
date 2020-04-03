@@ -11,11 +11,12 @@ import { getCartProductAction } from '../../../cart/store/CartActions';
 
 const ProductDetails = (props) => {
 
-  const dispatch = useDispatch();
   const [product, setProduct] = useState([]);
   const [images, setImages] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+
   const messages = useSelector(state => state.languages.messages);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {

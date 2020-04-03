@@ -3,28 +3,3 @@
     background-color: #ffd700;
     padding: 10px;
 }
-
-.product-container {
-    margin-top: 40px;
-    max-width: 720px;
-}
-.product{
-    margin-top: 5px;
-}
-.product #title {
-    padding-top: 10px;
-    font-size: 23px;
-}
-
-.product #img {
-    margin-top: 5px;
-    margin-left: 25px;
-    max-width: 140px !important;
-    max-height: 140px !important;
-}
-
-.product button {
-    margin-top: 5px;
-    margin-left: 28px;
-    width: 130px;
-}
