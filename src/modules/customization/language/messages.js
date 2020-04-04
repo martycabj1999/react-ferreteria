@@ -374,5 +374,6 @@ export const messagesPortuguese = {
     language_change_spanish: "Espanhol",
     language_change_english: "Inglês",
     language_change_portuguese: "Português",
+    language_change_portugueses: "Portuguêss",
 
 }
