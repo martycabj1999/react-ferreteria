@@ -7,14 +7,9 @@ import '../styles/Cart.css';
 
 const Cart = () => {
 
-  const [quantityProductsInCart, setQuantityProductsInCart] = useState(0);
-
-  const productsInCart = useSelector(state => state.cart.productCart);
+  const productsInCart = useSelector(state => state.cart.productsCart);
   const messages = useSelector(state => state.languages.messages);
-
-  useEffect(() => {
-    setQuantityProductsInCart(productsInCart.length);
-  }, [productsInCart]);
+  console.log(productsInCart);
 
   const showAllProductsInCart = (products) => (
     products.map((product) => (
@@ -31,7 +26,7 @@ const Cart = () => {
         <h2 className="my-4">
           {messages['cart_text_my']} <strong>{messages['cart_text_cart']}</strong>
         </h2>
-        {quantityProductsInCart > 0 ? showAllProductsInCart(productsInCart) : <EmptyCart />}
+        { productsInCart.length !== 0 ? showAllProductsInCart(productsInCart) : <EmptyCart />}
       </Container>
     </Fragment>
   );

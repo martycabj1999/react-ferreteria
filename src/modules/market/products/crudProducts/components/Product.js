@@ -2,10 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux';
 import { removeProductAction, getEditProductAction } from '../../store/ProductsAction';
+
+// Services
 import ProductProvider from '../../providers/ProductProvider';
 
 const Product = ({product}) => {
@@ -15,9 +17,7 @@ const Product = ({product}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // Confirmar si desea eliminar producto
     const confirmRemoveProduct = id => {
-
         // Preguntar al usuario
         Swal.fire({
             title: messages['crud_product_delete_question'],
