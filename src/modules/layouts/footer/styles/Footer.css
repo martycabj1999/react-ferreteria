@@ -1,24 +1,11 @@
-
-  .footer{
-    margin: 0px auto;
-    bottom: 0px;
-    width: 100%;
-    height: 40px;
-    }
-  
   .footer-container {
     display: flex;
-    position: sticky;
-    width: 100%;
     justify-content: center;
-    height: 30px;
   }
-  
-  .footer-container div{
+
+  .footer-container div {
     display: block;
-    padding: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     cursor: pointer;
-  
   }
