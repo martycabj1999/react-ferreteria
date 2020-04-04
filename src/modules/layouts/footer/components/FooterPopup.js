@@ -87,7 +87,7 @@ const FooterPopup = ({ name, show, setShow }) => {
 }
 
 // PropTypes
-FooterPopup.proptypes = {
+FooterPopup.propTypes = {
   name: string.isRequired,
   show: bool.isRequired,
   setShow: func.isRequired

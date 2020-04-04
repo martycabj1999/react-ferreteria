@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Product from '../components/Product';

@@ -3,7 +3,6 @@ import { Card, Image, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Error from "../../../../layouts/Error";
-import QuestionPopup from '../../../cart/components/QuestionPopup';
 import "../styles/FeaturedProducts.css";
 
 // Redux
@@ -15,14 +14,11 @@ import ProductProvider from '../../providers/ProductProvider';
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(0);
-  const [modalShow, setModalShow] = useState(false);
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
 
   const sendProductToCart = product => {
     dispatch(getCartProductAction(product));
-    // Mostrar modal con pregunta
-    setModalShow(true);
   };
 
   useEffect(() => {
@@ -46,7 +42,6 @@ const FeaturedProducts = () => {
           src={product.images[0].image}
         />
       </Link>
-      
       <Card.Body>
         <Link>
           <Card.Title align="center">{product.name}</Card.Title>
@@ -54,12 +49,6 @@ const FeaturedProducts = () => {
             ${product.price}
           </Card.Text>
         </Link>
-
-        <QuestionPopup
-          show={modalShow}
-          setShow={setModalShow}
-        />
-
         <Button
           onClick={() => sendProductToCart(product)}
           align="center"

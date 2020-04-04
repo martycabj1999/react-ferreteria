@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
-import '../styles/UpperNavbar.css';
 import { useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography'
-import logo from '../../../../assets/carrito.png';
 import SearchProvider from '../providers/SearchProvider';
 import { useHistory } from "react-router-dom";
+import logo from '../../../../assets/carrito.png';
+import '../styles/Header.css';
 
-const UpperNavbar = (props) => {
+const Header = () => {
 
   const history = useHistory();
   const messages = useSelector(state => state.languages.messages);
@@ -18,7 +18,7 @@ const UpperNavbar = (props) => {
 
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
   const onSubmitSearch = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const UpperNavbar = (props) => {
       }
     });
     setSearch('');
-  }
+  };
 
   return (
     <div>
@@ -80,4 +80,4 @@ const UpperNavbar = (props) => {
   );
 }
 
-export default UpperNavbar;
+export default Header;

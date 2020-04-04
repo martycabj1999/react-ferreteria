@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Footer from './footer/pages/Footer';
-import UpperNavbar from "./navbar/components/UpperNavbar";
-import LowerNavbar from "./navbar/components/LowerNavbar";
+import Header from './header/components/Header';
+import CustomNavbar from './navbar/components/CustomNavbar';
 
-const Layout = ({ children }) => {
-  return (
-    <div>
+const Layout = ({ children }) => (
+    <Fragment>
       <header>
-        <UpperNavbar />
-        <LowerNavbar />
+        <Header />
+        <CustomNavbar />
       </header>
       {children}
       <Footer />
-    </div>
+    </Fragment>
   );
-}
 
 export default Layout;

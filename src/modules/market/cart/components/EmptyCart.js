@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Container, Figure } from 'react-bootstrap';
 import '../styles/EmptyCart.css';
-import { Link } from "react-router-dom";
-import { carrito } from '../../../../assets/carrito.png';
+import { Link } from 'react-router-dom';
+import carrito from '../../../../assets/carrito.png';
+
 const EmptyCart = () => {
 
   const messages = useSelector(state => state.languages.messages);
@@ -20,7 +21,7 @@ const EmptyCart = () => {
           <h3>{messages['cart_empty']}</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
         </Figure.Caption>
-        <Link to="/" >
+        <Link to='/'>
           <button>{messages['cart_back']}</button>
         </Link>
       </Figure>

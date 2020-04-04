@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Image, Button, Carousel, Row, Col, Container } from 'react-bootstrap';
 import FeaturedProducts from '../../featuredProducts/components/FeaturedProducts';
 import ProductProvider from '../../providers/ProductProvider';
-import QuestionPopup from '../../../cart/components/QuestionPopup';
 import '../styles/ProductDetails.css';
 
 // Redux
@@ -13,7 +12,6 @@ const ProductDetails = (props) => {
 
   const [product, setProduct] = useState([]);
   const [images, setImages] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
 
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
@@ -33,8 +31,6 @@ const ProductDetails = (props) => {
 
   const sendProductToCart = product => {
     dispatch(getCartProductAction(product));
-    // Mostrar modal con pregunta
-    setModalShow(true);
   };
 
   return (
@@ -59,10 +55,6 @@ const ProductDetails = (props) => {
             <h3>{messages['product_details_product_price']}: $ {product.price}</h3>
             <h5>{messages['product_details_product_description']}: {product.description}</h5>
             <h5>{messages['product_details_product_description']} Larga: {product.long_description}</h5>
-            <QuestionPopup
-              show={modalShow}
-              setShow={setModalShow}
-            />
             <Button
               onClick={() => sendProductToCart(product)}
               className="button"

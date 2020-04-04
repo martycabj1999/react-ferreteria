@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import PropTypes from 'prop-types';
+import { object } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-
 
 // Redux
 import { removeProductCartAction } from '../store/CartActions';
@@ -13,10 +12,9 @@ const Product = ({ product }) => {
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
 
-  const SweetAlert = (tittle, text, icon, confirm, cancel, type, id) => {
-
+  const SweetAlert = (title, text, icon, confirm, cancel, type, id) => {
     Swal.fire({
-      title: tittle,
+      title: title,
       text: text,
       icon: icon,
       showCancelButton: true,
@@ -24,18 +22,20 @@ const Product = ({ product }) => {
       cancelButtonColor: '#d33',
       confirmButtonText: confirm,
       cancelButtonText: cancel,
-      }).then((result) => {
-        if (result.value){
-          switch(type){
-            case 'confirmRemoveProduct':
-              dispatch (removeProductCartAction(id));
-              break;
-            case 'confirmBuyProduct':
-              console.log('Comprado')
-              break;
-          }
+    }).then((result) => {
+      if (result.value) {
+        switch (type) {
+          case 'confirmRemoveProduct':
+            dispatch(removeProductCartAction(id));
+            break;
+          case 'confirmBuyProduct':
+            console.log('Comprado');
+            break;
+          default:
+            break;
         }
       }
+    }
     )
   }
 
@@ -52,6 +52,7 @@ const Product = ({ product }) => {
     )
   };
 
+/*
   const confirmBuyProduct = () => {
     SweetAlert(
       messages['cart_product_buy_question'],
@@ -63,13 +64,21 @@ const Product = ({ product }) => {
     )
   };
 
+  <Button
+    className="btn btn-primary mr-1"
+    onClick={() => confirmBuyProduct()}
+  >{messages['cart_product_buy']}</Button>
+  */
+
   return (
     <Fragment>
       <Row>
         <Col md={7}>
           <Image
             className="img-fluid rounded mb-3 mb-md-0"
-            src="http://placehold.it/700x300"
+            src={product.images[0].image}
+            width={400}
+            height={300}
             alt=""
           />
         </Col>
@@ -77,10 +86,6 @@ const Product = ({ product }) => {
           <h3 style={{ textTransform: "capitalize" }}>{product.name}</h3>
           <p>$ {product.price}</p>
           <p>{product.description}</p>
-          <Button
-            className="btn btn-primary mr-1"
-            onClick={() => confirmBuyProduct()}
-          >{messages['cart_product_buy']}</Button>
           <Button
             className="btn btn-danger"
             onClick={() => confirmRemoveProduct(product.id)}
@@ -94,7 +99,7 @@ const Product = ({ product }) => {
 
 // PropTypes
 Product.propTypes = {
-  product: PropTypes.object.isRequired
+  product: object.isRequired
 }
 
 export default Product;
