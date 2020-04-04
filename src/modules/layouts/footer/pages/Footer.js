@@ -10,7 +10,7 @@ const Footer = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalName, setModalName] = useState('');
 
-  const sets = (name) => {
+  const setModalNameAndShowIt = (name) => {
     setModalShow(true);
     setModalName(name);
   };
@@ -29,22 +29,22 @@ const Footer = () => {
       }} />
       <Container className="footer-container">
         <Row>
-          <div onClick={() => sets('Ferretería')}>
+          <div onClick={() => setModalNameAndShowIt('Ferretería')}>
             &copy;{messages['footer_business']}
           </div>
         </Row>
         <Row>
-          <div onClick={() => sets('Políticas de privacidad')}>
+          <div onClick={() => setModalNameAndShowIt('Políticas de privacidad')}>
             {messages['footer_policies']}
           </div>
         </Row>
         <Row>
-          <div onClick={() => sets('FAQ')}>
+          <div onClick={() => setModalNameAndShowIt('FAQ')}>
             {messages['footer_faq']}
           </div>
         </Row>
         <Row>
-          <div onClick={() => sets('Términos y condiciones')}>
+          <div onClick={() => setModalNameAndShowIt('Términos y condiciones')}>
             {messages['footer_term_and_conditions']}
           </div>
         </Row>
@@ -52,7 +52,7 @@ const Footer = () => {
       <FooterPopup
         name={modalName}
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        setShow={setModalShow}
       />
     </footer>
   );
