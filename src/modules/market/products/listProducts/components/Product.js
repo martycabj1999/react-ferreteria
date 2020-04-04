@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button, Col, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { object } from 'prop-types';
-import { getCartProductAction } from '../../../cart/store/CartActions';
 import QuestionPopup from '../../../cart/components/QuestionPopup';
 import '../styles/Product.css';
 
-const Product = ({ product }) => {
+// Redux
+import { getCartProductAction } from '../../../cart/store/CartActions';
 
+const Product = ({ product }) => {
   const [modalShow, setModalShow] = useState(false);
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
@@ -34,17 +35,21 @@ const Product = ({ product }) => {
             role="img">
           </Card.Img>
         </Link>
+
         <Card.Body>
           <Link className="product-link" to={`/product/${product.id}`}>
             <Card.Title className="product-title" align="center">{product.name}</Card.Title>
+            
             <Card.Text className="product-text">
               {product.description}
             </Card.Text>
           </Link>
+
           <QuestionPopup
             show={modalShow}
             setShow={setModalShow}
           />
+          
           <div className="d-flex justify-content-between align-items-center">
             <Button
               type="button"

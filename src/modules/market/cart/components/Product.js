@@ -2,44 +2,65 @@ import React, { Fragment } from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 // Redux
-import { useSelector } from 'react-redux';
+import { removeProductCartAction } from '../store/CartActions';
 
 const Product = ({ product }) => {
 
   const messages = useSelector(state => state.languages.messages);
+  const dispatch = useDispatch();
+
+  const SweetAlert = (tittle, text, icon, confirm, cancel, type, id) => {
+
+    Swal.fire({
+      title: tittle,
+      text: text,
+      icon: icon,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: confirm,
+      cancelButtonText: cancel,
+      }).then((result) => {
+        if (result.value){
+          switch(type){
+            case 'confirmRemoveProduct':
+              dispatch (removeProductCartAction(id));
+              break;
+            case 'confirmBuyProduct':
+              console.log('Comprado')
+              break;
+          }
+        }
+      }
+    )
+  }
 
   // Confirmar si desea eliminar producto (sin funcionaliad por ahora)
-  const confirmRemoveProduct = () => {
-    // Preguntar al usuario
-    Swal.fire({
-      title: messages['cart_product_delete_question'],
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: messages['cart_product_delete_confirm'],
-      cancelButtonText: messages['cart_product_delete_cancel'],
-    }).then((result) => {
-      console.log('Eliminado');
-    })
+  const confirmRemoveProduct = (id) => {
+    SweetAlert(
+      messages['cart_product_delete_question'],
+      '',
+      'warning',
+      messages['cart_product_delete_confirm'],
+      messages['cart_product_delete_cancel'],
+      'confirmRemoveProduct',
+      id
+    )
   };
 
-  // Funcion que redirige de forma programada (sin funcionaliad por ahora)
   const confirmBuyProduct = () => {
-    // Preguntar al usuario
-    Swal.fire({
-      title: messages['cart_product_buy_question'],
-      icon: 'primary',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: messages['cart_product_buy_confirm'],
-      cancelButtonText: messages['cart_product_buy_cancel'],
-    }).then((result) => {
-      console.log('Comprado');
-    })
+    SweetAlert(
+      messages['cart_product_buy_question'],
+      '',
+      'warning',
+      messages['cart_product_buy_confirm'],
+      messages['cart_product_buy_cancel'],
+      'confirmBuyProduct'
+    )
   };
 
   return (
@@ -62,7 +83,7 @@ const Product = ({ product }) => {
           >{messages['cart_product_buy']}</Button>
           <Button
             className="btn btn-danger"
-            onClick={() => confirmRemoveProduct()}
+            onClick={() => confirmRemoveProduct(product.id)}
           >{messages['cart_product_delete']}</Button>
         </Col>
       </Row>

@@ -45,24 +45,29 @@ const FeaturedProducts = () => {
           height="200"
           src={product.images[0].image}
         />
-        <Card.Body>
+      </Link>
+      
+      <Card.Body>
+        <Link>
           <Card.Title align="center">{product.name}</Card.Title>
           <Card.Text align="center">
             ${product.price}
           </Card.Text>
-        </Card.Body>
-      </Link>
-      <QuestionPopup
-        show={modalShow}
-        setShow={setModalShow}
-      />
-      <Button
-        onClick={() => sendProductToCart(product)}
-        align="center"
-        className="btn btn-block"
-        variant="dark">
-        {messages['featured_products_product_buy']}
-      </Button>
+        </Link>
+
+        <QuestionPopup
+          show={modalShow}
+          setShow={setModalShow}
+        />
+
+        <Button
+          onClick={() => sendProductToCart(product)}
+          align="center"
+          className="btn btn-block"
+          variant="dark">
+          {messages['featured_products_product_buy']}
+        </Button>
+      </Card.Body>
     </Card >
   );
 
