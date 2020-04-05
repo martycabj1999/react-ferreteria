@@ -20,10 +20,9 @@ const Footer = () => {
 
   return (
     <footer
-      style={{
-        backgroundColor: currentColors.colorPrimary
-            }}
-      className="py-3 mt-3">
+      style={{ backgroundColor: currentColors.colorPrimary }}
+      className="footer py-3 mt-3"
+    >
       <Typography style={{
         color: currentColors.textPrimary
       }} />
