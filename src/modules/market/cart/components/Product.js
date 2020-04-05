@@ -43,7 +43,6 @@ const Product = ({ product }) => {
     });
   }
 
-  // Confirmar si desea eliminar producto (sin funcionaliad por ahora)
   const confirmRemoveProduct = (id) => {
     SweetAlert(
       messages['cart_product_delete_question'],
@@ -56,7 +55,6 @@ const Product = ({ product }) => {
     )
   };
 
-  /*
     const confirmBuyProduct = () => {
       SweetAlert(
         messages['cart_product_buy_question'],
@@ -67,7 +65,7 @@ const Product = ({ product }) => {
         'confirmBuyProduct'
       )
     };
-  
+/*  
     <Button
       className="btn btn-primary mr-1"
       onClick={() => confirmBuyProduct()}
@@ -77,16 +75,16 @@ const Product = ({ product }) => {
   return (
     <Fragment>
       <Row>
-        <Col md={5}>
+        <Col md={3}>
           <Image
             className="img-fluid rounded mb-3 mb-md-0"
             src={product.images[0].image}
-            width={400}
-            height={300}
+            width={250}
+            height={250}
             alt=""
           />
         </Col>
-        <Col md={7}>
+        <Col md={9}>
           <h3 style={{ textTransform: "capitalize" }}>{product.name}</h3>
           <p>$ {product.price}</p>
           <p>{product.description}</p>
