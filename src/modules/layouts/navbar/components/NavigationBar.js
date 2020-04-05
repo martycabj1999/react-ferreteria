@@ -11,7 +11,7 @@ import { setAuthUserAction } from '../../../user/login/store/AuthAction';
 //services
 import CategoryProvider from '../../../market/categories/providers/CategoryProvider';
 
-const CustomNavbar = () => {
+const NavigationBar = () => {
 
   const messages = useSelector(state => state.languages.messages);
   const auth = useSelector(state => state.security.user);
@@ -136,4 +136,4 @@ const CustomNavbar = () => {
   );
 }
 
-export default CustomNavbar;
+export default NavigationBar;
