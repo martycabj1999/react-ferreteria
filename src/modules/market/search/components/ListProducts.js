@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react"
 import { useSelector } from 'react-redux';
 import { Row, Container } from 'react-bootstrap';
-import Product from './Product';
-import '../styles/ListProducts.css';
+import Product from '../../products/listProducts/components/Product';
 import Error from "../../../layouts/Error";
+import '../styles/ListProducts.css';
 
 //services
 import SearchProvider from '../providers/SearchProvider';
 
 const ListProducts = (props) => {
 
+  const [products, setProducts] = useState([]);
+
   const user = useSelector(state => state.security.user);
   const coords = JSON.parse(localStorage.getItem('geolocation'));
   const messages = useSelector(state => state.languages.messages);
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-
     let pathname = (window.location.pathname).split('/')[2];
     var search = pathname.replace("%20", " ");
 
@@ -27,11 +27,10 @@ const ListProducts = (props) => {
         }
       });
     }
-
-    fetchData();
     
-    async function searchResults (searchResults, userId, keywords, categoryName, coords) {
+    fetchData();
 
+    async function searchResults (searchResults, userId, keywords, categoryName, coords) {
       SearchProvider.searchResults(searchResults, userId, keywords, categoryName, coords);
     }
 
@@ -61,4 +60,5 @@ const ListProducts = (props) => {
     </Container>
   );
 }
+
 export default ListProducts;

@@ -1,12 +1,8 @@
 import React from 'react'
 import ListProducts from '../components/ListProducts';
 
-const SearchProducts = (props) => {
-    return ( 
-        <div>
-            <ListProducts />
-        </div>
-    );
-}
- 
+const SearchProducts = () => (
+    <ListProducts />
+);
+
 export default SearchProducts;

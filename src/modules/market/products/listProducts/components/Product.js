@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Col, Card } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { object } from 'prop-types';
+import Swal from 'sweetalert2';
 import '../styles/Product.css';
 
 // Redux
@@ -12,9 +13,25 @@ const Product = ({ product }) => {
 
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  
   const sendProductToCart = product => {
     dispatch(getCartProductAction(product));
+    Swal.fire({
+      title: '¡Agregado al carrito!',
+      text: '',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ir al carrito',
+      cancelButtonText: 'Seguir comprando',
+    }).then((result) => {
+      if (result.value) {
+        dispatch(getCartProductAction(product));
+        history.push('/cart');
+      }
+    });
   };
 
   return (

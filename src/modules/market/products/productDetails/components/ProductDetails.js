@@ -7,6 +7,8 @@ import '../styles/ProductDetails.css';
 
 // Redux
 import { getCartProductAction } from '../../../cart/store/CartActions';
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
 
 const ProductDetails = (props) => {
 
@@ -15,6 +17,7 @@ const ProductDetails = (props) => {
 
   const messages = useSelector(state => state.languages.messages);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchData() {
@@ -31,6 +34,21 @@ const ProductDetails = (props) => {
 
   const sendProductToCart = product => {
     dispatch(getCartProductAction(product));
+    Swal.fire({
+      title: '¡Agregado al carrito!',
+      text: '',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ir al carrito',
+      cancelButtonText: 'Seguir comprando',
+    }).then((result) => {
+      if (result.value) {
+        dispatch(getCartProductAction(product));
+        history.push('/cart');
+      }
+    });
   };
 
   return (
@@ -69,8 +87,7 @@ const ProductDetails = (props) => {
         <FeaturedProducts />
       </Col>
     </div>
-
-  )
+  );
 }
 
 export default ProductDetails;

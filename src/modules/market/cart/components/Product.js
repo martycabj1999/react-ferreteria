@@ -27,6 +27,11 @@ const Product = ({ product }) => {
         switch (type) {
           case 'confirmRemoveProduct':
             dispatch(removeProductCartAction(id));
+            Swal.fire(
+              'Eliminado!',
+              'El producto fue eliminado de la lista',
+              'success'
+            )
             break;
           case 'confirmBuyProduct':
             console.log('Comprado');
@@ -35,8 +40,7 @@ const Product = ({ product }) => {
             break;
         }
       }
-    }
-    )
+    });
   }
 
   // Confirmar si desea eliminar producto (sin funcionaliad por ahora)
@@ -52,28 +56,28 @@ const Product = ({ product }) => {
     )
   };
 
-/*
-  const confirmBuyProduct = () => {
-    SweetAlert(
-      messages['cart_product_buy_question'],
-      '',
-      'warning',
-      messages['cart_product_buy_confirm'],
-      messages['cart_product_buy_cancel'],
-      'confirmBuyProduct'
-    )
-  };
-
-  <Button
-    className="btn btn-primary mr-1"
-    onClick={() => confirmBuyProduct()}
-  >{messages['cart_product_buy']}</Button>
-  */
+  /*
+    const confirmBuyProduct = () => {
+      SweetAlert(
+        messages['cart_product_buy_question'],
+        '',
+        'warning',
+        messages['cart_product_buy_confirm'],
+        messages['cart_product_buy_cancel'],
+        'confirmBuyProduct'
+      )
+    };
+  
+    <Button
+      className="btn btn-primary mr-1"
+      onClick={() => confirmBuyProduct()}
+    >{messages['cart_product_buy']}</Button>
+    */
 
   return (
     <Fragment>
       <Row>
-        <Col md={7}>
+        <Col md={5}>
           <Image
             className="img-fluid rounded mb-3 mb-md-0"
             src={product.images[0].image}
@@ -82,7 +86,7 @@ const Product = ({ product }) => {
             alt=""
           />
         </Col>
-        <Col md={5}>
+        <Col md={7}>
           <h3 style={{ textTransform: "capitalize" }}>{product.name}</h3>
           <p>$ {product.price}</p>
           <p>{product.description}</p>

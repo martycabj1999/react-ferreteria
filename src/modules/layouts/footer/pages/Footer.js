@@ -22,7 +22,7 @@ const Footer = () => {
     <footer
       style={{
         backgroundColor: currentColors.colorPrimary
-      }}
+            }}
       className="py-3 mt-3">
       <Typography style={{
         color: currentColors.textPrimary
