@@ -57,7 +57,7 @@ export const messagesSpanish = {
     cart_products_price: "Precio",
     cart_products_actions: "Acciones",
     cart_product_delete: "Eliminar",
-    cart_product_buy: "Comprar",
+    cart_product_buy: "Finalizar orden",
     cart_product_delete_confirm: "Si, eliminar",
     cart_product_delete_cancel: "Cancelar",
     

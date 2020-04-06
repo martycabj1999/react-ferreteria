@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Product from '../components/Product';
 import EmptyCart from '../components/EmptyCart';
+import Subtotal from '../components/Subtotal';
 import '../styles/Cart.css';
 
 const Cart = () => {
@@ -26,6 +27,14 @@ const Cart = () => {
         <h2 className="my-4">
           {messages['cart_text_my']} <strong>{messages['cart_text_cart']}</strong>
         </h2>
+
+        { productsInCart.length !== 0 
+          ? <Subtotal 
+              productsInCart={productsInCart}
+            /> 
+          : null
+        }
+
         { productsInCart.length !== 0 ? showAllProductsInCart(productsInCart) : <EmptyCart />}
       </Container>
     </Fragment>
