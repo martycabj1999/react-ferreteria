@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Product from '../components/Product';
@@ -10,6 +10,8 @@ const Cart = () => {
 
   const productsInCart = useSelector(state => state.cart.productsCart);
   const messages = useSelector(state => state.languages.messages);
+  const [subtotal, setSubtotal] = useState(0.0);
+
   console.log(productsInCart);
 
   const showAllProductsInCart = (products) => (
@@ -31,6 +33,8 @@ const Cart = () => {
         { productsInCart.length !== 0 
           ? <Subtotal 
               productsInCart={productsInCart}
+              subtotal={subtotal}
+              setSubtotal={setSubtotal}
             /> 
           : null
         }
