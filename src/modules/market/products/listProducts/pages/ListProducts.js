@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useSelector } from 'react-redux';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import Product from '../components/Product';
 import Error from "../../../../layouts/Error";
 
@@ -33,8 +33,9 @@ const ListProducts = () => {
   return (
     <Container>
       <h4 className="mt-3 mb-3">{messages['list_products_others']}</h4>
-      <Row>
-        {products.length > 0 ? listProducts : <Error mensaje={messages['list_products_not_products']} />}
+      <Row >
+        {/*products.length > 0 ? listProducts : <Error mensaje={messages['list_products_not_products']} />*/}
+        {products.length > 0 ? listProducts : <Spinner animation="grow" />}
       </Row>
     </Container>
   );

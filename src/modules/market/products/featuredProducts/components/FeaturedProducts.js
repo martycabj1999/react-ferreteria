@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Card, Image, Button } from "react-bootstrap";
+import { Card, Image, Button, Spinner } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "../styles/FeaturedProducts.css";
 import Error from "../../../../layouts/Error";
@@ -50,7 +50,8 @@ const FeaturedProducts = () => {
     <div className="featured-products-container">
       <h4>{messages['featured_products_product_featured']}</h4>
       <div className='scroll'>
-        {status === 200 && products.length > 0 ? listFeaturedProducts : <Error mensaje={messages['featured_products_not_product_featured']} />}
+        {/*status === 200 && products.length > 0 ? listFeaturedProducts : <Error mensaje={messages['featured_products_not_product_featured']} />*/}
+        {status === 200 && products.length > 0 ? listFeaturedProducts : <Spinner animation="grow" />}
       </div>
     </div>
   );
