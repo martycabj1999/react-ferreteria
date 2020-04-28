@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navbar, Container, Row, Col, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import '../styles/UpperNavbar.css';
 import { useSelector } from 'react-redux';
@@ -7,14 +7,14 @@ import logo from '../../../../assets/carrito.png';
 import SearchProvider from '../providers/SearchProvider';
 import { useHistory } from "react-router-dom";
 
-const UpperNavbar = (props) => {
+const UpperNavbar = () => {
 
   const history = useHistory();
   const messages = useSelector(state => state.languages.messages);
   const currentColors = useSelector(state => state.customization.colors);
 
   const [search, setSearch] = useState('');
-  const [products, setProducts] = useState([]);
+  const [, setProducts] = useState([]);
 
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -31,6 +31,10 @@ const UpperNavbar = (props) => {
     setSearch('');
   }
 
+  /*const movBar = (props) =>{
+      console.log(`funciona ${this.props.logo}`)
+  }*/
+
   return (
     <div>
       <Typography style={{
@@ -46,8 +50,9 @@ const UpperNavbar = (props) => {
                 href="/"
                 className="h1"
                 id="logo"
+                //onMouseOver={ () => movBar()}
               >
-                <img src={logo} width="80" height="60" alt="Logo de la pagina" />
+                <img className="imgLogo" src={logo} width="80" height="60" alt="Logo de la pagina" />
                 {messages['upper_navbar_business']}
               </Navbar.Brand>
             </Col>
